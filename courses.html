@@ -1,0 +1,766 @@
+<!-- ╔══════════════════════════════════════════════════════════╗
+     ║  Vivi Felt Studio — courses.html  ║
+     ║  Version : v1.0.0  │  Date : 2025-04-13                 ║
+     ╚══════════════════════════════════════════════════════════╝ -->
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>羊毛氈課程｜Vivi Felt Studio 薇薇V的羊毛氈手作坊</title>
+  <meta name="description" content="Vivi Felt Studio 提供初階到進階羊毛氈課程，小班制、療癒系教學。入門課、動物角色課、客製創作課、企業包班，讓每個人都能享受手作的美好。" />
+  <meta property="og:title" content="羊毛氈課程｜Vivi Felt Studio" />
+  <meta property="og:description" content="不只是技巧教學，而是一場讓心靈舒緩的手作之旅。小班制、療癒系、有成就感。" />
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles/style.css" />
+  <style>
+    /* ── Course Feature Cards ── */
+    .course-feature {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      padding: 72px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .course-feature:last-child { border-bottom: none; }
+
+    .course-feature.reverse { direction: rtl; }
+    .course-feature.reverse > * { direction: ltr; }
+
+    .course-feature__image {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .course-feature__level-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--oat);
+      border: 1.5px solid var(--border);
+      border-radius: 30px;
+      padding: 6px 18px 6px 14px;
+      font-size: 0.78rem;
+      color: var(--warm-brown);
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+
+    .course-feature__level-badge .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--caramel);
+    }
+
+    .course-feature h3 {
+      font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+      font-weight: 500;
+      color: var(--text-dark);
+      margin-bottom: 16px;
+      line-height: 1.35;
+    }
+
+    .course-feature .desc {
+      font-size: 0.92rem;
+      color: var(--text-mid);
+      line-height: 1.9;
+      margin-bottom: 24px;
+    }
+
+    .course-feature__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .course-outcomes {
+      background: var(--oat);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      margin-bottom: 24px;
+    }
+
+    .course-outcomes h5 {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--warm-brown);
+      margin-bottom: 12px;
+    }
+
+    .course-outcomes ul {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .course-outcomes li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      line-height: 1.5;
+    }
+
+    .course-outcomes li::before {
+      content: '✦';
+      color: var(--caramel);
+      font-size: 0.7rem;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    @media (max-width: 860px) {
+      .course-feature {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        padding: 48px 0;
+      }
+      .course-feature.reverse { direction: ltr; }
+    }
+
+    /* ── Why Us ── */
+    .why-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      box-shadow: var(--shadow-card);
+      text-align: center;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .why-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .why-card .icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .why-card h4 {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .why-card p {
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+    }
+
+    /* ── Compare Table ── */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+
+    .compare-table thead th {
+      background: var(--espresso);
+      color: var(--cream);
+      padding: 18px 20px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .compare-table thead th:first-child {
+      text-align: left;
+      background: var(--text-dark);
+    }
+
+    .compare-table tbody tr:nth-child(even) {
+      background: var(--cream);
+    }
+
+    .compare-table tbody td {
+      padding: 16px 20px;
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      text-align: center;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .compare-table tbody td:first-child {
+      text-align: left;
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+
+    .compare-table .check { color: #5A7A5A; font-weight: 600; }
+    .compare-table .cross { color: var(--linen-gray); }
+
+    /* ── Enroll CTA ── */
+    .enroll-card {
+      background: linear-gradient(150deg, var(--espresso), var(--text-dark));
+      border-radius: var(--radius-xl);
+      padding: 60px;
+      text-align: center;
+      color: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .enroll-card::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 40%;
+      height: 200%;
+      background: radial-gradient(ellipse, rgba(201,180,154,0.12), transparent 70%);
+    }
+
+    .enroll-card h3 {
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .enroll-card p {
+      font-size: 0.95rem;
+      color: rgba(247,243,238,0.75);
+      line-height: 1.8;
+      max-width: 480px;
+      margin: 0 auto 36px;
+      position: relative;
+    }
+
+    @media (max-width: 640px) {
+      .enroll-card { padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ── -->
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="navbar__logo">
+    <span class="logo-en">Vivi Felt Studio</span>
+    <span class="logo-zh">薇薇V的羊毛氈手作坊</span>
+  </a>
+  <ul class="navbar__nav">
+    <li><a href="custom-order.html">客製訂製</a></li>
+    <li><a href="courses.html" style="color:var(--espresso);">羊毛氈課程</a></li>
+    <li><a href="corporate.html">企業包班</a></li>
+    <li><a href="membership.html">會員制度</a></li>
+    <li><a href="contact.html">聯絡我們</a></li>
+  </ul>
+  <div class="navbar__actions">
+    <a href="membership.html" class="navbar__member-btn"><span>👤</span> 登入 / 加入</a>
+    <a href="#enroll" class="btn btn-primary btn-sm">立即報名</a>
+  </div>
+  <button class="navbar__hamburger" aria-label="開啟選單"><span></span><span></span><span></span></button>
+</nav>
+<nav class="mobile-nav">
+  <a href="index.html">首頁</a>
+  <a href="custom-order.html">客製訂製</a>
+  <a href="courses.html">羊毛氈課程</a>
+  <a href="corporate.html">企業包班</a>
+  <a href="membership.html">會員制度</a>
+  <a href="faq.html">常見問題</a>
+  <a href="contact.html">聯絡我們</a>
+  <div class="mobile-nav__actions">
+    <a href="membership.html" class="btn btn-secondary">登入 / 加入會員</a>
+    <a href="#enroll" class="btn btn-primary">立即報名</a>
+  </div>
+</nav>
+
+<!-- ── Page Hero ── -->
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">首頁</a><span>/</span>
+      <span style="color:var(--text-dark);">羊毛氈課程</span>
+    </div>
+    <span class="label">Felt Art Courses</span>
+    <h1 class="fade-up">讓每一針，都成為療癒的片刻</h1>
+    <p class="fade-up">不只是技巧教學，而是陪你在手作中找到內心的寧靜。<br>小班制、溫柔陪伴、有始有終的完整學習體驗。</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     WHY OUR COURSES
+════════════════════════════════════════════ -->
+<section class="section" style="background:var(--white);">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="label">Our Philosophy</span>
+      <h2>我們的課程理念</h2>
+      <div class="divider"></div>
+      <p>羊毛氈不只是一項技藝，它是一種讓你與自己相遇的方式。</p>
+    </div>
+
+    <div class="grid-4 stagger">
+      <div class="why-card">
+        <span class="icon">🫶</span>
+        <h4>療癒舒壓</h4>
+        <p>在戳刺的節奏中放鬆身心，讓專注帶走日常的紛擾。</p>
+      </div>
+      <div class="why-card">
+        <span class="icon">👥</span>
+        <h4>小班制陪伴</h4>
+        <p>4~6 人小班，每位學員都能獲得充足的個人指導時間。</p>
+      </div>
+      <div class="why-card">
+        <span class="icon">🏆</span>
+        <h4>成品完整帶走</h4>
+        <p>每堂課都有完整可帶走的作品，充滿成就感與紀念價值。</p>
+      </div>
+      <div class="why-card">
+        <span class="icon">📦</span>
+        <h4>材料全包含</h4>
+        <p>所有課程費用含材料，你只需帶輕鬆的心情來參加。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     COURSE 1 — 入門
+════════════════════════════════════════════ -->
+<section class="section" style="background:var(--cream);" id="beginner">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="label">All Courses</span>
+      <h2>課程介紹</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="course-feature fade-up">
+      <div class="course-feature__image" style="background:linear-gradient(145deg,#E8DCCF,#D4C4B0);">
+        <span style="font-size:7rem;opacity:0.4;">🌸</span>
+        <span style="font-size:0.8rem;letter-spacing:0.15em;color:var(--warm-brown);opacity:0.6;">初階入門課</span>
+      </div>
+
+      <div>
+        <div class="course-feature__level-badge">
+          <span class="dot"></span> 初階｜Beginner
+        </div>
+        <h3>羊毛氈療癒入門課</h3>
+        <p class="desc">
+          第一次接觸羊毛氈？完全沒關係。這堂課專為零基礎的初學者設計，從認識材料、掌握基本戳刺技法，到完成一件屬於自己的療癒小作品，全程有 Vivi 在旁溫柔陪伴。<br><br>
+          課程節奏輕鬆愉快，讓你在專注與創造中自然放鬆，帶著滿滿的成就感與作品離開。
+        </p>
+
+        <div class="course-feature__tags">
+          <span class="tag tag-warm">⏱ 3 小時</span>
+          <span class="tag tag-warm">👥 小班 4~6 人</span>
+          <span class="tag tag-warm">📦 含全部材料</span>
+          <span class="tag tag-sage">🎯 零基礎適合</span>
+        </div>
+
+        <div class="course-outcomes">
+          <h5>課程學習成果</h5>
+          <ul>
+            <li>了解羊毛氈的材料特性與基本工具使用</li>
+            <li>掌握平面與初步立體戳刺技法</li>
+            <li>完成一件可愛的療癒小物作品（約 5~8cm）</li>
+            <li>建立對羊毛氈創作的信心與興趣</li>
+          </ul>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+          <div>
+            <div style="font-size:0.75rem;color:var(--text-light);margin-bottom:2px;">課程費用</div>
+            <div style="font-size:1.4rem;font-family:var(--font-serif);font-style:italic;color:var(--espresso);">NT$ 1,200</div>
+          </div>
+          <a href="#enroll" class="btn btn-primary">立即報名</a>
+          <a href="contact.html" class="btn btn-secondary">詢問場次</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- COURSE 2 -->
+    <div class="course-feature reverse fade-up">
+      <div class="course-feature__image" style="background:linear-gradient(145deg,#D4C8C0,#C4B8B0);">
+        <span style="font-size:7rem;opacity:0.4;">🦊</span>
+        <span style="font-size:0.8rem;letter-spacing:0.15em;color:var(--warm-brown);opacity:0.6;">中階動物課</span>
+      </div>
+
+      <div>
+        <div class="course-feature__level-badge">
+          <span class="dot" style="background:var(--warm-brown);"></span> 中階｜Intermediate
+        </div>
+        <h3>動物角色手作課</h3>
+        <p class="desc">
+          已有羊毛氈基礎，想進一步挑戰立體造型？這堂課以可愛動物角色為主題，深入學習立體成型技法，掌握形體結構、毛色層次疊加與細節表現，打造出有靈魂的羊毛氈動物。<br><br>
+          小班氛圍輕鬆有趣，在互動中激發創意，讓每隻動物都有自己的個性。
+        </p>
+
+        <div class="course-feature__tags">
+          <span class="tag tag-warm">⏱ 4 小時</span>
+          <span class="tag tag-warm">👥 小班 4~6 人</span>
+          <span class="tag tag-warm">📦 含全部材料</span>
+          <span class="tag tag-sage">🎯 建議有基礎</span>
+        </div>
+
+        <div class="course-outcomes">
+          <h5>課程學習成果</h5>
+          <ul>
+            <li>掌握立體動物形體結構塑造技法</li>
+            <li>學習多色羊毛的層次疊加與混色</li>
+            <li>完成一隻立體動物角色（約 8~12cm）</li>
+            <li>了解五官細節與表情的表現方法</li>
+          </ul>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+          <div>
+            <div style="font-size:0.75rem;color:var(--text-light);margin-bottom:2px;">課程費用</div>
+            <div style="font-size:1.4rem;font-family:var(--font-serif);font-style:italic;color:var(--espresso);">NT$ 1,600</div>
+          </div>
+          <a href="#enroll" class="btn btn-primary">立即報名</a>
+          <a href="contact.html" class="btn btn-secondary">詢問場次</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- COURSE 3 -->
+    <div class="course-feature fade-up">
+      <div class="course-feature__image" style="background:linear-gradient(145deg,#C8C0B8,#B8B0A8);">
+        <span style="font-size:7rem;opacity:0.4;">✨</span>
+        <span style="font-size:0.8rem;letter-spacing:0.15em;color:var(--warm-brown);opacity:0.6;">進階創作課</span>
+      </div>
+
+      <div>
+        <div class="course-feature__level-badge">
+          <span class="dot" style="background:var(--espresso);"></span> 進階｜Advanced
+        </div>
+        <h3>客製創作與細節表現課</h3>
+        <p class="desc">
+          已能製作基本動物，想更上一層樓？進階課聚焦於「客製化細節表現」，學習如何從照片重現毛孩特徵、個性化創作構思，以及精緻小細節的處理方式——從眼神到毛流，讓你的作品充滿生命力。
+        </p>
+
+        <div class="course-feature__tags">
+          <span class="tag tag-warm">⏱ 5~6 小時</span>
+          <span class="tag tag-warm">👥 小班 3~4 人</span>
+          <span class="tag tag-warm">📦 含材料</span>
+          <span class="tag tag-sage">🎯 具中階能力</span>
+        </div>
+
+        <div class="course-outcomes">
+          <h5>課程學習成果</h5>
+          <ul>
+            <li>學習如何從照片分析並還原特徵</li>
+            <li>進階眼部、五官細節雕塑技法</li>
+            <li>掌握毛流方向、光影感表現</li>
+            <li>完成一件高完成度的個人創作作品</li>
+          </ul>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+          <div>
+            <div style="font-size:0.75rem;color:var(--text-light);margin-bottom:2px;">課程費用</div>
+            <div style="font-size:1.4rem;font-family:var(--font-serif);font-style:italic;color:var(--espresso);">NT$ 2,200</div>
+          </div>
+          <a href="#enroll" class="btn btn-primary">立即報名</a>
+          <a href="contact.html" class="btn btn-secondary">詢問場次</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- COURSE 4 -->
+    <div class="course-feature reverse fade-up">
+      <div class="course-feature__image" style="background:linear-gradient(145deg,#6B4C35,#3A2E25);">
+        <span style="font-size:7rem;opacity:0.3;">🏢</span>
+        <span style="font-size:0.8rem;letter-spacing:0.15em;color:rgba(247,243,238,0.5);">企業包班</span>
+      </div>
+
+      <div>
+        <div class="course-feature__level-badge">
+          <span class="dot" style="background:var(--caramel);"></span> 企業包班｜Corporate
+        </div>
+        <h3>療癒手作體驗工作坊</h3>
+        <p class="desc">
+          為企業、機關或社群量身設計的羊毛氈體驗工作坊。無需任何基礎，在 Vivi 的帶領下，讓每位參與者在 2~3 小時內完成一件療癒小作品，並在過程中放鬆身心、凝聚情感。<br><br>
+          適合尾牙、員工關懷、節慶活動、品牌體驗等各種場合，可彈性調整主題與內容。
+        </p>
+
+        <div class="course-feature__tags">
+          <span class="tag tag-warm">⏱ 2~3 小時</span>
+          <span class="tag tag-warm">👥 建議 8~15 人</span>
+          <span class="tag tag-warm">📦 含全部材料</span>
+          <span class="tag tag-sage">🏢 企業 / 團體</span>
+        </div>
+
+        <div class="course-outcomes">
+          <h5>適合場合</h5>
+          <ul>
+            <li>員工尾牙、年末感謝活動</li>
+            <li>團隊建設、凝聚力培訓</li>
+            <li>品牌體驗、客戶感謝活動</li>
+            <li>社區活動、親子手作工作坊</li>
+          </ul>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+          <div>
+            <div style="font-size:0.75rem;color:var(--text-light);margin-bottom:2px;">企業包班報價</div>
+            <div style="font-size:1.1rem;font-family:var(--font-serif);font-style:italic;color:var(--espresso);">依人數與場地洽詢</div>
+          </div>
+          <a href="corporate.html" class="btn btn-warm">查看企業方案</a>
+          <a href="contact.html" class="btn btn-secondary">立即洽詢</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     COMPARE TABLE
+════════════════════════════════════════════ -->
+<section class="section" style="background:var(--white);">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="label">Course Comparison</span>
+      <h2>課程比較一覽</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div style="overflow-x:auto;" class="fade-up">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th style="min-width:160px;">項目</th>
+            <th>入門課</th>
+            <th>中階動物課</th>
+            <th>進階創作課</th>
+            <th>企業包班</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>適合對象</td>
+            <td>零基礎初學</td>
+            <td>有基礎者</td>
+            <td>中階以上</td>
+            <td>任何人</td>
+          </tr>
+          <tr>
+            <td>時長</td>
+            <td>3 小時</td>
+            <td>4 小時</td>
+            <td>5~6 小時</td>
+            <td>2~3 小時</td>
+          </tr>
+          <tr>
+            <td>班級人數</td>
+            <td>4~6 人</td>
+            <td>4~6 人</td>
+            <td>3~4 人</td>
+            <td>8~15 人</td>
+          </tr>
+          <tr>
+            <td>材料費含</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+          </tr>
+          <tr>
+            <td>成品帶走</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+          </tr>
+          <tr>
+            <td>立體造型技法</td>
+            <td class="cross">基礎</td>
+            <td class="check">✓</td>
+            <td class="check">✓ 進階</td>
+            <td class="cross">體驗</td>
+          </tr>
+          <tr>
+            <td>客製主題</td>
+            <td class="cross">—</td>
+            <td class="cross">—</td>
+            <td class="check">✓</td>
+            <td class="check">✓ 可選</td>
+          </tr>
+          <tr>
+            <td>費用</td>
+            <td>NT$ 1,200</td>
+            <td>NT$ 1,600</td>
+            <td>NT$ 2,200</td>
+            <td>洽詢報價</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     ENROLL FORM
+════════════════════════════════════════════ -->
+<section class="section" style="background:var(--oat);" id="enroll">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="label">Sign Up</span>
+      <h2>課程報名詢問</h2>
+      <div class="divider"></div>
+      <p>填寫以下資訊，我們將與您確認最近的開課時間與名額。</p>
+    </div>
+
+    <div class="form-container fade-up">
+      <div class="form-success">
+        <div class="success-icon">🌿</div>
+        <h3>報名詢問已收到！</h3>
+        <p>謝謝你留下訊息，願這份手作的溫度，也能慢慢陪伴你的故事。<br>我們會在 1~2 個工作日內與你確認課程場次與細節。</p>
+      </div>
+
+      <form name="course-enrollment" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="course-enrollment" />
+        <input type="hidden" name="bot-field" />
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>姓名 <span class="required">*</span></label>
+            <input type="text" name="name" class="form-control" placeholder="您的稱呼" required />
+          </div>
+          <div class="form-group">
+            <label>Email <span class="required">*</span></label>
+            <input type="email" name="email" class="form-control" placeholder="your@email.com" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>聯絡方式（IG / Line / 電話）</label>
+            <input type="text" name="contact" class="form-control" placeholder="@ig_name 或 Line ID" />
+          </div>
+          <div class="form-group">
+            <label>想報名的課程 <span class="required">*</span></label>
+            <select name="course" class="form-control" required>
+              <option value="">請選擇課程</option>
+              <option value="beginner">初階｜羊毛氈療癒入門課（NT$ 1,200）</option>
+              <option value="intermediate">中階｜動物角色手作課（NT$ 1,600）</option>
+              <option value="advanced">進階｜客製創作與細節表現課（NT$ 2,200）</option>
+              <option value="corporate">企業包班｜療癒手作體驗工作坊</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>希望上課日期 / 時段</label>
+            <input type="text" name="preferred_date" class="form-control" placeholder="例：週末下午、六月初" />
+          </div>
+          <div class="form-group">
+            <label>報名人數</label>
+            <select name="participants" class="form-control">
+              <option value="1">1 人（個人）</option>
+              <option value="2">2 人</option>
+              <option value="3">3 人</option>
+              <option value="4">4 人</option>
+              <option value="group">5 人以上（請說明）</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>是否有羊毛氈基礎？</label>
+          <select name="experience" class="form-control">
+            <option value="none">完全沒有接觸過</option>
+            <option value="basic">有上過入門課程</option>
+            <option value="some">自學有一些基礎</option>
+            <option value="experienced">有豐富手作經驗</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>補充說明</label>
+          <textarea name="notes" class="form-control" style="min-height:100px;" placeholder="任何想讓我們知道的事，例如：有無過敏材質、特殊需求等。"></textarea>
+        </div>
+
+        <div style="text-align:center; margin-top:8px;">
+          <button type="submit" class="btn btn-primary btn-lg">送出報名詢問</button>
+          <p style="font-size:0.78rem; color:var(--text-light); margin-top:12px;">收到詢問後將於 1~2 工作日內確認場次與付款方式</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ENROLL CTA -->
+<section class="section" style="background:var(--white);">
+  <div class="container">
+    <div class="enroll-card fade-up">
+      <h3>還沒決定？先來問問也很歡迎 ☺</h3>
+      <p>不確定哪個課程適合你，或想了解更多細節，都可以直接與 Vivi 聯繫，我們會幫你找到最合適的選擇。</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;position:relative;">
+        <a href="contact.html" class="btn btn-ghost btn-lg">傳訊息給 Vivi</a>
+        <a href="corporate.html" class="btn btn-warm btn-lg">企業包班詳情</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <div class="logo-en">Vivi Felt Studio</div>
+        <div class="logo-zh">薇薇V的羊毛氈手作坊</div>
+        <p>手作的溫度，留給重要的人。</p>
+        <div class="footer__social">
+          <a href="https://www.facebook.com/profile.php?id=61559206236758&locale=zh_TW" target="_blank" rel="noopener">f</a>
+          <a href="https://www.instagram.com/eaea_1282025/" target="_blank" rel="noopener">ig</a>
+          <a href="#" title="LINE 官方帳號（建置中）">L</a>
+        </div>
+      </div>
+      <div class="footer__col"><h4>服務項目</h4><ul>
+        <li><a href="custom-order.html">客製訂單</a></li>
+        <li><a href="custom-order.html#pet">寵物紀念</a></li>
+        <li><a href="courses.html">羊毛氈課程</a></li>
+        <li><a href="corporate.html">企業包班</a></li>
+      </ul></div>
+      <div class="footer__col"><h4>品牌資訊</h4><ul>
+        <li><a href="membership.html">會員制度</a></li>
+        <li><a href="faq.html">常見問題</a></li>
+        <li><a href="contact.html">聯絡我們</a></li>
+      </ul></div>
+      <div class="footer__col"><h4>法律聲明</h4><ul>
+        <li><a href="privacy.html">隱私權政策</a></li>
+        <li><a href="terms.html">服務條款</a></li>
+        <li><a href="refund-policy.html">退款政策</a></li>
+      </ul></div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2024 Vivi Felt Studio. All rights reserved.</p>
+      <div class="footer__legal">
+        <a href="privacy.html">隱私政策</a>
+        <a href="terms.html">服務條款</a>
+        <a href="refund-policy.html">退款政策</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="scripts/main.js"></script>
+</body>
+</html>

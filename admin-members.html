@@ -1,0 +1,306 @@
+<!-- ╔══════════════════════════════════════════════════════════╗
+     ║  Vivi Felt Studio — admin-members.html  ║
+     ║  Version : v1.0.0  │  Date : 2025-04-13                 ║
+     ╚══════════════════════════════════════════════════════════╝ -->
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>會員管理｜Vivi Felt Studio Admin</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles/style.css" />
+  <style>
+    body { background: #F5F0EB; }
+    .filter-bar { display:flex;gap:12px;flex-wrap:wrap;align-items:center;background:var(--white);border-radius:var(--radius-md);padding:16px 20px;margin-bottom:24px;box-shadow:var(--shadow-sm);border:1px solid var(--border-light); }
+    .filter-bar select,.filter-bar input { padding:8px 14px;border:1.5px solid var(--border);border-radius:var(--radius-md);font-size:0.82rem;color:var(--text-mid);background:var(--white);outline:none; }
+    .filter-bar input { flex:1;min-width:180px; }
+    .tier-badge { display:inline-flex;align-items:center;gap:5px;padding:3px 12px;border-radius:20px;font-size:0.72rem;font-weight:500; }
+    .tier-general { background:rgba(200,196,188,0.3);color:var(--text-mid); }
+    .tier-vip { background:rgba(176,120,64,0.15);color:var(--caramel); }
+    .tier-student { background:rgba(196,204,188,0.4);color:#4A5D44; }
+    .member-avatar { width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:500;color:var(--white);flex-shrink:0; }
+    .birthday-badge { display:inline-block;background:rgba(232,213,208,0.5);color:#9B6B63;font-size:0.68rem;padding:2px 8px;border-radius:10px;margin-left:4px; }
+  </style>
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="admin-sidebar">
+    <div class="admin-sidebar__logo"><div class="logo-en">Vivi Felt Studio</div><div class="logo-sub">後台管理系統</div></div>
+    <nav class="admin-sidebar__nav">
+      <div class="admin-sidebar__section">主要功能</div>
+      <a href="admin-dashboard.html" class="admin-sidebar__link"><span class="icon">📊</span> 總覽儀表板</a>
+      <a href="admin-orders.html" class="admin-sidebar__link"><span class="icon">📦</span> 訂單管理</a>
+      <a href="admin-courses.html" class="admin-sidebar__link"><span class="icon">🎓</span> 課程報名</a>
+      <a href="admin-members.html" class="admin-sidebar__link active"><span class="icon">👥</span> 會員管理</a>
+      <div class="admin-sidebar__section">內容管理</div>
+      <a href="admin-content.html" class="admin-sidebar__link"><span class="icon">✏️</span> 內容管理</a>
+      <a href="admin-analytics.html" class="admin-sidebar__link"><span class="icon">📈</span> 數據分析</a>
+      <div class="admin-sidebar__section">設定</div>
+      <a href="index.html" class="admin-sidebar__link" target="_blank"><span class="icon">🌐</span> 前台預覽</a>
+      <a href="#" class="admin-sidebar__link"><span class="icon">⚙️</span> 系統設定</a>
+    </nav>
+  </aside>
+
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <div style="display:flex;align-items:center;gap:16px;">
+        <button class="admin-menu-toggle" style="background:none;border:none;cursor:pointer;font-size:1.2rem;color:var(--text-mid);">☰</button>
+        <div class="admin-topbar__title">會員管理</div>
+      </div>
+      <div class="admin-topbar__right">
+        <button class="btn btn-secondary btn-sm">匯出名單</button>
+        <button class="btn btn-primary btn-sm">+ 新增會員</button>
+        <div class="admin-avatar">V</div>
+      </div>
+    </div>
+
+    <div class="admin-content">
+      <!-- KPI -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px;">
+        <div class="admin-stat-card">
+          <div class="admin-stat-card__icon icon-bg-warm">👥</div>
+          <div class="admin-stat-card__body">
+            <div class="label">會員總數</div>
+            <div class="value" data-count="284">0</div>
+            <div class="change">本月新增 22</div>
+          </div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-card__icon icon-bg-pink">⭐</div>
+          <div class="admin-stat-card__body">
+            <div class="label">VIP 會員</div>
+            <div class="value" data-count="48">0</div>
+            <div class="change">佔比 16.9%</div>
+          </div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-card__icon icon-bg-sage">🎓</div>
+          <div class="admin-stat-card__body">
+            <div class="label">學員會員</div>
+            <div class="value" data-count="112">0</div>
+            <div class="change">佔比 39.4%</div>
+          </div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-card__icon icon-bg-coffee">🎂</div>
+          <div class="admin-stat-card__body">
+            <div class="label">本月生日會員</div>
+            <div class="value" data-count="7">0</div>
+            <div class="change">待發送生日優惠</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tier breakdown -->
+      <div style="background:var(--white);border-radius:var(--radius-md);padding:28px;box-shadow:var(--shadow-sm);border:1px solid var(--border-light);margin-bottom:24px;">
+        <h3 style="font-size:0.88rem;font-weight:500;margin-bottom:20px;">會員等級分布</h3>
+        <div style="display:flex;gap:32px;align-items:center;flex-wrap:wrap;">
+          <div style="display:flex;align-items:center;gap:12px;flex:1;">
+            <div style="flex:1;">
+              <div style="display:flex;justify-content:space-between;font-size:0.82rem;color:var(--text-mid);margin-bottom:4px;">
+                <span>一般會員</span><span style="font-weight:500;">124 人（43.7%）</span>
+              </div>
+              <div style="background:var(--oat);border-radius:4px;height:8px;overflow:hidden;">
+                <div style="width:43.7%;height:100%;border-radius:4px;background:var(--linen-gray);"></div>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;flex:1;">
+            <div style="flex:1;">
+              <div style="display:flex;justify-content:space-between;font-size:0.82rem;color:var(--text-mid);margin-bottom:4px;">
+                <span>VIP 摯友</span><span style="font-weight:500;">48 人（16.9%）</span>
+              </div>
+              <div style="background:var(--oat);border-radius:4px;height:8px;overflow:hidden;">
+                <div style="width:16.9%;height:100%;border-radius:4px;background:var(--caramel);"></div>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;flex:1;">
+            <div style="flex:1;">
+              <div style="display:flex;justify-content:space-between;font-size:0.82rem;color:var(--text-mid);margin-bottom:4px;">
+                <span>學員會員</span><span style="font-weight:500;">112 人（39.4%）</span>
+              </div>
+              <div style="background:var(--oat);border-radius:4px;height:8px;overflow:hidden;">
+                <div style="width:39.4%;height:100%;border-radius:4px;background:var(--sage);"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter -->
+      <div class="filter-bar">
+        <input type="text" placeholder="🔍 搜尋姓名、Email…" oninput="filterMembers(this.value)" />
+        <select onchange="filterByTier(this.value)">
+          <option value="">全部等級</option>
+          <option value="一般">一般會員</option>
+          <option value="VIP">VIP 摯友</option>
+          <option value="學員">學員會員</option>
+        </select>
+        <select>
+          <option value="">加入時間</option>
+          <option>本月加入</option>
+          <option>本季加入</option>
+          <option>今年加入</option>
+        </select>
+        <select id="birthday-filter" onchange="filterMembers('')">
+          <option value="">所有會員</option>
+          <option value="birthday">本月生日</option>
+        </select>
+      </div>
+
+      <!-- Table -->
+      <div class="admin-table-wrap">
+        <div class="admin-table-header">
+          <h3>會員名單</h3>
+          <span style="font-size:0.78rem;color:var(--text-light);">顯示前 10 筆 · 共 <span id="member-count">284</span> 位</span>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="data-table" id="members-table">
+            <thead>
+              <tr>
+                <th>會員</th>
+                <th>等級</th>
+                <th>Email</th>
+                <th>聯絡方式</th>
+                <th>加入日期</th>
+                <th>生日</th>
+                <th>課程紀錄</th>
+                <th>訂單數</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody id="members-tbody">
+              <tr>
+                <td><div style="display:flex;align-items:center;gap:10px;"><div class="member-avatar" style="background:linear-gradient(135deg,var(--camel),var(--warm-brown));">王</div><strong>王小明</strong></div></td>
+                <td><span class="tier-badge tier-vip">⭐ VIP</span></td>
+                <td>wang@mail.com</td>
+                <td>0912-111-222</td>
+                <td>2023/08/15</td>
+                <td>04/18 <span class="birthday-badge">🎂 本月</span></td>
+                <td>3 堂</td>
+                <td>5</td>
+                <td><button class="btn btn-secondary btn-sm">詳情</button></td>
+              </tr>
+              <tr>
+                <td><div style="display:flex;align-items:center;gap:10px;"><div class="member-avatar" style="background:linear-gradient(135deg,var(--fog-pink),#D4A0A0);">林</div><strong>林美玲</strong></div></td>
+                <td><span class="tier-badge tier-student">🎓 學員</span></td>
+                <td>lin@mail.com</td>
+                <td>@lin_craft</td>
+                <td>2024/01/20</td>
+                <td>07/05</td>
+                <td>1 堂</td>
+                <td>2</td>
+                <td><button class="btn btn-secondary btn-sm">詳情</button></td>
+              </tr>
+              <tr>
+                <td><div style="display:flex;align-items:center;gap:10px;"><div class="member-avatar" style="background:linear-gradient(135deg,var(--sage),#8A9A84);">陳</div><strong>陳雅婷</strong></div></td>
+                <td><span class="tier-badge tier-student">🎓 學員</span></td>
+                <td>chen@mail.com</td>
+                <td>0933-222-333</td>
+                <td>2023/11/10</td>
+                <td>02/14</td>
+                <td>2 堂</td>
+                <td>3</td>
+                <td><button class="btn btn-secondary btn-sm">詳情</button></td>
+              </tr>
+              <tr>
+                <td><div style="display:flex;align-items:center;gap:10px;"><div class="member-avatar" style="background:linear-gradient(135deg,#D4C0A8,#C0A890);">黃</div><strong>黃建國</strong></div></td>
+                <td><span class="tier-badge tier-general">一般</span></td>
+                <td>huang@mail.com</td>
+                <td>0922-333-444</td>
+                <td>2024/02/28</td>
+                <td>09/30</td>
+                <td>0 堂</td>
+                <td>1</td>
+                <td><button class="btn btn-secondary btn-sm">詳情</button></td>
+              </tr>
+              <tr>
+                <td><div style="display:flex;align-items:center;gap:10px;"><div class="member-avatar" style="background:linear-gradient(135deg,var(--caramel),var(--gold-brown));">張</div><strong>張志偉</strong></div></td>
+                <td><span class="tier-badge tier-vip">⭐ VIP</span></td>
+                <td>chang@mail.com</td>
+                <td>@chang_studio</td>
+                <td>2023/06/01</td>
+                <td>04/22 <span class="birthday-badge">🎂 本月</span></td>
+                <td>4 堂</td>
+                <td>8</td>
+                <td><button class="btn btn-secondary btn-sm">詳情</button></td>
+              </tr>
+              <tr>
+                <td><div style="display:flex;align-items:center;gap:10px;"><div class="member-avatar" style="background:linear-gradient(135deg,#C8D0C8,#A8B0A8);">李</div><strong>李淑芬</strong></div></td>
+                <td><span class="tier-badge tier-student">🎓 學員</span></td>
+                <td>lee@mail.com</td>
+                <td>0944-555-666</td>
+                <td>2023/09/14</td>
+                <td>12/25</td>
+                <td>2 堂</td>
+                <td>4</td>
+                <td><button class="btn btn-secondary btn-sm">詳情</button></td>
+              </tr>
+              <tr>
+                <td><div style="display:flex;align-items:center;gap:10px;"><div class="member-avatar" style="background:linear-gradient(135deg,#E0C8C0,#C0A8A0);">吳</div><strong>吳曉晴</strong></div></td>
+                <td><span class="tier-badge tier-general">一般</span></td>
+                <td>wu@mail.com</td>
+                <td>@wu_felting</td>
+                <td>2024/03/05</td>
+                <td>08/18</td>
+                <td>0 堂</td>
+                <td>1</td>
+                <td><button class="btn btn-secondary btn-sm">詳情</button></td>
+              </tr>
+              <tr>
+                <td><div style="display:flex;align-items:center;gap:10px;"><div class="member-avatar" style="background:linear-gradient(135deg,var(--sand),var(--camel));">周</div><strong>周庭安</strong></div></td>
+                <td><span class="tier-badge tier-student">🎓 學員</span></td>
+                <td>chou@mail.com</td>
+                <td>0955-666-777</td>
+                <td>2023/12/20</td>
+                <td>04/08 <span class="birthday-badge">🎂 本月</span></td>
+                <td>1 堂</td>
+                <td>2</td>
+                <td><button class="btn btn-secondary btn-sm">詳情</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="padding:16px 20px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border-light);">
+          <span style="font-size:0.78rem;color:var(--text-light);">顯示 1–8，共 284 筆</span>
+          <div style="display:flex;gap:8px;">
+            <button class="btn btn-secondary btn-sm">上一頁</button>
+            <button class="btn btn-secondary btn-sm">下一頁</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Birthday alert -->
+      <div style="background:linear-gradient(135deg,rgba(232,213,208,0.4),rgba(247,243,238,0.8));border-radius:var(--radius-lg);padding:28px 32px;margin-top:24px;border:1px solid var(--fog-pink);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:16px;">
+          <div style="font-size:2rem;">🎂</div>
+          <div>
+            <div style="font-size:0.95rem;font-weight:500;color:var(--text-dark);margin-bottom:4px;">本月有 7 位會員生日</div>
+            <div style="font-size:0.82rem;color:var(--text-mid);">王小明（04/18）、張志偉（04/22）、周庭安（04/08）等，記得發送生日優惠！</div>
+          </div>
+        </div>
+        <button class="btn btn-warm btn-sm">一鍵發送生日優惠（建置中）</button>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="scripts/main.js"></script>
+<script>
+  function filterMembers(val) {
+    val = val.toLowerCase();
+    document.querySelectorAll('#members-tbody tr').forEach(row => {
+      row.style.display = !val || row.textContent.toLowerCase().includes(val) ? '' : 'none';
+    });
+  }
+  function filterByTier(tier) {
+    document.querySelectorAll('#members-tbody tr').forEach(row => {
+      row.style.display = !tier || row.textContent.includes(tier) ? '' : 'none';
+    });
+  }
+</script>
+</body>
+</html>

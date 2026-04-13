@@ -1,0 +1,390 @@
+<!-- ╔══════════════════════════════════════════════════════════╗
+     ║  Vivi Felt Studio — admin-orders.html  ║
+     ║  Version : v1.0.0  │  Date : 2025-04-13                 ║
+     ╚══════════════════════════════════════════════════════════╝ -->
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>訂單管理｜Vivi Felt Studio Admin</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles/style.css" />
+  <style>
+    body { background: #F5F0EB; }
+    .filter-bar {
+      display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
+      background: var(--white); border-radius: var(--radius-md);
+      padding: 16px 20px; margin-bottom: 24px;
+      box-shadow: var(--shadow-sm); border: 1px solid var(--border-light);
+    }
+    .filter-bar select, .filter-bar input {
+      padding: 8px 14px; border: 1.5px solid var(--border);
+      border-radius: var(--radius-md); font-size: 0.82rem;
+      color: var(--text-mid); background: var(--white);
+      outline: none; transition: border-color var(--transition);
+    }
+    .filter-bar select:focus, .filter-bar input:focus { border-color: var(--camel); }
+    .filter-bar input { flex: 1; min-width: 180px; }
+    .filter-spacer { flex: 1; }
+
+    .order-detail-panel {
+      display: none; position: fixed; right: 0; top: 0; bottom: 0;
+      width: 420px; background: var(--white);
+      box-shadow: -8px 0 40px rgba(0,0,0,0.12);
+      z-index: 200; overflow-y: auto; padding: 32px 28px;
+      transition: transform 0.35s var(--ease);
+      transform: translateX(100%);
+    }
+    .order-detail-panel.open { display: block; transform: translateX(0); }
+    .panel-close { background: none; border: none; cursor: pointer; font-size: 1.3rem; color: var(--text-light); }
+    .panel-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.2); z-index: 199; }
+    .panel-overlay.open { display: block; }
+
+    .detail-field { margin-bottom: 20px; }
+    .detail-field label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); display: block; margin-bottom: 4px; }
+    .detail-field .value { font-size: 0.9rem; color: var(--text-dark); }
+
+    .status-select {
+      padding: 6px 12px; border: 1.5px solid var(--border);
+      border-radius: 20px; font-size: 0.78rem; background: var(--white);
+      cursor: pointer; outline: none; color: var(--text-mid);
+    }
+    tr.clickable { cursor: pointer; }
+    tr.clickable:hover td { background: var(--oat); }
+  </style>
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="admin-sidebar">
+    <div class="admin-sidebar__logo">
+      <div class="logo-en">Vivi Felt Studio</div>
+      <div class="logo-sub">後台管理系統</div>
+    </div>
+    <nav class="admin-sidebar__nav">
+      <div class="admin-sidebar__section">主要功能</div>
+      <a href="admin-dashboard.html" class="admin-sidebar__link"><span class="icon">📊</span> 總覽儀表板</a>
+      <a href="admin-orders.html" class="admin-sidebar__link active"><span class="icon">📦</span> 訂單管理</a>
+      <a href="admin-courses.html" class="admin-sidebar__link"><span class="icon">🎓</span> 課程報名</a>
+      <a href="admin-members.html" class="admin-sidebar__link"><span class="icon">👥</span> 會員管理</a>
+      <div class="admin-sidebar__section">內容管理</div>
+      <a href="admin-content.html" class="admin-sidebar__link"><span class="icon">✏️</span> 內容管理</a>
+      <a href="admin-analytics.html" class="admin-sidebar__link"><span class="icon">📈</span> 數據分析</a>
+      <div class="admin-sidebar__section">設定</div>
+      <a href="index.html" class="admin-sidebar__link" target="_blank"><span class="icon">🌐</span> 前台預覽</a>
+      <a href="#" class="admin-sidebar__link"><span class="icon">⚙️</span> 系統設定</a>
+    </nav>
+  </aside>
+
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <div style="display:flex;align-items:center;gap:16px;">
+        <button class="admin-menu-toggle" style="background:none;border:none;cursor:pointer;font-size:1.2rem;color:var(--text-mid);">☰</button>
+        <div class="admin-topbar__title">訂單管理</div>
+      </div>
+      <div class="admin-topbar__right">
+        <a href="index.html" target="_blank" class="btn btn-secondary btn-sm">查看前台</a>
+        <div class="admin-avatar">V</div>
+      </div>
+    </div>
+
+    <div class="admin-content">
+      <!-- Summary -->
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:28px;">
+        <div style="background:var(--white);border-radius:var(--radius-md);padding:20px;text-align:center;box-shadow:var(--shadow-sm);border:1px solid var(--border-light);">
+          <div style="font-size:1.6rem;font-family:var(--font-serif);font-style:italic;color:var(--text-dark);">3</div>
+          <div class="status status-new" style="margin-top:4px;">新詢問</div>
+        </div>
+        <div style="background:var(--white);border-radius:var(--radius-md);padding:20px;text-align:center;box-shadow:var(--shadow-sm);border:1px solid var(--border-light);">
+          <div style="font-size:1.6rem;font-family:var(--font-serif);font-style:italic;color:var(--text-dark);">2</div>
+          <div class="status status-talking" style="margin-top:4px;">洽談中</div>
+        </div>
+        <div style="background:var(--white);border-radius:var(--radius-md);padding:20px;text-align:center;box-shadow:var(--shadow-sm);border:1px solid var(--border-light);">
+          <div style="font-size:1.6rem;font-family:var(--font-serif);font-style:italic;color:var(--text-dark);">5</div>
+          <div class="status status-making" style="margin-top:4px;">製作中</div>
+        </div>
+        <div style="background:var(--white);border-radius:var(--radius-md);padding:20px;text-align:center;box-shadow:var(--shadow-sm);border:1px solid var(--border-light);">
+          <div style="font-size:1.6rem;font-family:var(--font-serif);font-style:italic;color:var(--text-dark);">2</div>
+          <div class="status status-shipped" style="margin-top:4px;">已出貨</div>
+        </div>
+        <div style="background:var(--white);border-radius:var(--radius-md);padding:20px;text-align:center;box-shadow:var(--shadow-sm);border:1px solid var(--border-light);">
+          <div style="font-size:1.6rem;font-family:var(--font-serif);font-style:italic;color:var(--text-dark);">18</div>
+          <div class="status status-done" style="margin-top:4px;">已完成</div>
+        </div>
+      </div>
+
+      <!-- Filter -->
+      <div class="filter-bar">
+        <input type="text" placeholder="🔍 搜尋姓名、訂單編號…" id="search-input" oninput="filterOrders()" />
+        <select id="status-filter" onchange="filterOrders()">
+          <option value="">全部狀態</option>
+          <option value="新詢問">新詢問</option>
+          <option value="洽談中">洽談中</option>
+          <option value="製作中">製作中</option>
+          <option value="已完成">已完成</option>
+          <option value="已出貨">已出貨</option>
+        </select>
+        <select id="type-filter" onchange="filterOrders()">
+          <option value="">全部類型</option>
+          <option value="寵物紀念">寵物紀念</option>
+          <option value="圍巾">圍巾</option>
+          <option value="包包">包包</option>
+          <option value="吊飾">吊飾</option>
+          <option value="面紙套">面紙套</option>
+          <option value="其他">其他</option>
+        </select>
+        <div class="filter-spacer"></div>
+        <button class="btn btn-primary btn-sm">+ 新增訂單</button>
+      </div>
+
+      <!-- Table -->
+      <div class="admin-table-wrap">
+        <div class="admin-table-header">
+          <h3>訂單列表</h3>
+          <span style="font-size:0.78rem;color:var(--text-light);">共 <span id="order-count">12</span> 筆</span>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="data-table" id="orders-table">
+            <thead>
+              <tr>
+                <th>訂單編號</th>
+                <th>顧客姓名</th>
+                <th>類型</th>
+                <th>需求摘要</th>
+                <th>預算</th>
+                <th>建立日期</th>
+                <th>預計完成</th>
+                <th>狀態</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody id="orders-tbody">
+              <tr class="clickable" onclick="openOrder('VF-2024-0318','王小明','寵物紀念','柴犬 Haru 肖像，約 15cm，正面＋側面','NT$ 2,200','2024/03/18','2024/04/05','新詢問')">
+                <td><span style="font-family:monospace;font-size:0.82rem;">#VF-2024-0318</span></td>
+                <td><strong>王小明</strong></td>
+                <td><span class="tag tag-warm">寵物紀念</span></td>
+                <td style="max-width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">柴犬 Haru 肖像，約 15cm</td>
+                <td>NT$ 2,200</td>
+                <td>2024/03/18</td>
+                <td>—</td>
+                <td><span class="status status-new">新詢問</span></td>
+                <td><button class="btn btn-secondary btn-sm" onclick="event.stopPropagation();openOrder('VF-2024-0318','王小明','寵物紀念','柴犬 Haru 肖像，約 15cm，正面＋側面','NT$ 2,200','2024/03/18','2024/04/05','新詢問')">查看</button></td>
+              </tr>
+              <tr class="clickable" onclick="openOrder('VF-2024-0315','林美玲','吊飾','母親節禮物，小兔兔吊飾 ×3','NT$ 1,140','2024/03/15','2024/04/20','洽談中')">
+                <td><span style="font-family:monospace;font-size:0.82rem;">#VF-2024-0315</span></td>
+                <td><strong>林美玲</strong></td>
+                <td><span class="tag tag-warm">吊飾</span></td>
+                <td>母親節禮物，小兔兔吊飾 ×3</td>
+                <td>NT$ 1,140</td>
+                <td>2024/03/15</td>
+                <td>2024/04/20</td>
+                <td><span class="status status-talking">洽談中</span></td>
+                <td><button class="btn btn-secondary btn-sm" onclick="event.stopPropagation();">查看</button></td>
+              </tr>
+              <tr class="clickable">
+                <td><span style="font-family:monospace;font-size:0.82rem;">#VF-2024-0312</span></td>
+                <td><strong>陳雅婷</strong></td>
+                <td><span class="tag tag-warm">寵物紀念</span></td>
+                <td>橘貓 Mochi，中型立體</td>
+                <td>NT$ 1,800</td>
+                <td>2024/03/12</td>
+                <td>2024/03/28</td>
+                <td><span class="status status-making">製作中</span></td>
+                <td><button class="btn btn-secondary btn-sm">查看</button></td>
+              </tr>
+              <tr class="clickable">
+                <td><span style="font-family:monospace;font-size:0.82rem;">#VF-2024-0308</span></td>
+                <td><strong>黃建國</strong></td>
+                <td><span class="tag tag-warm">圍巾</span></td>
+                <td>米色羊毛氈圍巾，180cm</td>
+                <td>NT$ 2,500</td>
+                <td>2024/03/08</td>
+                <td>2024/04/01</td>
+                <td><span class="status status-making">製作中</span></td>
+                <td><button class="btn btn-secondary btn-sm">查看</button></td>
+              </tr>
+              <tr class="clickable">
+                <td><span style="font-family:monospace;font-size:0.82rem;">#VF-2024-0302</span></td>
+                <td><strong>張志偉</strong></td>
+                <td><span class="tag tag-warm">包包</span></td>
+                <td>米白色小托特包，帶刺繡花紋</td>
+                <td>NT$ 3,800</td>
+                <td>2024/03/02</td>
+                <td>2024/04/10</td>
+                <td><span class="status status-making">製作中</span></td>
+                <td><button class="btn btn-secondary btn-sm">查看</button></td>
+              </tr>
+              <tr class="clickable">
+                <td><span style="font-family:monospace;font-size:0.82rem;">#VF-2024-0225</span></td>
+                <td><strong>李淑芬</strong></td>
+                <td><span class="tag tag-warm">圍巾</span></td>
+                <td>冬日米色圍巾，附流蘇</td>
+                <td>NT$ 2,200</td>
+                <td>2024/02/25</td>
+                <td>2024/03/10</td>
+                <td><span class="status status-shipped">已出貨</span></td>
+                <td><button class="btn btn-secondary btn-sm">查看</button></td>
+              </tr>
+              <tr class="clickable">
+                <td><span style="font-family:monospace;font-size:0.82rem;">#VF-2024-0218</span></td>
+                <td><strong>吳曉晴</strong></td>
+                <td><span class="tag tag-warm">寵物紀念</span></td>
+                <td>貓咪 Coco 紀念，過彩虹橋</td>
+                <td>NT$ 1,800</td>
+                <td>2024/02/18</td>
+                <td>2024/03/05</td>
+                <td><span class="status status-done">已完成</span></td>
+                <td><button class="btn btn-secondary btn-sm">查看</button></td>
+              </tr>
+              <tr class="clickable">
+                <td><span style="font-family:monospace;font-size:0.82rem;">#VF-2024-0210</span></td>
+                <td><strong>周庭安</strong></td>
+                <td><span class="tag tag-warm">吊飾</span></td>
+                <td>情人節禮物吊飾組 ×2</td>
+                <td>NT$ 760</td>
+                <td>2024/02/10</td>
+                <td>2024/02/12</td>
+                <td><span class="status status-shipped">已出貨</span></td>
+                <td><button class="btn btn-secondary btn-sm">查看</button></td>
+              </tr>
+              <tr class="clickable">
+                <td><span style="font-family:monospace;font-size:0.82rem;">#VF-2024-0205</span></td>
+                <td><strong>鄭雅文</strong></td>
+                <td><span class="tag tag-warm">面紙套</span></td>
+                <td>辦公室用羊毛氈面紙套 ×2</td>
+                <td>NT$ 1,160</td>
+                <td>2024/02/05</td>
+                <td>2024/02/20</td>
+                <td><span class="status status-done">已完成</span></td>
+                <td><button class="btn btn-secondary btn-sm">查看</button></td>
+              </tr>
+              <tr class="clickable">
+                <td><span style="font-family:monospace;font-size:0.82rem;">#VF-2024-0128</span></td>
+                <td><strong>許冠霖</strong></td>
+                <td><span class="tag tag-warm">其他</span></td>
+                <td>企業吉祥物羊毛氈，公司 Logo</td>
+                <td>NT$ 4,200</td>
+                <td>2024/01/28</td>
+                <td>2024/02/20</td>
+                <td><span class="status status-done">已完成</span></td>
+                <td><button class="btn btn-secondary btn-sm">查看</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="padding:16px 20px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border-light);">
+          <span style="font-size:0.78rem;color:var(--text-light);">顯示 1–10，共 12 筆</span>
+          <div style="display:flex;gap:8px;">
+            <button class="btn btn-secondary btn-sm">上一頁</button>
+            <button class="btn btn-secondary btn-sm">下一頁</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Detail Panel -->
+<div class="panel-overlay" id="panel-overlay" onclick="closeOrder()"></div>
+<div class="order-detail-panel" id="detail-panel">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;">
+    <h3 style="font-size:1rem;font-weight:500;" id="panel-title">訂單詳情</h3>
+    <button class="panel-close" onclick="closeOrder()">×</button>
+  </div>
+
+  <div id="panel-content">
+    <div class="detail-field">
+      <label>訂單編號</label>
+      <div class="value" id="d-id" style="font-family:monospace;"></div>
+    </div>
+    <div class="detail-field">
+      <label>顧客姓名</label>
+      <div class="value" id="d-name"></div>
+    </div>
+    <div class="detail-field">
+      <label>作品類型</label>
+      <div class="value" id="d-type"></div>
+    </div>
+    <div class="detail-field">
+      <label>需求說明</label>
+      <div class="value" id="d-desc" style="line-height:1.7;color:var(--text-mid);"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div class="detail-field">
+        <label>報價金額</label>
+        <div class="value" id="d-price" style="color:var(--espresso);font-weight:500;"></div>
+      </div>
+      <div class="detail-field">
+        <label>建立日期</label>
+        <div class="value" id="d-date"></div>
+      </div>
+    </div>
+    <div class="detail-field">
+      <label>預計完成日期</label>
+      <div class="value" id="d-deadline"></div>
+    </div>
+    <div class="detail-field">
+      <label>目前狀態</label>
+      <select class="status-select" id="d-status-select">
+        <option value="新詢問">新詢問</option>
+        <option value="洽談中">洽談中</option>
+        <option value="製作中">製作中</option>
+        <option value="已完成">已完成</option>
+        <option value="已出貨">已出貨</option>
+      </select>
+    </div>
+    <div class="detail-field">
+      <label>備註</label>
+      <textarea class="form-control" style="min-height:80px;font-size:0.85rem;" placeholder="在此添加備註…"></textarea>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:24px;">
+      <button class="btn btn-primary" style="flex:1;justify-content:center;">儲存更新</button>
+      <button class="btn btn-secondary" style="flex:1;justify-content:center;" onclick="closeOrder()">關閉</button>
+    </div>
+  </div>
+</div>
+
+<script src="scripts/main.js"></script>
+<script>
+  function openOrder(id, name, type, desc, price, date, deadline, status) {
+    document.getElementById('panel-title').textContent = '#' + id;
+    document.getElementById('d-id').textContent = '#' + id;
+    document.getElementById('d-name').textContent = name;
+    document.getElementById('d-type').textContent = type;
+    document.getElementById('d-desc').textContent = desc;
+    document.getElementById('d-price').textContent = price;
+    document.getElementById('d-date').textContent = date;
+    document.getElementById('d-deadline').textContent = deadline;
+    document.getElementById('d-status-select').value = status;
+    document.getElementById('detail-panel').classList.add('open');
+    document.getElementById('panel-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeOrder() {
+    document.getElementById('detail-panel').classList.remove('open');
+    document.getElementById('panel-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function filterOrders() {
+    const search = document.getElementById('search-input').value.toLowerCase();
+    const status = document.getElementById('status-filter').value;
+    const type = document.getElementById('type-filter').value;
+    const rows = document.querySelectorAll('#orders-tbody tr');
+    let count = 0;
+    rows.forEach(row => {
+      const text = row.textContent.toLowerCase();
+      const matchSearch = !search || text.includes(search);
+      const matchStatus = !status || text.includes(status);
+      const matchType = !type || text.includes(type);
+      const show = matchSearch && matchStatus && matchType;
+      row.style.display = show ? '' : 'none';
+      if (show) count++;
+    });
+    document.getElementById('order-count').textContent = count;
+  }
+</script>
+</body>
+</html>

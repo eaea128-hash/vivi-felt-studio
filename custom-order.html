@@ -1,0 +1,628 @@
+<!-- ╔══════════════════════════════════════════════════════════╗
+     ║  Vivi Felt Studio — custom-order.html  ║
+     ║  Version : v1.0.0  │  Date : 2025-04-13                 ║
+     ╚══════════════════════════════════════════════════════════╝ -->
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>客製訂單｜Vivi Felt Studio 薇薇V的羊毛氈手作坊</title>
+  <meta name="description" content="Vivi Felt Studio 客製羊毛氈訂單，包含寵物紀念訂製、圍巾包包、禮物吊飾等。提供照片客製服務，每件作品獨一無二，充滿手作溫度。" />
+  <meta property="og:title" content="客製訂單｜Vivi Felt Studio" />
+  <meta property="og:description" content="根據您的需求與照片，打造獨一無二的羊毛氈作品。" />
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles/style.css" />
+  <!-- GA4 placeholder -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
+  <style>
+    /* ── Process Visual ── */
+    .process-visual {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 0;
+      position: relative;
+    }
+
+    .process-visual__step {
+      flex: 1;
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+    }
+
+    .process-visual__step:not(:last-child)::after {
+      content: '→';
+      position: absolute;
+      top: 30px;
+      right: -12px;
+      color: var(--camel);
+      font-size: 1.2rem;
+      transform: translateY(-50%);
+    }
+
+    .step-circle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--oat);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin: 0 auto 16px;
+      transition: all var(--transition);
+    }
+
+    .process-visual__step:hover .step-circle {
+      background: var(--espresso);
+      border-color: var(--espresso);
+    }
+
+    .step-num {
+      font-family: var(--font-serif);
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--warm-brown);
+      margin-bottom: 6px;
+    }
+
+    .step-title {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+
+    .step-desc {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .process-visual {
+        flex-direction: column;
+        gap: 24px;
+      }
+      .process-visual__step::after {
+        display: none;
+      }
+      .process-visual__step {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        text-align: left;
+        padding: 0;
+      }
+      .step-circle { flex-shrink: 0; margin: 0; }
+    }
+
+    /* ── Custom items grid ── */
+    .item-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      box-shadow: var(--shadow-card);
+      transition: transform var(--transition), box-shadow var(--transition);
+      text-align: center;
+    }
+
+    .item-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .item-card__icon {
+      font-size: 3rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .item-card h4 {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .item-card p {
+      font-size: 0.82rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .item-card .price-range {
+      font-size: 0.9rem;
+      color: var(--espresso);
+      font-weight: 500;
+    }
+
+    /* ── Form wrapper ── */
+    .form-container {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 60px;
+      box-shadow: var(--shadow-md);
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .form-container { padding: 32px 24px; }
+    }
+
+    /* ── Notice card ── */
+    .notice-card {
+      background: var(--oat);
+      border-radius: var(--radius-lg);
+      padding: 24px 28px;
+      border-left: 4px solid var(--camel);
+      margin-bottom: 24px;
+    }
+
+    .notice-card p {
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ── -->
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="navbar__logo">
+    <span class="logo-en">Vivi Felt Studio</span>
+    <span class="logo-zh">薇薇V的羊毛氈手作坊</span>
+  </a>
+  <ul class="navbar__nav">
+    <li><a href="custom-order.html" style="color:var(--espresso);">客製訂製</a></li>
+    <li><a href="courses.html">羊毛氈課程</a></li>
+    <li><a href="corporate.html">企業包班</a></li>
+    <li><a href="membership.html">會員制度</a></li>
+    <li><a href="contact.html">聯絡我們</a></li>
+  </ul>
+  <div class="navbar__actions">
+    <a href="membership.html" class="navbar__member-btn"><span>👤</span> 登入 / 加入</a>
+    <a href="#order-form" class="btn btn-primary btn-sm">立即詢問</a>
+  </div>
+  <button class="navbar__hamburger" aria-label="開啟選單">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<nav class="mobile-nav">
+  <a href="index.html">首頁</a>
+  <a href="custom-order.html">客製訂製</a>
+  <a href="courses.html">羊毛氈課程</a>
+  <a href="corporate.html">企業包班</a>
+  <a href="membership.html">會員制度</a>
+  <a href="faq.html">常見問題</a>
+  <a href="contact.html">聯絡我們</a>
+  <div class="mobile-nav__actions">
+    <a href="membership.html" class="btn btn-secondary">登入 / 加入會員</a>
+    <a href="#order-form" class="btn btn-primary">立即詢問</a>
+  </div>
+</nav>
+
+<!-- ── Page Hero ── -->
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">首頁</a>
+      <span>/</span>
+      <span style="color:var(--text-dark);">客製訂單</span>
+    </div>
+    <span class="label">Custom Order</span>
+    <h1 class="fade-up">專屬於你的手作訂製</h1>
+    <p class="fade-up">每一件作品，都是一段有溫度的創作對話。<br>從想法到成品，我們將與你一起完成那份獨一無二的故事。</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     INTRO
+════════════════════════════════════════════ -->
+<section class="section" style="background:var(--white);">
+  <div class="container">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;" class="fade-up">
+      <div>
+        <span style="font-size:0.72rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--warm-brown);">About Custom</span>
+        <h2 style="font-size:clamp(1.5rem,3vw,2rem); margin:16px 0 20px; font-weight:400; line-height:1.4;">
+          手作，從不只是複製，<br>而是一次真誠的相遇
+        </h2>
+        <p style="color:var(--text-mid); line-height:1.9; margin-bottom:20px; font-size:0.95rem;">
+          客製的意義，在於用雙手回應你心裡最珍視的人事物。無論是心愛的寵物、特別的送禮場合，還是生活中想珍藏的美好——Vivi 都願意為你傾心打造。
+        </p>
+        <p style="color:var(--text-mid); line-height:1.9; margin-bottom:28px; font-size:0.95rem;">
+          每件作品都會保有手作獨有的溫度與微妙差異，這份不完美，正是它最珍貴的地方。
+        </p>
+        <a href="#order-form" class="btn btn-primary">立即填寫詢問表單</a>
+      </div>
+
+      <div style="background:linear-gradient(150deg, var(--oat), var(--sand)); border-radius:var(--radius-xl); aspect-ratio:4/5; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:16px; box-shadow:var(--shadow-md);">
+        <span style="font-size:6rem; opacity:0.5;">✂️</span>
+        <span style="font-size:0.82rem; letter-spacing:0.15em; color:var(--warm-brown); text-transform:uppercase; opacity:0.7;">Custom Works</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     PET MEMORIAL SECTION
+════════════════════════════════════════════ -->
+<section class="section" style="background:var(--oat);" id="pet">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="label">Pet Memorial</span>
+      <h2>寵物紀念訂製</h2>
+      <div class="divider"></div>
+      <p>用羊毛氈留住那份無法替代的陪伴，讓牠永遠留在你身邊。</p>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;" class="fade-up">
+      <div>
+        <div style="background:var(--white); border-radius:var(--radius-xl); padding:40px; box-shadow:var(--shadow-card);">
+          <h3 style="font-size:1.1rem; font-weight:500; margin-bottom:20px; color:var(--text-dark);">寵物紀念的製作原則</h3>
+
+          <div style="display:flex; flex-direction:column; gap:20px;">
+            <div style="display:flex; gap:16px; align-items:flex-start;">
+              <div style="width:36px; height:36px; border-radius:50%; background:var(--oat); border:1.5px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.9rem; flex-shrink:0;">📸</div>
+              <div>
+                <div style="font-size:0.92rem; font-weight:500; color:var(--text-dark); margin-bottom:4px;">提供多角度清晰照片</div>
+                <div style="font-size:0.82rem; color:var(--text-mid); line-height:1.7;">正面、側面、特寫，照片越多越能還原牠獨特的樣貌與神態。</div>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:16px; align-items:flex-start;">
+              <div style="width:36px; height:36px; border-radius:50%; background:var(--oat); border:1.5px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.9rem; flex-shrink:0;">💬</div>
+              <div>
+                <div style="font-size:0.92rem; font-weight:500; color:var(--text-dark); margin-bottom:4px;">充分溝通細節</div>
+                <div style="font-size:0.82rem; color:var(--text-mid); line-height:1.7;">製作前與您確認尺寸、細節與特殊要求，確保作品符合期待。</div>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:16px; align-items:flex-start;">
+              <div style="width:36px; height:36px; border-radius:50%; background:var(--oat); border:1.5px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.9rem; flex-shrink:0;">🌡️</div>
+              <div>
+                <div style="font-size:0.92rem; font-weight:500; color:var(--text-dark); margin-bottom:4px;">保有手作溫度</div>
+                <div style="font-size:0.82rem; color:var(--text-mid); line-height:1.7;">手作作品會有些微差異，這是手作獨有的靈魂，不是缺陷。</div>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:16px; align-items:flex-start;">
+              <div style="width:36px; height:36px; border-radius:50%; background:var(--oat); border:1.5px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.9rem; flex-shrink:0;">✅</div>
+              <div>
+                <div style="font-size:0.92rem; font-weight:500; color:var(--text-dark); margin-bottom:4px;">製作中進度確認</div>
+                <div style="font-size:0.82rem; color:var(--text-mid); line-height:1.7;">製作過程會提供進度更新，讓您安心等待，也可適時調整。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div style="background:var(--white); border-radius:var(--radius-lg); padding:32px; box-shadow:var(--shadow-card); margin-bottom:20px;">
+          <div style="font-size:0.78rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--warm-brown); margin-bottom:12px;">費用參考</div>
+          <table style="width:100%; border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:1.5px solid var(--border);">
+                <th style="text-align:left; padding:10px 0; font-size:0.8rem; color:var(--text-light); font-weight:400;">作品類型</th>
+                <th style="text-align:right; padding:10px 0; font-size:0.8rem; color:var(--text-light); font-weight:400;">參考價格</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border-light);">
+                <td style="padding:12px 0; font-size:0.88rem; color:var(--text-mid);">小型（約 5~8cm）</td>
+                <td style="padding:12px 0; font-size:0.88rem; color:var(--espresso); text-align:right; font-weight:500;">NT$ 1,200 起</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border-light);">
+                <td style="padding:12px 0; font-size:0.88rem; color:var(--text-mid);">中型（約 10~15cm）</td>
+                <td style="padding:12px 0; font-size:0.88rem; color:var(--espresso); text-align:right; font-weight:500;">NT$ 1,800 起</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border-light);">
+                <td style="padding:12px 0; font-size:0.88rem; color:var(--text-mid);">大型（約 20cm 以上）</td>
+                <td style="padding:12px 0; font-size:0.88rem; color:var(--espresso); text-align:right; font-weight:500;">NT$ 2,800 起</td>
+              </tr>
+              <tr>
+                <td style="padding:12px 0; font-size:0.88rem; color:var(--text-mid);">精緻全身立體</td>
+                <td style="padding:12px 0; font-size:0.88rem; color:var(--espresso); text-align:right; font-weight:500;">NT$ 3,500 起</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="font-size:0.75rem; color:var(--text-muted); margin-top:12px;">※ 最終報價依尺寸、複雜度、毛色層次及特殊需求而定，填寫表單後將與您詳細確認。</p>
+        </div>
+
+        <div style="background:var(--espresso); border-radius:var(--radius-lg); padding:24px 28px; color:var(--cream);">
+          <div style="font-size:0.82rem; margin-bottom:8px; opacity:0.8;">製作時間參考</div>
+          <div style="font-size:1.05rem; font-weight:500; margin-bottom:4px;">一般訂單：2~4 週</div>
+          <div style="font-size:0.82rem; opacity:0.7;">節日旺季或複雜作品需加時，建議提前預訂</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     CUSTOM ITEMS
+════════════════════════════════════════════ -->
+<section class="section" style="background:var(--cream);">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="label">What We Make</span>
+      <h2>可客製作品項目</h2>
+      <div class="divider"></div>
+      <p>以下為常見客製品項，如有其他需求歡迎直接詢問。</p>
+    </div>
+
+    <div class="grid-3 stagger">
+      <div class="item-card">
+        <span class="item-card__icon">🐾</span>
+        <h4>寵物肖像</h4>
+        <p>貓、狗、兔子等各式毛孩，依照片客製還原。</p>
+        <div class="price-range">NT$ 1,200 起</div>
+      </div>
+
+      <div class="item-card">
+        <span class="item-card__icon">🧣</span>
+        <h4>羊毛氈圍巾</h4>
+        <p>溫暖柔軟的手作圍巾，可選圖樣與配色。</p>
+        <div class="price-range">NT$ 2,200 起</div>
+      </div>
+
+      <div class="item-card">
+        <span class="item-card__icon">👜</span>
+        <h4>羊毛氈包包</h4>
+        <p>獨特手感托特包、小包，每個都是限量品。</p>
+        <div class="price-range">NT$ 3,500 起</div>
+      </div>
+
+      <div class="item-card">
+        <span class="item-card__icon">🧻</span>
+        <h4>面紙套 / 收納小物</h4>
+        <p>實用又療癒的日常小物，送禮自用兩相宜。</p>
+        <div class="price-range">NT$ 580 起</div>
+      </div>
+
+      <div class="item-card">
+        <span class="item-card__icon">🎀</span>
+        <h4>禮物吊飾</h4>
+        <p>各種可愛造型，適合節慶、生日、婚禮禮品。</p>
+        <div class="price-range">NT$ 380 起</div>
+      </div>
+
+      <div class="item-card">
+        <span class="item-card__icon">✨</span>
+        <h4>其他客製需求</h4>
+        <p>有特殊想法歡迎告訴我們，一起討論可行性。</p>
+        <div class="price-range">洽詢報價</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     PROCESS
+════════════════════════════════════════════ -->
+<section class="section" style="background:var(--white);">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="label">How It Works</span>
+      <h2>客製製作流程</h2>
+      <div class="divider"></div>
+      <p>從填寫表單到作品完成，每一步都有 Vivi 的用心陪伴。</p>
+    </div>
+
+    <div class="process-visual fade-up">
+      <div class="process-visual__step">
+        <div class="step-circle">📝</div>
+        <div class="step-num">Step 01</div>
+        <div class="step-title">填寫詢問表單</div>
+        <div class="step-desc">填寫下方表單，說明您的需求、尺寸與預算範圍。</div>
+      </div>
+
+      <div class="process-visual__step">
+        <div class="step-circle">💬</div>
+        <div class="step-num">Step 02</div>
+        <div class="step-title">溝通確認細節</div>
+        <div class="step-desc">收到表單後 1~2 個工作日內回覆，確認細節與報價。</div>
+      </div>
+
+      <div class="process-visual__step">
+        <div class="step-circle">💳</div>
+        <div class="step-num">Step 03</div>
+        <div class="step-title">確認訂單付款</div>
+        <div class="step-desc">確認報價後付款 50% 訂金，正式進入製作排程。</div>
+      </div>
+
+      <div class="process-visual__step">
+        <div class="step-circle">🧶</div>
+        <div class="step-num">Step 04</div>
+        <div class="step-title">Vivi 用心製作</div>
+        <div class="step-desc">製作期間會提供進度更新，讓您安心等待。</div>
+      </div>
+
+      <div class="process-visual__step">
+        <div class="step-circle">📦</div>
+        <div class="step-num">Step 05</div>
+        <div class="step-title">完成出貨</div>
+        <div class="step-desc">完成後確認成品，付清尾款後精心包裝寄出。</div>
+      </div>
+    </div>
+
+    <div class="notice-card fade-up" style="max-width:720px; margin:48px auto 0;">
+      <p>
+        ⭐ <strong>溫馨提醒：</strong>節日旺季（農曆年、情人節、母親節、聖誕節）訂單量較大，建議提前 4~6 週預訂，以確保能在您希望的時間收到作品。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     ORDER FORM
+════════════════════════════════════════════ -->
+<section class="section" style="background:var(--oat);" id="order-form">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="label">Get Started</span>
+      <h2>填寫客製詢問表單</h2>
+      <div class="divider"></div>
+      <p>告訴我你的想法，我們一起把它變成現實。</p>
+    </div>
+
+    <div class="form-container fade-up">
+      <!-- Success Message -->
+      <div class="form-success">
+        <div class="success-icon">🌿</div>
+        <h3>謝謝你的詢問！</h3>
+        <p>謝謝你留下訊息，願這份手作的溫度，也能慢慢陪伴你的故事。<br>我們會在 1~2 個工作日內與你聯絡。</p>
+      </div>
+
+      <!-- Form -->
+      <form name="custom-order" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="custom-order" />
+        <input type="hidden" name="bot-field" />
+
+        <div style="background:var(--oat); border-radius:var(--radius-md); padding:20px 24px; margin-bottom:32px; font-size:0.85rem; color:var(--text-mid); line-height:1.8;">
+          📌 填寫前請先閱讀：客製作品保有手作風格與些微差異，製作時間依複雜度而定，報價以溝通確認為準。
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>姓名 <span class="required">*</span></label>
+            <input type="text" name="name" class="form-control" placeholder="您的稱呼" required />
+          </div>
+          <div class="form-group">
+            <label>Email <span class="required">*</span></label>
+            <input type="email" name="email" class="form-control" placeholder="your@email.com" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>聯絡方式（IG / Line / 電話）</label>
+            <input type="text" name="contact" class="form-control" placeholder="@ig_name 或 Line ID" />
+          </div>
+          <div class="form-group">
+            <label>洽詢類型 <span class="required">*</span></label>
+            <select name="order_type" class="form-control" required>
+              <option value="">請選擇</option>
+              <option value="pet">寵物紀念訂製</option>
+              <option value="scarf">羊毛氈圍巾</option>
+              <option value="bag">羊毛氈包包</option>
+              <option value="tissue">面紙套 / 小物</option>
+              <option value="charm">禮物吊飾</option>
+              <option value="gift">送禮客製</option>
+              <option value="other">其他</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>需求說明 <span class="required">*</span></label>
+          <textarea name="requirements" class="form-control" placeholder="請描述您的需求、參考的樣式或特殊要求。如為寵物紀念，請說明寵物種類、顏色特徵等。" required></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>預算範圍</label>
+            <select name="budget" class="form-control">
+              <option value="">請選擇</option>
+              <option value="under-1000">NT$ 1,000 以下</option>
+              <option value="1000-2000">NT$ 1,000 ~ 2,000</option>
+              <option value="2000-3500">NT$ 2,000 ~ 3,500</option>
+              <option value="3500-5000">NT$ 3,500 ~ 5,000</option>
+              <option value="over-5000">NT$ 5,000 以上</option>
+              <option value="flexible">視作品而定</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>希望完成日期</label>
+            <input type="date" name="deadline" class="form-control" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>補充說明</label>
+          <textarea name="notes" class="form-control" style="min-height:100px;" placeholder="其他想讓我們知道的事，例如：是否有附圖片需求、包裝方式、寄送地址等。"></textarea>
+        </div>
+
+        <div style="text-align:center; margin-top:8px;">
+          <button type="submit" class="btn btn-primary btn-lg">送出詢問表單</button>
+          <p style="font-size:0.78rem; color:var(--text-light); margin-top:12px;">送出後將於 1~2 個工作日內收到回覆</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container" style="position:relative; z-index:2;">
+    <span class="label">也許你也想試試</span>
+    <h2>從訂購到親手創作</h2>
+    <p>除了訂製作品，我們也開設羊毛氈課程，讓你親手感受這份療癒的力量。</p>
+    <div class="btn-actions">
+      <a href="courses.html" class="btn btn-ghost btn-lg">了解課程</a>
+      <a href="corporate.html" class="btn btn-warm btn-lg">企業包班洽詢</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <div class="logo-en">Vivi Felt Studio</div>
+        <div class="logo-zh">薇薇V的羊毛氈手作坊</div>
+        <p>手作的溫度，留給重要的人。</p>
+        <div class="footer__social">
+          <a href="https://www.facebook.com/profile.php?id=61559206236758&locale=zh_TW" target="_blank" rel="noopener">f</a>
+          <a href="https://www.instagram.com/eaea_1282025/" target="_blank" rel="noopener">ig</a>
+          <a href="#" title="LINE 官方帳號（建置中）">L</a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4>服務項目</h4>
+        <ul>
+          <li><a href="custom-order.html">客製訂單</a></li>
+          <li><a href="custom-order.html#pet">寵物紀念</a></li>
+          <li><a href="courses.html">羊毛氈課程</a></li>
+          <li><a href="corporate.html">企業包班</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>品牌資訊</h4>
+        <ul>
+          <li><a href="membership.html">會員制度</a></li>
+          <li><a href="faq.html">常見問題</a></li>
+          <li><a href="contact.html">聯絡我們</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>法律聲明</h4>
+        <ul>
+          <li><a href="privacy.html">隱私權政策</a></li>
+          <li><a href="terms.html">服務條款</a></li>
+          <li><a href="refund-policy.html">退款政策</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2024 Vivi Felt Studio. All rights reserved.</p>
+      <div class="footer__legal">
+        <a href="privacy.html">隱私政策</a>
+        <a href="terms.html">服務條款</a>
+        <a href="refund-policy.html">退款政策</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="scripts/main.js"></script>
+</body>
+</html>

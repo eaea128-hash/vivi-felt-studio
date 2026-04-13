@@ -1,0 +1,1189 @@
+<!-- ╔══════════════════════════════════════════════════════════╗
+     ║  Vivi Felt Studio — index.html                           ║
+     ║  Version : v1.0.0                                        ║
+     ║  Date    : 2025-04-13                                    ║
+     ║  Desc    : 首頁（Hero / 服務 / 關於 / 作品 / 課程入口）  ║
+     ╚══════════════════════════════════════════════════════════╝ -->
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vivi Felt Studio 薇薇V的羊毛氈手作坊｜手作的溫度，留給重要的人</title>
+  <meta name="description" content="Vivi Felt Studio 薇薇V的羊毛氈手作坊，提供客製羊毛氈作品、寵物紀念訂製、羊毛氈課程與企業療癒工作坊。每一份作品都蘊含手作的溫度與陪伴的力量。" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Vivi Felt Studio 薇薇V的羊毛氈手作坊" />
+  <meta property="og:description" content="手作的溫度，留給重要的人。客製羊毛氈、寵物紀念、療癒課程。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/images/og-cover.jpg" />
+  <!-- Favicon placeholder -->
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles/style.css" />
+  <!-- GA4 placeholder -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
+  <style>
+    /* ── Index-specific styles ── */
+    .hero-index {
+      min-height: 100vh;
+      background: linear-gradient(150deg, #F0E9DF 0%, #F7F3EE 45%, #EDE4D8 100%);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 72px;
+    }
+
+    .hero-index::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(201, 180, 154, 0.18), transparent 70%);
+    }
+
+    .hero-left {
+      padding: 80px 60px 80px 80px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-right {
+      height: 100%;
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right__inner {
+      height: 100%;
+      background: linear-gradient(160deg, #D4BFA8 0%, #C9B49A 40%, #A08060 100%);
+      display: flex;
+      align-items: flex-end;
+      padding: 60px;
+      position: relative;
+    }
+
+    .hero-right__inner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 40%, rgba(247, 243, 238, 0.15) 0%, transparent 60%);
+    }
+
+    .hero-right__decor {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: rgba(255,255,255,0.15);
+    }
+
+    .hero-right__decor .big-icon {
+      font-size: 12rem;
+      line-height: 1;
+      display: block;
+    }
+
+    .hero-right__tag {
+      background: rgba(247, 243, 238, 0.92);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius-lg);
+      padding: 24px 28px;
+      position: relative;
+      z-index: 2;
+      max-width: 280px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    }
+
+    .hero-right__tag .tag-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--warm-brown);
+      margin-bottom: 8px;
+    }
+
+    .hero-right__tag .tag-text {
+      font-family: var(--font-zh);
+      font-size: 1rem;
+      color: var(--text-dark);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      .hero-index {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .hero-right {
+        min-height: 50vw;
+        max-height: 480px;
+      }
+      .hero-left {
+        padding: 60px 20px 40px;
+      }
+    }
+
+    /* ── About Section ── */
+    .about-section {
+      background: var(--white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-image {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      background: linear-gradient(160deg, var(--sand), var(--camel));
+      position: relative;
+    }
+
+    .about-image__inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .about-image__accent {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: var(--oat);
+      border: 3px solid var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 4px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .about-image__accent .num {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-style: italic;
+      color: var(--espresso);
+      line-height: 1;
+    }
+
+    .about-image__accent .desc {
+      font-size: 0.68rem;
+      color: var(--warm-brown);
+      letter-spacing: 0.08em;
+    }
+
+    .about-content .quote {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-style: italic;
+      color: var(--warm-brown);
+      line-height: 1.6;
+      margin-bottom: 28px;
+      border-left: 3px solid var(--camel);
+      padding-left: 24px;
+    }
+
+    .about-content p {
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    /* ── Services Grid ── */
+    .service-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 40px 32px;
+      box-shadow: var(--shadow-card);
+      transition: transform var(--transition), box-shadow var(--transition);
+      text-align: center;
+      border-bottom: 3px solid transparent;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-bottom-color: var(--camel);
+    }
+
+    .service-card__icon {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .service-card h3 {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+
+    /* ── Pet Memorial ── */
+    .pet-section {
+      background: linear-gradient(160deg, var(--oat) 0%, var(--cream) 100%);
+    }
+
+    .pet-feature {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .pet-feature__image {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      aspect-ratio: 1/1;
+      background: linear-gradient(135deg, #D4C4B0, #B8A090);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8rem;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .pet-feature__points {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin: 32px 0;
+    }
+
+    .pet-point {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .pet-point__icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--oat);
+      border: 1.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .pet-point__body h4 {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+
+    .pet-point__body p {
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 900px) {
+      .pet-feature {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    /* ── Featured Products ── */
+    .scroll-track {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 1024px) {
+      .scroll-track { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 560px) {
+      .scroll-track { grid-template-columns: 1fr; }
+    }
+
+    /* ── Social Proof ── */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    @media (max-width: 960px) {
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .testimonials-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Instagram Preview ── */
+    .ig-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 4px;
+    }
+
+    .ig-item {
+      aspect-ratio: 1/1;
+      background: linear-gradient(135deg, var(--sand), var(--camel));
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .ig-item::after {
+      content: '♡';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(107, 76, 53, 0.5);
+      color: white;
+      font-size: 1.5rem;
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .ig-item:hover::after {
+      opacity: 1;
+    }
+
+    .ig-item:nth-child(1) { background: linear-gradient(135deg, #D4C4B0, #C9B49A); }
+    .ig-item:nth-child(2) { background: linear-gradient(135deg, #C8B8A8, #B8A090); }
+    .ig-item:nth-child(3) { background: linear-gradient(135deg, #E0D4C8, #CCBCAC); }
+    .ig-item:nth-child(4) { background: linear-gradient(135deg, #D0C0B0, #C0B0A0); }
+    .ig-item:nth-child(5) { background: linear-gradient(135deg, #C4BAB0, #B4AA9E); }
+    .ig-item:nth-child(6) { background: linear-gradient(135deg, #DCCCBC, #CCBCAC); }
+
+    .ig-item__icon {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      opacity: 0.3;
+    }
+
+    @media (max-width: 640px) {
+      .ig-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* ── FAQ mini ── */
+    .faq-mini {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 48px 48px;
+      box-shadow: var(--shadow-card);
+    }
+
+    @media (max-width: 640px) {
+      .faq-mini { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Announcement Bar ── -->
+<div class="announcement-bar">
+  🌿 現正開放客製寵物紀念訂製，歡迎來訊詢問！
+  <a href="custom-order.html">了解更多 →</a>
+</div>
+
+<!-- ── Navigation ── -->
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="navbar__logo">
+    <span class="logo-en">Vivi Felt Studio</span>
+    <span class="logo-zh">薇薇V的羊毛氈手作坊</span>
+  </a>
+
+  <ul class="navbar__nav">
+    <li><a href="custom-order.html">客製訂製</a></li>
+    <li><a href="courses.html">羊毛氈課程</a></li>
+    <li><a href="corporate.html">企業包班</a></li>
+    <li><a href="membership.html">會員制度</a></li>
+    <li><a href="contact.html">聯絡我們</a></li>
+  </ul>
+
+  <div class="navbar__actions">
+    <a href="membership.html" class="navbar__member-btn">
+      <span>👤</span> 登入 / 加入
+    </a>
+    <a href="custom-order.html" class="btn btn-primary btn-sm">立即詢問</a>
+  </div>
+
+  <button class="navbar__hamburger" aria-label="開啟選單">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Nav -->
+<nav class="mobile-nav">
+  <a href="index.html">首頁</a>
+  <a href="custom-order.html">客製訂製</a>
+  <a href="courses.html">羊毛氈課程</a>
+  <a href="corporate.html">企業包班</a>
+  <a href="membership.html">會員制度</a>
+  <a href="faq.html">常見問題</a>
+  <a href="contact.html">聯絡我們</a>
+  <div class="mobile-nav__actions">
+    <a href="membership.html" class="btn btn-secondary">登入 / 加入會員</a>
+    <a href="custom-order.html" class="btn btn-primary">立即詢問</a>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════ -->
+<section class="hero-index">
+  <div class="hero-left">
+    <div class="hero__label fade-in">
+      Handcrafted with Heart
+    </div>
+
+    <h1 class="hero__title fade-up">
+      手作的溫度，<br>留給重要的人
+    </h1>
+    <span class="hero__title-en fade-up">Vivi Felt Studio</span>
+
+    <p class="hero__tagline fade-up">
+      每一件羊毛氈作品，都是一次專注與柔軟的對話。<br>
+      讓這份親手織就的溫暖，陪伴你身邊最重要的故事。
+    </p>
+
+    <div class="hero__actions fade-up">
+      <a href="custom-order.html" class="btn btn-primary btn-lg">探索客製訂製</a>
+      <a href="courses.html" class="btn btn-secondary btn-lg">了解課程</a>
+    </div>
+
+    <div style="display:flex; gap:32px; margin-top:48px;" class="fade-in">
+      <div>
+        <div style="font-family:var(--font-serif); font-size:1.8rem; font-style:italic; color:var(--espresso);">500+</div>
+        <div style="font-size:0.78rem; color:var(--text-light); letter-spacing:0.1em;">完成作品</div>
+      </div>
+      <div style="width:1px; background:var(--border);"></div>
+      <div>
+        <div style="font-family:var(--font-serif); font-size:1.8rem; font-style:italic; color:var(--espresso);">300+</div>
+        <div style="font-size:0.78rem; color:var(--text-light); letter-spacing:0.1em;">課程學員</div>
+      </div>
+      <div style="width:1px; background:var(--border);"></div>
+      <div>
+        <div style="font-family:var(--font-serif); font-size:1.8rem; font-style:italic; color:var(--espresso);">98%</div>
+        <div style="font-size:0.78rem; color:var(--text-light); letter-spacing:0.1em;">顧客滿意</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-right__inner" style="padding:0; background:none;">
+      <img
+        src="assets/images/hero-bg.jpg"
+        alt="Vivi 手作羊毛氈工作情境"
+        style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+        onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(160deg,#D4BFA8 0%,#C9B49A 40%,#A08060 100%)';"
+      />
+      <div class="hero-right__decor" style="display:none;">
+        <span class="big-icon">🧶</span>
+      </div>
+
+      <div class="hero-right__tag fade-up" style="position:relative;z-index:2;margin:auto 40px 48px auto;">
+        <div class="tag-label">Studio Story</div>
+        <div class="tag-text">
+          「當雙手緩緩揉塑羊毛氈的瞬間，<br>
+          世界好像暫時靜了下來。」
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     STATS STRIP
+════════════════════════════════════════════ -->
+<div class="stats-strip">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="num" data-count="500">0</div>
+        <div class="label">完成作品數</div>
+      </div>
+      <div class="stat-item">
+        <div class="num" data-count="300">0</div>
+        <div class="label">課程學員數</div>
+      </div>
+      <div class="stat-item">
+        <div class="num" data-count="50">0</div>
+        <div class="label">企業合作場次</div>
+      </div>
+      <div class="stat-item">
+        <div class="num" data-count="98">0</div>
+        <div class="label">顧客好評率 %</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     SERVICES
+════════════════════════════════════════════ -->
+<section class="section" style="background: var(--cream);">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="label">What We Offer</span>
+      <h2>我們能為你做什麼</h2>
+      <div class="divider"></div>
+      <p>從溫柔的日常小物到永恆的紀念之作，每一項服務都承載著手作獨有的溫度與誠意。</p>
+    </div>
+
+    <div class="grid-3 stagger">
+      <div class="service-card">
+        <span class="service-card__icon">🐾</span>
+        <h3>寵物紀念客製</h3>
+        <p>根據您的愛寵照片，手作還原牠獨特的神韻與個性，讓毛孩的陪伴以另一種形式延續。</p>
+        <a href="custom-order.html#pet" class="btn btn-secondary btn-sm">了解詳情</a>
+      </div>
+
+      <div class="service-card" style="border-color:var(--camel);">
+        <span class="service-card__icon">✂️</span>
+        <h3>客製訂單</h3>
+        <p>可製作圍巾、包包、面紙套、吊飾等各式羊毛氈作品，依需求量身打造，獨一無二。</p>
+        <a href="custom-order.html" class="btn btn-secondary btn-sm">立即諮詢</a>
+      </div>
+
+      <div class="service-card">
+        <span class="service-card__icon">🎓</span>
+        <h3>羊毛氈課程</h3>
+        <p>從入門到進階，小班制陪伴教學，讓你在每一針每一戳中，找到專屬的療癒時光。</p>
+        <a href="courses.html" class="btn btn-secondary btn-sm">查看課程</a>
+      </div>
+
+      <div class="service-card">
+        <span class="service-card__icon">🏢</span>
+        <h3>企業療癒包班</h3>
+        <p>為企業量身設計手作療癒體驗，提升團隊凝聚力，讓員工在創作中放鬆身心。</p>
+        <a href="corporate.html" class="btn btn-secondary btn-sm">洽詢包班</a>
+      </div>
+
+      <div class="service-card">
+        <span class="service-card__icon">🎁</span>
+        <h3>送禮訂製</h3>
+        <p>生日、週年、婚禮、節慶……每一個重要日子，都值得一份有溫度、有故事的手作禮。</p>
+        <a href="custom-order.html" class="btn btn-secondary btn-sm">訂製禮物</a>
+      </div>
+
+      <div class="service-card">
+        <span class="service-card__icon">✨</span>
+        <h3>季節限定作品</h3>
+        <p>跟隨四季節氣推出限定主題作品，用羊毛氈捕捉每個時節最溫柔的模樣。</p>
+        <a href="#featured-works" class="btn btn-secondary btn-sm">瀏覽作品</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     BRAND STORY / ABOUT
+════════════════════════════════════════════ -->
+<section class="section about-section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image fade-up">
+        <img
+          src="assets/images/about-vivi.jpg"
+          alt="Vivi 手作工作室創作情境"
+          style="width:100%;height:100%;object-fit:cover;display:block;"
+          onerror="this.style.display='none'; this.parentElement.querySelector('.about-image__fallback').style.display='flex';"
+        />
+        <div class="about-image__fallback about-image__inner" style="display:none;">
+          <span style="font-size:6rem; opacity:0.4;">🧶</span>
+          <span style="font-size:0.82rem; letter-spacing:0.15em; text-transform:uppercase; opacity:0.6;">Studio Photo</span>
+        </div>
+        <div class="about-image__accent">
+          <div class="num">5+</div>
+          <div class="desc">年手作資歷</div>
+        </div>
+      </div>
+
+      <div class="about-content fade-up" style="transition-delay:0.15s">
+        <span style="font-size:0.72rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--warm-brown);">Brand Story</span>
+        <h2 style="font-size:clamp(1.6rem,3vw,2.2rem); margin:16px 0 24px; font-weight:400; line-height:1.35;">
+          一份療癒，<br>一段不捨得結束的寧靜
+        </h2>
+
+        <div class="quote">
+          「當雙手觸碰羊毛氈的那一刻，所有煩憂都悄悄放下了。」
+        </div>
+
+        <p>
+          投入羊毛氈創作的過程，是一種難以言說的寧靜——那種專注與創造交織的狀態，能讓人忘卻日常的喧囂，找回內心最真實的平靜。
+        </p>
+        <p>
+          每當一件作品完成的瞬間，不只是創作者，連旁人也不自覺地露出微笑。那份喜悅，不僅來自作品本身的美感，更源自其中所蘊含的溫暖與生命力。
+        </p>
+        <p>
+          Vivi Felt Studio 的誕生，正是希望將這份溫暖與快樂分享給更多人。每一件作品，都不只是外型的呈現，更是一段有溫度、有故事、有陪伴的創作旅程。
+        </p>
+
+        <div style="display:flex; gap:16px; margin-top:32px; flex-wrap:wrap;">
+          <a href="contact.html" class="btn btn-primary">認識 Vivi</a>
+          <a href="courses.html" class="btn btn-secondary">一起來學</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     PET MEMORIAL FEATURE
+════════════════════════════════════════════ -->
+<section class="section pet-section" id="pet-memorial">
+  <div class="container">
+    <div class="pet-feature">
+      <div class="fade-up">
+        <span style="font-size:0.72rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--warm-brown);">Pet Memorial</span>
+        <h2 style="font-size:clamp(1.6rem,3vw,2.2rem); margin:16px 0 20px; font-weight:400; line-height:1.35;">
+          讓毛孩的陪伴，<br>以另一種形式永遠留下
+        </h2>
+        <p style="color:var(--text-mid); line-height:1.9; margin-bottom:12px; font-size:0.95rem;">
+          無論是陪伴多年的老朋友，還是短暫但深刻的相遇，每一位毛孩都值得被溫柔地記住。
+        </p>
+        <p style="color:var(--text-mid); line-height:1.9; margin-bottom:32px; font-size:0.95rem;">
+          透過手作羊毛氈，Vivi 將根據您提供的照片，還原牠獨特的神韻、毛色與個性，讓那份陪伴的溫度，永遠留在你觸手可及的地方。
+        </p>
+
+        <div class="pet-feature__points">
+          <div class="pet-point">
+            <div class="pet-point__icon">📸</div>
+            <div class="pet-point__body">
+              <h4>以照片為基礎</h4>
+              <p>根據您提供的清晰照片，忠實還原毛色、神態與特徵。</p>
+            </div>
+          </div>
+          <div class="pet-point">
+            <div class="pet-point__icon">💬</div>
+            <div class="pet-point__body">
+              <h4>細節確認、充分溝通</h4>
+              <p>製作前充分討論，確保每個細節都符合您的期待。</p>
+            </div>
+          </div>
+          <div class="pet-point">
+            <div class="pet-point__icon">🌡️</div>
+            <div class="pet-point__body">
+              <h4>不只相似，更重視溫度</h4>
+              <p>作品不僅外型還原，更用心捕捉那份獨特的陪伴感。</p>
+            </div>
+          </div>
+        </div>
+
+        <a href="custom-order.html#pet" class="btn btn-warm btn-lg">立即詢問寵物紀念</a>
+      </div>
+
+      <div class="pet-feature__image fade-up" style="transition-delay:0.15s; padding:0; overflow:hidden;">
+        <img
+          src="assets/images/work-pet-01.jpg"
+          alt="寵物紀念羊毛氈作品"
+          style="width:100%;height:100%;object-fit:cover;display:block;"
+          onerror="this.style.display='none'; this.parentElement.style.justifyContent='center'; this.parentElement.insertAdjacentHTML('beforeend','<span style=\'font-size:8rem;\'>🐾</span>');"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     FEATURED WORKS / SHOP
+════════════════════════════════════════════ -->
+<section class="section" style="background:var(--white);" id="featured-works">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="label">Featured Works</span>
+      <h2>精選作品展示</h2>
+      <div class="divider"></div>
+      <p>每一件作品都是一段故事，等待與有緣人相遇。</p>
+    </div>
+
+    <div class="scroll-track stagger">
+      <!-- Product Card 1 -->
+      <div class="product-card">
+        <div class="product-card__image">
+          <img src="assets/images/work-01.jpg" alt="寵物肖像羊毛氈作品" style="width:100%;height:100%;object-fit:cover;display:block;"
+            onerror="this.outerHTML='<div class=\'img-placeholder\' style=\'width:100%;height:100%;position:absolute;inset:0;\'><span class=\'icon\'>🐱</span><span>貓咪紀念作品</span></div>';" />
+          <span class="product-card__badge">熱門</span>
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__name">寵物肖像羊毛氈</div>
+          <div class="product-card__desc">根據照片客製，忠實還原您家毛孩的神韻與個性。</div>
+          <div class="product-card__price">NT$ 1,800 起<span class="price-note">依尺寸定價</span></div>
+          <div class="product-card__actions">
+            <a href="custom-order.html" class="btn btn-secondary btn-sm">立即詢問</a>
+            <button class="btn btn-primary btn-sm btn-add-cart">加入收藏</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 2 -->
+      <div class="product-card">
+        <div class="product-card__image">
+          <img src="assets/images/work-02.jpg" alt="手作羊毛氈圍巾" style="width:100%;height:100%;object-fit:cover;display:block;"
+            onerror="this.outerHTML='<div class=\'img-placeholder\' style=\'width:100%;height:100%;position:absolute;inset:0;\'><span class=\'icon\'>🧣</span><span>羊毛氈圍巾</span></div>';" />
+          <span class="product-card__badge">季節限定</span>
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__name">手作羊毛氈圍巾</div>
+          <div class="product-card__desc">柔軟溫暖的羊毛氈圍巾，可選配色與圖樣，獨一無二。</div>
+          <div class="product-card__price">NT$ 2,200 起</div>
+          <div class="product-card__actions">
+            <a href="custom-order.html" class="btn btn-secondary btn-sm">客製諮詢</a>
+            <button class="btn btn-primary btn-sm btn-add-cart">加入收藏</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 3 -->
+      <div class="product-card">
+        <div class="product-card__image">
+          <img src="assets/images/work-03.jpg" alt="羊毛氈托特包" style="width:100%;height:100%;object-fit:cover;display:block;"
+            onerror="this.outerHTML='<div class=\'img-placeholder\' style=\'width:100%;height:100%;position:absolute;inset:0;\'><span class=\'icon\'>👜</span><span>羊毛氈包包</span></div>';" />
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__name">羊毛氈托特包</div>
+          <div class="product-card__desc">獨特手作質感，每一個都有微妙不同，帶著手作溫度出門。</div>
+          <div class="product-card__price">NT$ 3,500 起</div>
+          <div class="product-card__actions">
+            <a href="custom-order.html" class="btn btn-secondary btn-sm">了解詳情</a>
+            <button class="btn btn-primary btn-sm btn-add-cart">加入收藏</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 4 -->
+      <div class="product-card">
+        <div class="product-card__image">
+          <img src="assets/images/work-04.jpg" alt="療癒系禮物吊飾" style="width:100%;height:100%;object-fit:cover;display:block;"
+            onerror="this.outerHTML='<div class=\'img-placeholder\' style=\'width:100%;height:100%;position:absolute;inset:0;\'><span class=\'icon\'>🎀</span><span>禮物吊飾小物</span></div>';" />
+          <span class="product-card__badge">送禮首選</span>
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__name">療癒系禮物吊飾</div>
+          <div class="product-card__desc">各種可愛造型，適合各種節慶與送禮場合，附精美包裝。</div>
+          <div class="product-card__price">NT$ 380 起</div>
+          <div class="product-card__actions">
+            <a href="custom-order.html" class="btn btn-secondary btn-sm">查看選項</a>
+            <button class="btn btn-primary btn-sm btn-add-cart">加入收藏</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:48px;" class="fade-up">
+      <a href="custom-order.html" class="btn btn-secondary">查看所有作品 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     COURSES ENTRY
+════════════════════════════════════════════ -->
+<section class="section" style="background:var(--cream);">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="label">Courses</span>
+      <h2>羊毛氈課程</h2>
+      <div class="divider"></div>
+      <p>不只是技巧教學，而是一場讓心靈舒緩的手作之旅。</p>
+    </div>
+
+    <div class="grid-2 stagger" style="align-items:start;">
+      <div class="course-card">
+        <div class="course-card__image">
+          <img src="assets/images/course-beginner.jpg" alt="羊毛氈療癒入門課" style="width:100%;height:100%;object-fit:cover;display:block;"
+            onerror="this.outerHTML='<div class=\'img-placeholder\' style=\'width:100%;height:100%;position:absolute;inset:0;\'><span class=\'icon\'>🌸</span><span>入門課程</span></div>';" />
+          <span class="course-card__level">初階</span>
+        </div>
+        <div class="course-card__body">
+          <div class="course-card__tag">Beginner</div>
+          <div class="course-card__title">羊毛氈療癒入門課</div>
+          <div class="course-card__desc">從零開始學習羊毛氈基礎技法，完成一件屬於自己的療癒小作品。適合完全沒有基礎的初學者，在輕鬆的氛圍中開啟手作新旅程。</div>
+          <div class="course-card__meta">
+            <div class="course-card__meta-item">⏱ 3 小時</div>
+            <div class="course-card__meta-item">👥 小班制 4~6 人</div>
+            <div class="course-card__meta-item">🎯 適合初學者</div>
+          </div>
+          <a href="courses.html" class="btn btn-primary btn-sm">查看課程詳情</a>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <div class="course-card__image">
+          <img src="assets/images/course-intermediate.jpg" alt="動物造型羊毛氈中階課" style="width:100%;height:100%;object-fit:cover;display:block;"
+            onerror="this.outerHTML='<div class=\'img-placeholder\' style=\'width:100%;height:100%;position:absolute;inset:0;\'><span class=\'icon\'>🦊</span><span>動物角色課</span></div>';" />
+          <span class="course-card__level">中階</span>
+        </div>
+        <div class="course-card__body">
+          <div class="course-card__tag">Intermediate</div>
+          <div class="course-card__title">動物角色手作課</div>
+          <div class="course-card__desc">進一步掌握立體成型技法，製作出有表情、有個性的動物角色。課程包含形體塑造、細節表現與毛色層次等進階技巧。</div>
+          <div class="course-card__meta">
+            <div class="course-card__meta-item">⏱ 4 小時</div>
+            <div class="course-card__meta-item">👥 小班制 4~6 人</div>
+            <div class="course-card__meta-item">🎯 有基礎者</div>
+          </div>
+          <a href="courses.html" class="btn btn-primary btn-sm">查看課程詳情</a>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:40px;" class="fade-up">
+      <a href="courses.html" class="btn btn-secondary">查看全部課程 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     CORPORATE TEASER
+════════════════════════════════════════════ -->
+<section style="background:var(--espresso); padding:80px 0; text-align:center; position:relative; overflow:hidden;">
+  <div style="position:absolute; top:-40%; left:-10%; width:50%; height:200%; background:radial-gradient(ellipse, rgba(201,180,154,0.08), transparent 70%);"></div>
+  <div class="container" style="position:relative; z-index:2;">
+    <span style="font-size:0.72rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--camel); display:block; margin-bottom:16px;" class="fade-in">Corporate Wellness</span>
+    <h2 style="font-size:clamp(1.8rem,3.5vw,2.6rem); color:var(--cream); font-weight:400; margin-bottom:20px;" class="fade-up">
+      為您的團隊，<br>帶來一場手作的心靈療癒
+    </h2>
+    <p style="font-size:1rem; color:rgba(247,243,238,0.7); max-width:480px; margin:0 auto 40px; line-height:1.8;" class="fade-up">
+      量身設計的企業羊毛氈工作坊，讓員工在創作中放鬆、連結、找到彼此。適合尾牙、團建、品牌活動與節慶贈禮。
+    </p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;" class="fade-up">
+      <a href="corporate.html" class="btn btn-ghost btn-lg">了解企業包班</a>
+      <a href="contact.html" class="btn btn-warm btn-lg">立即洽詢</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     TESTIMONIALS
+════════════════════════════════════════════ -->
+<section class="section" style="background:var(--oat);">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="label">Customer Stories</span>
+      <h2>每一份回饋，都是前行的力量</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="testimonials-grid stagger">
+      <div class="testimonial-card">
+        <p class="testimonial-card__body">
+          訂製了一隻我家已過彩虹橋的貓咪，Vivi 非常細心，把每個毛色細節都做出來了。拿到的那天我哭了，但是幸福的眼淚。謝謝有這樣的作品陪著我。
+        </p>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar">🌸</div>
+          <div>
+            <div class="testimonial-card__name">小甜媽咪</div>
+            <div class="testimonial-card__role">寵物紀念訂製顧客</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-card__body">
+          參加了入門課程，以為自己很笨手笨腳的，結果在老師的引導下真的做出來了！那種成就感超棒，而且整個過程真的很放鬆，我已經報名下一堂課了。
+        </p>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar">🦋</div>
+          <div>
+            <div class="testimonial-card__name">Amanda C.</div>
+            <div class="testimonial-card__role">課程學員</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-card__body">
+          我們公司辦了一場尾牙前的手作活動，同事們都超開心，很多人說是近幾年最喜歡的員工活動！場地布置也很有質感，強力推薦給需要辦企業活動的人。
+        </p>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar">⭐</div>
+          <div>
+            <div class="testimonial-card__name">企業 HR 林小姐</div>
+            <div class="testimonial-card__role">企業包班客戶</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     MEMBERSHIP TEASER
+════════════════════════════════════════════ -->
+<section class="section" style="background:var(--white);">
+  <div class="container">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;" class="fade-up">
+      <div>
+        <span style="font-size:0.72rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--warm-brown);">Membership</span>
+        <h2 style="font-size:clamp(1.6rem,3vw,2.2rem); margin:16px 0 20px; font-weight:400;">
+          加入我們，<br>成為品牌好友
+        </h2>
+        <p style="color:var(--text-mid); line-height:1.9; margin-bottom:24px;">
+          成為 Vivi Felt Studio 的會員，享有新品優先通知、會員專屬折扣、生日驚喜與課程優惠，一起在手作的旅途中前行。
+        </p>
+        <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:32px;">
+          <div style="display:flex; align-items:center; gap:12px; font-size:0.9rem; color:var(--text-mid);">
+            <span style="color:var(--warm-brown);">✓</span> 新品與限定作品優先通知
+          </div>
+          <div style="display:flex; align-items:center; gap:12px; font-size:0.9rem; color:var(--text-mid);">
+            <span style="color:var(--warm-brown);">✓</span> 會員專屬折扣 5~10%
+          </div>
+          <div style="display:flex; align-items:center; gap:12px; font-size:0.9rem; color:var(--text-mid);">
+            <span style="color:var(--warm-brown);">✓</span> 生日月份驚喜優惠
+          </div>
+          <div style="display:flex; align-items:center; gap:12px; font-size:0.9rem; color:var(--text-mid);">
+            <span style="color:var(--warm-brown);">✓</span> 課程優先報名資格
+          </div>
+        </div>
+        <a href="membership.html" class="btn btn-primary">了解會員制度</a>
+      </div>
+
+      <div style="background:linear-gradient(150deg, var(--oat) 0%, var(--sand) 100%); border-radius:var(--radius-xl); padding:48px 40px; text-align:center; box-shadow:var(--shadow-md);">
+        <div style="font-size:3rem; margin-bottom:16px;">🌿</div>
+        <div style="font-family:var(--font-serif); font-size:1.5rem; font-style:italic; color:var(--espresso); margin-bottom:8px;">
+          Brand Friend
+        </div>
+        <div style="font-size:0.75rem; letter-spacing:0.15em; color:var(--warm-brown); margin-bottom:24px;">品牌好友會員</div>
+        <p style="font-size:0.85rem; color:var(--text-mid); line-height:1.8; margin-bottom:28px;">
+          加入我們的手作大家庭，<br>一起感受每一針每一戳的溫暖。
+        </p>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <a href="membership.html" class="btn btn-primary" style="text-align:center; justify-content:center;">立即加入</a>
+          <a href="membership.html" class="btn btn-secondary" style="text-align:center; justify-content:center;">已有帳號？登入</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     FAQ MINI
+════════════════════════════════════════════ -->
+<section class="section" style="background:var(--cream);">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="label">FAQ</span>
+      <h2>常見問題</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div style="max-width:720px; margin:0 auto;" class="faq-mini fade-up">
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question">
+            <h4>客製作品的製作時間大約多久？</h4>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              製作時間依作品類型與複雜度而異，一般小型作品約 1~2 週，中型或複雜作品約 2~4 週。下單前會與您確認預計完成日期，如有趕件需求請提前說明，我們會盡力配合。
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h4>課程需要自備材料嗎？</h4>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              不需要！所有課程費用均包含材料費，您只需要帶著輕鬆的心情來參加即可。材料包含所需羊毛、針具與其他輔助材料，完成作品帶走。
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h4>可以提供照片訂製寵物嗎？</h4>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              當然可以！這是我們最珍視的服務之一。建議提供多角度清晰照片（正面、側面、特寫），越多照片越能還原您家毛孩的獨特樣貌。請注意，手作作品會保留些微手感差異，這正是手作獨有的溫度。
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h4>企業包班有最低人數要求嗎？</h4>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              企業包班建議人數為 8~15 人，在這個範圍內可確保每位學員都有充分的陪伴與指導。若超過 15 人，可安排增加協助老師，請在洽詢時說明人數，我們會為您規劃最合適的方案。
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h4>作品可以寄送嗎？</h4>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              可以！我們提供全台寄送服務，運費依重量與目的地計算。作品會以精心包裝妥善保護，確保安全送達您手中。海外寄送請事先詢問報價。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:36px;" class="fade-up">
+      <a href="faq.html" class="btn btn-secondary">查看更多問題 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     INSTAGRAM / SOCIAL
+════════════════════════════════════════════ -->
+<section class="section--sm" style="background:var(--white);">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:32px;" class="fade-up">
+      <span style="font-size:0.72rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--warm-brown);">Follow Us</span>
+      <h2 style="font-size:1.6rem; font-weight:400; margin:12px 0 8px;">在 Instagram 看見更多溫暖</h2>
+      <a href="https://www.instagram.com/eaea_1282025/" target="_blank" rel="noopener" style="font-size:0.88rem; color:var(--warm-brown);">@eaea_1282025</a>
+    </div>
+
+    <div class="ig-grid fade-in">
+      <div class="ig-item"><div class="ig-item__icon">🐾</div></div>
+      <div class="ig-item"><div class="ig-item__icon">🧶</div></div>
+      <div class="ig-item"><div class="ig-item__icon">🌸</div></div>
+      <div class="ig-item"><div class="ig-item__icon">🦊</div></div>
+      <div class="ig-item"><div class="ig-item__icon">🎀</div></div>
+      <div class="ig-item"><div class="ig-item__icon">✨</div></div>
+    </div>
+
+    <div style="text-align:center; margin-top:28px;" class="fade-up">
+      <a href="https://www.instagram.com/eaea_1282025/" target="_blank" rel="noopener" class="btn btn-secondary">
+        前往 Instagram →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     CTA FINAL
+════════════════════════════════════════════ -->
+<section class="cta-section">
+  <div class="container" style="position:relative; z-index:2;">
+    <span class="label">Let's Create Together</span>
+    <h2>準備好開始你的手作故事了嗎？</h2>
+    <p>無論是訂製一件專屬作品、報名一堂療癒課程，或是為團隊安排一場特別的活動——我們在這裡，等著與你一起創作。</p>
+    <div class="btn-actions">
+      <a href="custom-order.html" class="btn btn-ghost btn-lg">立即詢問客製</a>
+      <a href="courses.html" class="btn btn-warm btn-lg">瀏覽課程</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <div class="logo-en">Vivi Felt Studio</div>
+        <div class="logo-zh">薇薇V的羊毛氈手作坊</div>
+        <p>手作的溫度，留給重要的人。<br>每一件作品都承載著溫暖與陪伴的力量。</p>
+        <div class="footer__social">
+          <a href="https://www.facebook.com/profile.php?id=61559206236758&locale=zh_TW" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+          <a href="https://www.instagram.com/eaea_1282025/" target="_blank" rel="noopener" aria-label="Instagram">ig</a>
+          <a href="#" title="LINE 官方帳號（建置中）" aria-label="LINE">L</a>
+        </div>
+      </div>
+
+      <div class="footer__col">
+        <h4>服務項目</h4>
+        <ul>
+          <li><a href="custom-order.html">客製訂單</a></li>
+          <li><a href="custom-order.html#pet">寵物紀念</a></li>
+          <li><a href="courses.html">羊毛氈課程</a></li>
+          <li><a href="corporate.html">企業包班</a></li>
+          <li><a href="contact.html">聯絡我們</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>品牌資訊</h4>
+        <ul>
+          <li><a href="index.html#about">品牌故事</a></li>
+          <li><a href="membership.html">會員制度</a></li>
+          <li><a href="faq.html">常見問題</a></li>
+          <li><a href="contact.html">聯絡我們</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>法律聲明</h4>
+        <ul>
+          <li><a href="privacy.html">隱私權政策</a></li>
+          <li><a href="terms.html">服務條款</a></li>
+          <li><a href="refund-policy.html">退款政策</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>© 2024 Vivi Felt Studio 薇薇V的羊毛氈手作坊. All rights reserved.</p>
+      <div class="footer__legal">
+        <a href="privacy.html">隱私政策</a>
+        <a href="terms.html">服務條款</a>
+        <a href="refund-policy.html">退款政策</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="scripts/main.js"></script>
+</body>
+</html>

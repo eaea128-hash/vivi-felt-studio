@@ -1,0 +1,328 @@
+<!-- ╔══════════════════════════════════════════════════════════╗
+     ║  Vivi Felt Studio — admin-dashboard.html  ║
+     ║  Version : v1.0.0  │  Date : 2025-04-13                 ║
+     ╚══════════════════════════════════════════════════════════╝ -->
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>後台總覽｜Vivi Felt Studio Admin</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles/style.css" />
+  <style>
+    body { background: #F5F0EB; }
+    .stats-grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; margin-bottom: 28px; }
+    .stats-grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; margin-bottom: 28px; }
+    .dash-card { background: var(--white); border-radius: var(--radius-md); padding: 28px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-light); }
+    .dash-card h3 { font-size: 0.88rem; font-weight: 500; color: var(--text-dark); margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; }
+    .dash-card h3 a { font-size: 0.75rem; color: var(--warm-brown); font-weight: 400; }
+    .todo-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border-light); }
+    .todo-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .todo-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--caramel); flex-shrink: 0; margin-top: 6px; }
+    .todo-dot.urgent { background: #C0604A; }
+    .todo-dot.normal { background: var(--camel); }
+    .todo-dot.low { background: var(--sage); }
+    .todo-item .text { font-size: 0.85rem; color: var(--text-mid); line-height: 1.5; }
+    .todo-item .meta { font-size: 0.72rem; color: var(--text-light); margin-top: 2px; }
+    .inquiry-item { display: flex; align-items: flex-start; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--border-light); }
+    .inquiry-item:last-child { border-bottom: none; }
+    .inquiry-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg,var(--sand),var(--camel)); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; color: var(--white); flex-shrink: 0; font-weight: 500; }
+    .inquiry-body { flex: 1; min-width: 0; }
+    .inquiry-name { font-size: 0.88rem; font-weight: 500; color: var(--text-dark); margin-bottom: 2px; }
+    .inquiry-desc { font-size: 0.78rem; color: var(--text-mid); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .inquiry-time { font-size: 0.72rem; color: var(--text-light); white-space: nowrap; }
+    .mini-bar { background: var(--oat); border-radius: 4px; height: 8px; margin-top: 6px; overflow: hidden; }
+    .mini-bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(to right, var(--camel), var(--warm-brown)); }
+    @media (max-width: 1024px) { .stats-grid-4 { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 768px) { .stats-grid-2 { grid-template-columns: 1fr; } .stats-grid-4 { grid-template-columns: 1fr; } }
+    .chart-placeholder { background: linear-gradient(to right, var(--oat), var(--cream)); border-radius: var(--radius-md); height: 180px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 8px; color: var(--text-light); font-size: 0.82rem; }
+    .chart-bars { display: flex; align-items: flex-end; gap: 8px; height: 100px; padding: 0 20px; }
+    .chart-bar { flex: 1; border-radius: 4px 4px 0 0; background: linear-gradient(to top, var(--camel), var(--sand)); opacity: 0.7; transition: opacity var(--transition); }
+    .chart-bar:hover { opacity: 1; }
+  </style>
+</head>
+<body>
+<div class="admin-layout">
+
+  <!-- Sidebar -->
+  <aside class="admin-sidebar">
+    <div class="admin-sidebar__logo">
+      <div class="logo-en">Vivi Felt Studio</div>
+      <div class="logo-sub">後台管理系統</div>
+    </div>
+    <nav class="admin-sidebar__nav">
+      <div class="admin-sidebar__section">主要功能</div>
+      <a href="admin-dashboard.html" class="admin-sidebar__link active"><span class="icon">📊</span> 總覽儀表板</a>
+      <a href="admin-orders.html" class="admin-sidebar__link"><span class="icon">📦</span> 訂單管理</a>
+      <a href="admin-courses.html" class="admin-sidebar__link"><span class="icon">🎓</span> 課程報名</a>
+      <a href="admin-members.html" class="admin-sidebar__link"><span class="icon">👥</span> 會員管理</a>
+
+      <div class="admin-sidebar__section">內容管理</div>
+      <a href="admin-content.html" class="admin-sidebar__link"><span class="icon">✏️</span> 內容管理</a>
+      <a href="admin-analytics.html" class="admin-sidebar__link"><span class="icon">📈</span> 數據分析</a>
+
+      <div class="admin-sidebar__section">設定</div>
+      <a href="index.html" class="admin-sidebar__link" target="_blank"><span class="icon">🌐</span> 前台預覽</a>
+      <a href="#" class="admin-sidebar__link"><span class="icon">⚙️</span> 系統設定</a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <div style="display:flex;align-items:center;gap:16px;">
+        <button class="admin-menu-toggle" style="background:none;border:none;cursor:pointer;font-size:1.2rem;color:var(--text-mid);">☰</button>
+        <div class="admin-topbar__title">總覽儀表板</div>
+      </div>
+      <div class="admin-topbar__right">
+        <span style="font-size:0.78rem;color:var(--text-light);">今天 · <span id="today-date"></span></span>
+        <a href="index.html" target="_blank" class="btn btn-secondary btn-sm">查看前台</a>
+        <div class="admin-avatar">V</div>
+      </div>
+    </div>
+
+    <div class="admin-content">
+      <!-- Welcome -->
+      <div style="margin-bottom:28px;">
+        <h1 style="font-size:1.3rem;font-weight:500;color:var(--text-dark);margin-bottom:4px;">早安，Vivi ☀️</h1>
+        <p style="font-size:0.85rem;color:var(--text-mid);">以下是今日的品牌概況摘要。</p>
+      </div>
+
+      <!-- KPI Cards -->
+      <div class="stats-grid-4">
+        <div class="admin-stat-card">
+          <div class="admin-stat-card__icon icon-bg-warm">📬</div>
+          <div class="admin-stat-card__body">
+            <div class="label">今日新詢問</div>
+            <div class="value" data-count="3">0</div>
+            <div class="change">↑ 較昨日 +1</div>
+          </div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-card__icon icon-bg-pink">✂️</div>
+          <div class="admin-stat-card__body">
+            <div class="label">本月客製訂單</div>
+            <div class="value" data-count="12">0</div>
+            <div class="change">↑ 較上月 +3</div>
+          </div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-card__icon icon-bg-sage">🎓</div>
+          <div class="admin-stat-card__body">
+            <div class="label">本月課程報名</div>
+            <div class="value" data-count="18">0</div>
+            <div class="change">↑ 較上月 +5</div>
+          </div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-card__icon icon-bg-coffee">👥</div>
+          <div class="admin-stat-card__body">
+            <div class="label">會員總數</div>
+            <div class="value" data-count="284">0</div>
+            <div class="change">↑ 本月新增 22</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Second row -->
+      <div class="stats-grid-2">
+        <!-- Pending Items -->
+        <div class="dash-card">
+          <h3>
+            ⚠️ 待處理事項
+            <span style="background:var(--fog-pink);color:#9B6B63;font-size:0.72rem;padding:2px 10px;border-radius:20px;">5 項</span>
+          </h3>
+          <div class="todo-item">
+            <div class="todo-dot urgent"></div>
+            <div>
+              <div class="text">寵物紀念訂單 #VF-0312 製作完成，待確認出貨</div>
+              <div class="meta">客製訂單 · 今天</div>
+            </div>
+          </div>
+          <div class="todo-item">
+            <div class="todo-dot urgent"></div>
+            <div>
+              <div class="text">3 封新詢問表單尚未回覆</div>
+              <div class="meta">聯絡表單 · 今天</div>
+            </div>
+          </div>
+          <div class="todo-item">
+            <div class="todo-dot normal"></div>
+            <div>
+              <div class="text">企業包班 5 月場次報價待回覆（光遠科技）</div>
+              <div class="meta">企業洽詢 · 昨天</div>
+            </div>
+          </div>
+          <div class="todo-item">
+            <div class="todo-dot normal"></div>
+            <div>
+              <div class="text">療癒入門課 4/20 場次名額已滿，需更新報名頁</div>
+              <div class="meta">內容管理 · 2 天前</div>
+            </div>
+          </div>
+          <div class="todo-item">
+            <div class="todo-dot low"></div>
+            <div>
+              <div class="text">5 月新品照片待上傳至作品展示</div>
+              <div class="meta">內容管理 · 本週</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Inquiries -->
+        <div class="dash-card">
+          <h3>最新詢問 <a href="admin-orders.html">查看全部 →</a></h3>
+          <div class="inquiry-item">
+            <div class="inquiry-avatar">王</div>
+            <div class="inquiry-body">
+              <div class="inquiry-name">王小明</div>
+              <div class="inquiry-desc">寵物紀念訂製 — 柴犬 Haru，約 15cm</div>
+            </div>
+            <div class="inquiry-time">10 分鐘前</div>
+          </div>
+          <div class="inquiry-item">
+            <div class="inquiry-avatar" style="background:linear-gradient(135deg,var(--fog-pink),#D4A0A0);">林</div>
+            <div class="inquiry-body">
+              <div class="inquiry-name">林美玲</div>
+              <div class="inquiry-desc">療癒入門課 4/27 場次報名詢問</div>
+            </div>
+            <div class="inquiry-time">1 小時前</div>
+          </div>
+          <div class="inquiry-item">
+            <div class="inquiry-avatar" style="background:linear-gradient(135deg,var(--sage),#8A9A84);">光</div>
+            <div class="inquiry-body">
+              <div class="inquiry-name">光遠科技 HR</div>
+              <div class="inquiry-desc">企業包班 5/15，預計 20 人，尾牙前活動</div>
+            </div>
+            <div class="inquiry-time">3 小時前</div>
+          </div>
+          <div class="inquiry-item">
+            <div class="inquiry-avatar" style="background:linear-gradient(135deg,#D4C8C0,#B4A8A0);">陳</div>
+            <div class="inquiry-body">
+              <div class="inquiry-name">陳大維</div>
+              <div class="inquiry-desc">羊毛氈包包客製，母親節禮物用途</div>
+            </div>
+            <div class="inquiry-time">昨天</div>
+          </div>
+          <div class="inquiry-item">
+            <div class="inquiry-avatar" style="background:linear-gradient(135deg,var(--camel),var(--warm-brown));">張</div>
+            <div class="inquiry-body">
+              <div class="inquiry-name">張雅婷</div>
+              <div class="inquiry-desc">進階課程詢問，已上過中階課</div>
+            </div>
+            <div class="inquiry-time">昨天</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Third row -->
+      <div class="stats-grid-2">
+        <!-- Popular works -->
+        <div class="dash-card">
+          <h3>熱門詢問作品 <a href="admin-content.html">管理作品 →</a></h3>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+                <span style="font-size:0.85rem;color:var(--text-dark);">🐾 寵物肖像訂製</span>
+                <span style="font-size:0.78rem;color:var(--warm-brown);font-weight:500;">42 次詢問</span>
+              </div>
+              <div class="mini-bar"><div class="mini-bar-fill" style="width:85%;"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+                <span style="font-size:0.85rem;color:var(--text-dark);">🎀 禮物吊飾訂製</span>
+                <span style="font-size:0.78rem;color:var(--warm-brown);font-weight:500;">28 次詢問</span>
+              </div>
+              <div class="mini-bar"><div class="mini-bar-fill" style="width:57%;"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+                <span style="font-size:0.85rem;color:var(--text-dark);">🧣 羊毛氈圍巾</span>
+                <span style="font-size:0.78rem;color:var(--warm-brown);font-weight:500;">19 次詢問</span>
+              </div>
+              <div class="mini-bar"><div class="mini-bar-fill" style="width:39%;"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+                <span style="font-size:0.85rem;color:var(--text-dark);">👜 羊毛氈包包</span>
+                <span style="font-size:0.78rem;color:var(--warm-brown);font-weight:500;">14 次詢問</span>
+              </div>
+              <div class="mini-bar"><div class="mini-bar-fill" style="width:28%;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Popular courses -->
+        <div class="dash-card">
+          <h3>課程報名概況 <a href="admin-courses.html">查看詳細 →</a></h3>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <div style="background:var(--oat);border-radius:var(--radius-md);padding:16px 20px;display:flex;justify-content:space-between;align-items:center;">
+              <div>
+                <div style="font-size:0.88rem;font-weight:500;color:var(--text-dark);">療癒入門課 · 4/20</div>
+                <div style="font-size:0.75rem;color:var(--text-light);margin-top:2px;">週六下午 2:00</div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:0.82rem;color:var(--espresso);font-weight:500;">6/6 人</div>
+                <span class="status status-done" style="font-size:0.7rem;">已額滿</span>
+              </div>
+            </div>
+            <div style="background:var(--oat);border-radius:var(--radius-md);padding:16px 20px;display:flex;justify-content:space-between;align-items:center;">
+              <div>
+                <div style="font-size:0.88rem;font-weight:500;color:var(--text-dark);">動物角色課 · 4/27</div>
+                <div style="font-size:0.75rem;color:var(--text-light);margin-top:2px;">週六下午 1:00</div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:0.82rem;color:var(--espresso);font-weight:500;">4/6 人</div>
+                <span class="status status-talking" style="font-size:0.7rem;">報名中</span>
+              </div>
+            </div>
+            <div style="background:var(--oat);border-radius:var(--radius-md);padding:16px 20px;display:flex;justify-content:space-between;align-items:center;">
+              <div>
+                <div style="font-size:0.88rem;font-weight:500;color:var(--text-dark);">療癒入門課 · 5/4</div>
+                <div style="font-size:0.75rem;color:var(--text-light);margin-top:2px;">週六上午 10:00</div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:0.82rem;color:var(--espresso);font-weight:500;">1/6 人</div>
+                <span class="status status-new" style="font-size:0.7rem;">開放報名</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Revenue trend placeholder -->
+      <div class="dash-card">
+        <h3>
+          📈 本月詢問趨勢
+          <a href="admin-analytics.html">詳細分析 →</a>
+        </h3>
+        <div class="chart-placeholder">
+          <div class="chart-bars">
+            <div class="chart-bar" style="height:40%;"></div>
+            <div class="chart-bar" style="height:60%;"></div>
+            <div class="chart-bar" style="height:45%;"></div>
+            <div class="chart-bar" style="height:80%;"></div>
+            <div class="chart-bar" style="height:55%;"></div>
+            <div class="chart-bar" style="height:70%;"></div>
+            <div class="chart-bar" style="height:90%;"></div>
+            <div class="chart-bar" style="height:65%;"></div>
+            <div class="chart-bar" style="height:85%;"></div>
+            <div class="chart-bar" style="height:100%;"></div>
+            <div class="chart-bar" style="height:75%;"></div>
+            <div class="chart-bar" style="height:88%;"></div>
+          </div>
+          <div style="font-size:0.75rem;color:var(--text-muted);margin-top:8px;">（圖表將於串接 Analytics 後呈現實際數據）</div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="scripts/main.js"></script>
+<script>
+  document.getElementById('today-date').textContent = new Date().toLocaleDateString('zh-TW', { year:'numeric', month:'long', day:'numeric', weekday:'long' });
+</script>
+</body>
+</html>
