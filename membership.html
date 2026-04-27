@@ -334,57 +334,76 @@
   <div class="container">
     <div class="section-header fade-up">
       <span class="label">Membership Tiers</span>
-      <h2>三種會員等級</h2>
+      <h2>三個等級，越愛越多回饋</h2>
       <div class="divider"></div>
-      <p>不同等級對應不同的品牌好友程度，每一級都有專屬的溫暖回饋。</p>
+      <p>從免費加入開始，隨著你的消費與參與自動升級，每一級都有更豐厚的專屬溫暖。</p>
+    </div>
+
+    <!-- 升級路徑示意 -->
+    <div class="fade-up" style="display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:48px;flex-wrap:wrap;">
+      <div style="text-align:center;padding:12px 24px;">
+        <div style="font-size:0.72rem;color:var(--text-light);letter-spacing:0.1em;margin-bottom:4px;">免費加入</div>
+        <div style="font-weight:500;color:var(--espresso);">毛球新友</div>
+      </div>
+      <div style="color:var(--camel);font-size:1.2rem;padding:0 8px;">→</div>
+      <div style="text-align:center;padding:12px 24px;">
+        <div style="font-size:0.72rem;color:var(--text-light);letter-spacing:0.1em;margin-bottom:4px;">累積消費 NT$ 3,000</div>
+        <div style="font-weight:500;color:var(--warm-brown);">手作夥伴</div>
+      </div>
+      <div style="color:var(--camel);font-size:1.2rem;padding:0 8px;">→</div>
+      <div style="text-align:center;padding:12px 24px;">
+        <div style="font-size:0.72rem;color:var(--text-light);letter-spacing:0.1em;margin-bottom:4px;">累積消費 NT$ 8,000</div>
+        <div style="font-weight:500;color:var(--caramel);">羊毛摯友 ✦</div>
+      </div>
     </div>
 
     <div class="grid-3 stagger">
-      <!-- General -->
+      <!-- Tier 1 -->
       <div class="membership-card">
-        <div class="membership-card__tier">一般會員</div>
-        <div class="membership-card__name">品牌朋友</div>
-        <div class="membership-card__price">免費 <span class="unit">加入</span></div>
+        <div class="membership-card__tier">Lv.1</div>
+        <div class="membership-card__name">毛球新友</div>
+        <div class="membership-card__price">免費 <span class="unit">加入即享</span></div>
         <ul class="membership-card__features">
-          <li>新品上架通知</li>
-          <li>課程開課優先通知</li>
-          <li>生日月份 88 折優惠</li>
+          <li>新品上架優先通知</li>
+          <li>課程開課搶先知道</li>
+          <li>生日當月 <strong>88 折</strong>優惠券</li>
           <li>歷史訂單查詢</li>
-          <li>會員專屬內容閱覽</li>
+          <li>會員專屬手作小知識</li>
         </ul>
-        <a href="#" class="btn btn-secondary" style="width:100%;justify-content:center;" id="join-general">免費加入</a>
+        <a href="#" class="btn btn-secondary" style="width:100%;justify-content:center;" id="join-general">免費加入 →</a>
       </div>
 
-      <!-- VIP -->
+      <!-- Tier 2 -->
       <div class="membership-card featured">
-        <div class="membership-card__tier">VIP 會員</div>
-        <div class="membership-card__name">品牌摯友</div>
-        <div class="membership-card__price">累積消費達標 <span class="unit">自動升級</span></div>
+        <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--caramel);color:#fff;font-size:0.7rem;padding:4px 16px;border-radius:20px;white-space:nowrap;letter-spacing:0.08em;">最多人選擇</div>
+        <div class="membership-card__tier">Lv.2</div>
+        <div class="membership-card__name">手作夥伴</div>
+        <div class="membership-card__price" style="font-size:0.85rem;">報名課程 或 累積消費 NT$ 3,000 <span class="unit">自動升級</span></div>
         <ul class="membership-card__features">
-          <li>包含一般會員所有福利</li>
-          <li>全館 9 折優惠（部分商品除外）</li>
-          <li>生日月份 85 折 + 驚喜禮</li>
-          <li>課程優先報名資格</li>
-          <li>限定作品優先預購</li>
-          <li>新品搶先體驗機會</li>
+          <li>含毛球新友所有福利</li>
+          <li>課程報名 <strong>95 折</strong></li>
+          <li>客製訂單優先排程</li>
+          <li>生日當月 <strong>85 折</strong> + 驚喜小禮</li>
+          <li>學員限定手作資源</li>
+          <li>作品分享社群邀請</li>
         </ul>
-        <a href="#" class="btn btn-primary" style="width:100%;justify-content:center;" id="join-vip">了解升級方式</a>
+        <a href="courses.html" class="btn btn-primary" style="width:100%;justify-content:center;" id="join-vip">報名課程升級 →</a>
       </div>
 
-      <!-- Student -->
+      <!-- Tier 3 -->
       <div class="membership-card">
-        <div class="membership-card__tier">學員會員</div>
-        <div class="membership-card__name">手作夥伴</div>
-        <div class="membership-card__price">報名課程後 <span class="unit">自動取得</span></div>
+        <div class="membership-card__tier">Lv.3 ✦</div>
+        <div class="membership-card__name">羊毛摯友</div>
+        <div class="membership-card__price" style="font-size:0.85rem;">累積消費 NT$ 8,000 <span class="unit">自動升級</span></div>
         <ul class="membership-card__features">
-          <li>包含一般會員所有福利</li>
-          <li>課程報名 95 折</li>
-          <li>課程參與紀錄查詢</li>
-          <li>學員專屬手作資源</li>
-          <li>再報名同類課程優惠</li>
-          <li>學員限定作品分享社群</li>
+          <li>含手作夥伴所有福利</li>
+          <li>全館消費 <strong>9 折</strong>（部分除外）</li>
+          <li>生日當月 <strong>8 折</strong> + 精緻禮品</li>
+          <li>限定作品優先預購資格</li>
+          <li>每年一次免費客製諮詢</li>
+          <li>專屬感謝卡 × 手作小禮</li>
         </ul>
-        <a href="courses.html" class="btn btn-secondary" style="width:100%;justify-content:center;">報名課程取得</a>
+        <a href="#" class="btn btn-secondary" style="width:100%;justify-content:center;" id="join-vip2">了解升級方式</a>
       </div>
     </div>
   </div>

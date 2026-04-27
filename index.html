@@ -427,6 +427,32 @@
       letter-spacing: 0.15em;
       margin-bottom: 16px;
     }
+
+    /* ── Shop Filter ── */
+    .shop-filter {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .shop-filter__btn {
+      padding: 8px 22px;
+      border: 1.5px solid var(--border);
+      border-radius: 30px;
+      background: transparent;
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      cursor: pointer;
+      transition: all var(--transition);
+      font-family: var(--font-zh);
+    }
+    .shop-filter__btn:hover,
+    .shop-filter__btn.active {
+      background: var(--espresso);
+      border-color: var(--espresso);
+      color: var(--cream);
+    }
+    .product-card.hidden { display: none; }
   </style>
 </head>
 <body>
@@ -445,17 +471,17 @@
   </a>
 
   <ul class="navbar__nav">
+    <li><a href="index.html#shop">商品選購</a></li>
     <li><a href="custom-order.html">客製訂製</a></li>
     <li><a href="courses.html">羊毛氈課程</a></li>
     <li><a href="corporate.html">企業包班</a></li>
     <li><a href="membership.html">會員制度</a></li>
-    <li><a href="faq.html">常見問題</a></li>
     <li><a href="contact.html">聯絡我們</a></li>
   </ul>
 
   <div class="navbar__actions">
-    <a href="membership.html" class="navbar__member-btn">
-      <span>👤</span> 登入 / 加入
+    <a href="membership.html" class="navbar__member-btn" title="會員登入 / 加入">
+      <span>👤</span>
     </a>
     <a href="custom-order.html" class="btn btn-primary btn-sm">立即詢問</a>
   </div>
@@ -741,20 +767,28 @@
 <!-- ════════════════════════════════════════════
      FEATURED WORKS / SHOP
 ════════════════════════════════════════════ -->
-<section class="section" style="background:var(--white);" id="featured-works">
+<section class="section" style="background:var(--white);" id="shop">
   <div class="container">
     <div class="section-header fade-up">
-      <span class="label">Featured Works</span>
-      <h2>精選作品展示</h2>
+      <span class="label">Shop</span>
+      <h2>選購商品</h2>
       <div class="divider"></div>
-      <p>每一件作品都是一段故事，等待與有緣人相遇。</p>
+      <p>以下作品皆可依需求客製，每件都是獨一無二的手作溫度。</p>
+    </div>
+
+    <!-- 品類快篩 -->
+    <div class="shop-filter fade-up">
+      <button class="shop-filter__btn active" data-filter="all">全部</button>
+      <button class="shop-filter__btn" data-filter="pet">寵物紀念</button>
+      <button class="shop-filter__btn" data-filter="accessory">吊飾小物</button>
+      <button class="shop-filter__btn" data-filter="bag">手提包</button>
     </div>
 
     <div class="scroll-track stagger">
       <!-- Product Card 1 -->
-      <div class="product-card">
+      <div class="product-card" data-category="pet">
         <div class="product-card__image">
-          <img loading="lazy" src="assets/images/work-pet-02.jpg" alt="柴犬寵物肖像羊毛氈" style="width:100%;height:100%;object-fit:cover;display:block;" 
+          <img loading="lazy" src="assets/images/work-pet-02.jpg" alt="柴犬寵物肖像羊毛氈" style="width:100%;height:100%;object-fit:cover;display:block;"
             onerror="this.outerHTML='<div class=\'img-placeholder\' style=\'width:100%;height:100%;position:absolute;inset:0;\'><span class=\'icon\'>🐕</span><span>寵物肖像作品</span></div>';" />
           <span class="product-card__badge">熱門</span>
         </div>
@@ -763,52 +797,48 @@
           <div class="product-card__desc">根據照片客製，忠實還原您家毛孩的神韻與個性。</div>
           <div class="product-card__price">NT$ 1,800 起<span class="price-note">依尺寸定價</span></div>
           <div class="product-card__actions">
-            <a href="custom-order.html" class="btn btn-secondary btn-sm">立即詢問</a>
-            <a href="custom-order.html" class="btn btn-primary btn-sm">立即詢問 →</a>
+            <a href="custom-order.html#pet" class="btn btn-primary btn-sm" style="width:100%;justify-content:center;">立即詢問客製 →</a>
           </div>
         </div>
       </div>
 
       <!-- Product Card 2 -->
-      <div class="product-card">
+      <div class="product-card" data-category="pet">
         <div class="product-card__image">
-          <img loading="lazy" src="assets/images/work-pet-03.webp" alt="博美狗寵物肖像羊毛氈" style="width:100%;height:100%;object-fit:cover;display:block;" 
+          <img loading="lazy" src="assets/images/work-pet-03.webp" alt="博美狗寵物肖像羊毛氈" style="width:100%;height:100%;object-fit:cover;display:block;"
             onerror="this.outerHTML='<div class=\'img-placeholder\' style=\'width:100%;height:100%;position:absolute;inset:0;\'><span class=\'icon\'>🐶</span><span>寵物肖像作品</span></div>';" />
           <span class="product-card__badge">客製首選</span>
         </div>
         <div class="product-card__body">
           <div class="product-card__name">寵物肖像訂製</div>
-          <div class="product-card__desc">無論是貓咪、狗狗、兔子或任何毛孩，每一隻都是獨一無二的創作，附精美禮盒包裝。</div>
+          <div class="product-card__desc">貓咪、狗狗、兔子……每一隻毛孩都是獨一無二的創作，附精美禮盒包裝。</div>
           <div class="product-card__price">NT$ 1,800 起</div>
           <div class="product-card__actions">
-            <a href="custom-order.html#pet" class="btn btn-secondary btn-sm">了解詳情</a>
-            <a href="custom-order.html" class="btn btn-primary btn-sm">立即詢問 →</a>
+            <a href="custom-order.html#pet" class="btn btn-primary btn-sm" style="width:100%;justify-content:center;">立即詢問客製 →</a>
           </div>
         </div>
       </div>
 
       <!-- Product Card 3 -->
-      <div class="product-card">
+      <div class="product-card" data-category="bag">
         <div class="product-card__image">
-          <img loading="lazy" src="assets/images/work-bag-gradient.webp" alt="漸層羊毛氈手提包" style="width:100%;height:100%;object-fit:cover;display:block;" 
+          <img loading="lazy" src="assets/images/work-bag-gradient.webp" alt="漸層羊毛氈手提包" style="width:100%;height:100%;object-fit:cover;display:block;"
             onerror="this.outerHTML='<div class=\'img-placeholder\' style=\'width:100%;height:100%;position:absolute;inset:0;\'><span class=\'icon\'>👜</span><span>羊毛氈手提包</span></div>';" />
           <span class="product-card__badge">人氣商品</span>
         </div>
         <div class="product-card__body">
           <div class="product-card__name">漸層羊毛氈手提包</div>
-          <div class="product-card__desc">夢幻粉藍漸層配色，柔軟輕盈的手作質感，每一個顏色過渡都是獨一無二。可依喜好客製配色。</div>
+          <div class="product-card__desc">夢幻粉藍漸層配色，柔軟輕盈的手作質感，可依喜好客製配色。</div>
           <div class="product-card__price">NT$ 3,800 起</div>
           <div class="product-card__actions">
-            <a href="custom-order.html" class="btn btn-secondary btn-sm">了解詳情</a>
-            <a href="custom-order.html" class="btn btn-primary btn-sm">立即詢問 →</a>
+            <a href="custom-order.html" class="btn btn-primary btn-sm" style="width:100%;justify-content:center;">立即詢問客製 →</a>
           </div>
         </div>
       </div>
 
       <!-- Product Card 4 -->
-      <div class="product-card">
+      <div class="product-card" data-category="accessory">
         <div class="product-card__image">
-          <!-- 4張吊飾拼貼 2x2 -->
           <div style="position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;">
             <img loading="lazy" src="assets/images/pendant-01.webp" alt="蘑菇吊飾" style="width:100%;height:100%;object-fit:cover;display:block;" />
             <img loading="lazy" src="assets/images/pendant-02.webp" alt="豬豬吊飾" style="width:100%;height:100%;object-fit:cover;display:block;" />
@@ -822,8 +852,7 @@
           <div class="product-card__desc">蘑菇、小豬、狗狗、小雞……各種療癒造型，附精美包裝，最暖心的隨身小禮。</div>
           <div class="product-card__price">NT$ 380 起</div>
           <div class="product-card__actions">
-            <a href="custom-order.html" class="btn btn-secondary btn-sm">查看選項</a>
-            <a href="custom-order.html" class="btn btn-primary btn-sm">立即詢問 →</a>
+            <a href="custom-order.html" class="btn btn-primary btn-sm" style="width:100%;justify-content:center;">立即詢問客製 →</a>
           </div>
         </div>
       </div>
@@ -1203,5 +1232,22 @@
 </footer>
 
 <script src="scripts/main.js"></script>
+<script>
+  // 商品品類篩選
+  document.querySelectorAll('.shop-filter__btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.shop-filter__btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.product-card').forEach(card => {
+        if (filter === 'all' || card.dataset.category === filter) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+</script>
 </body>
 </html>
