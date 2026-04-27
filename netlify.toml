@@ -1,0 +1,34 @@
+# Vivi Felt Studio — Netlify 設定
+# 快取設定可大幅減少頻寬使用
+
+[[headers]]
+  for = "/assets/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    # 圖片快取 1 年，回訪者不重複下載
+
+[[headers]]
+  for = "/styles/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+    # CSS 快取 1 天
+
+[[headers]]
+  for = "/scripts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+    # JS 快取 1 天
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    # HTML 每次都重新驗證（確保內容最新）
+
+# 安全性標頭
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
