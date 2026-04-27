@@ -419,6 +419,14 @@
     @media (max-width: 640px) {
       .faq-mini { padding: 32px 24px; }
     }
+
+    /* ── Testimonial Stars ── */
+    .testimonial-stars {
+      color: var(--caramel, #C9A96E);
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      margin-bottom: 16px;
+    }
   </style>
 </head>
 <body>
@@ -441,6 +449,7 @@
     <li><a href="courses.html">羊毛氈課程</a></li>
     <li><a href="corporate.html">企業包班</a></li>
     <li><a href="membership.html">會員制度</a></li>
+    <li><a href="faq.html">常見問題</a></li>
     <li><a href="contact.html">聯絡我們</a></li>
   </ul>
 
@@ -623,7 +632,7 @@
 <!-- ════════════════════════════════════════════
      BRAND STORY / ABOUT
 ════════════════════════════════════════════ -->
-<section class="section about-section">
+<section class="section about-section" id="about">
   <div class="container">
     <div class="about-grid">
       <div class="about-image fade-up">
@@ -755,7 +764,7 @@
           <div class="product-card__price">NT$ 1,800 起<span class="price-note">依尺寸定價</span></div>
           <div class="product-card__actions">
             <a href="custom-order.html" class="btn btn-secondary btn-sm">立即詢問</a>
-            <button class="btn btn-primary btn-sm btn-add-cart">加入收藏</button>
+            <a href="custom-order.html" class="btn btn-primary btn-sm">立即詢問 →</a>
           </div>
         </div>
       </div>
@@ -768,12 +777,12 @@
           <span class="product-card__badge">客製首選</span>
         </div>
         <div class="product-card__body">
-          <div class="product-card__name">寵物肖像羊毛氈</div>
-          <div class="product-card__desc">以您的毛孩照片為藍本，細膩呈現毛色、神態與個性，永久珍藏。</div>
-          <div class="product-card__price">NT$ 2,200 起</div>
+          <div class="product-card__name">寵物肖像訂製</div>
+          <div class="product-card__desc">無論是貓咪、狗狗、兔子或任何毛孩，每一隻都是獨一無二的創作，附精美禮盒包裝。</div>
+          <div class="product-card__price">NT$ 1,800 起</div>
           <div class="product-card__actions">
-            <a href="custom-order.html" class="btn btn-secondary btn-sm">客製諮詢</a>
-            <button class="btn btn-primary btn-sm btn-add-cart">加入收藏</button>
+            <a href="custom-order.html#pet" class="btn btn-secondary btn-sm">了解詳情</a>
+            <a href="custom-order.html" class="btn btn-primary btn-sm">立即詢問 →</a>
           </div>
         </div>
       </div>
@@ -790,7 +799,7 @@
           <div class="product-card__price">NT$ 2,800 起</div>
           <div class="product-card__actions">
             <a href="custom-order.html" class="btn btn-secondary btn-sm">了解詳情</a>
-            <button class="btn btn-primary btn-sm btn-add-cart">加入收藏</button>
+            <a href="custom-order.html" class="btn btn-primary btn-sm">立即詢問 →</a>
           </div>
         </div>
       </div>
@@ -813,7 +822,7 @@
           <div class="product-card__price">NT$ 380 起</div>
           <div class="product-card__actions">
             <a href="custom-order.html" class="btn btn-secondary btn-sm">查看選項</a>
-            <button class="btn btn-primary btn-sm btn-add-cart">加入收藏</button>
+            <a href="custom-order.html" class="btn btn-primary btn-sm">立即詢問 →</a>
           </div>
         </div>
       </div>
@@ -916,40 +925,43 @@
 
     <div class="testimonials-grid stagger">
       <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
         <p class="testimonial-card__body">
-          訂製了一隻我家已過彩虹橋的貓咪，Vivi 非常細心，把每個毛色細節都做出來了。拿到的那天我哭了，但是幸福的眼淚。謝謝有這樣的作品陪著我。
+          「訂製了一隻已過彩虹橋的貓咪，Vivi 非常細心地把每個毛色細節都還原出來。作品寄到的那天，我哭了——是幸福的眼淚。謝謝這份讓我永遠珍藏的溫暖。」
         </p>
         <div class="testimonial-card__author">
-          <div class="testimonial-card__avatar">🌸</div>
+          <div class="testimonial-card__avatar" style="background:var(--sand);color:var(--espresso);font-size:1rem;font-family:var(--font-serif);font-style:italic;">甜</div>
           <div>
             <div class="testimonial-card__name">小甜媽咪</div>
-            <div class="testimonial-card__role">寵物紀念訂製顧客</div>
+            <div class="testimonial-card__role">寵物紀念訂製 ｜ 台北</div>
           </div>
         </div>
       </div>
 
       <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
         <p class="testimonial-card__body">
-          參加了入門課程，以為自己很笨手笨腳的，結果在老師的引導下真的做出來了！那種成就感超棒，而且整個過程真的很放鬆，我已經報名下一堂課了。
+          「本來覺得自己一定學不來，但老師超有耐心！三小時的課程非常放鬆，我完全沉浸其中，最後做出一隻自己都愛不釋手的小動物，下次要帶閨蜜一起來。」
         </p>
         <div class="testimonial-card__author">
-          <div class="testimonial-card__avatar">🦋</div>
+          <div class="testimonial-card__avatar" style="background:var(--oat);color:var(--espresso);font-size:1rem;font-family:var(--font-serif);font-style:italic;">A</div>
           <div>
             <div class="testimonial-card__name">Amanda C.</div>
-            <div class="testimonial-card__role">課程學員</div>
+            <div class="testimonial-card__role">入門課程學員 ｜ 台中</div>
           </div>
         </div>
       </div>
 
       <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
         <p class="testimonial-card__body">
-          我們公司辦了一場尾牙前的手作活動，同事們都超開心，很多人說是近幾年最喜歡的員工活動！場地布置也很有質感，強力推薦給需要辦企業活動的人。
+          「為公司尾牙安排了手作體驗，同事們都大呼意外地喜歡！整個活動氛圍超棒，大家做完都捨不得走，這是我辦過最受歡迎的員工活動，已預約明年再來！」
         </p>
         <div class="testimonial-card__author">
-          <div class="testimonial-card__avatar">⭐</div>
+          <div class="testimonial-card__avatar" style="background:var(--camel);color:var(--white);font-size:1rem;font-family:var(--font-serif);font-style:italic;">林</div>
           <div>
-            <div class="testimonial-card__name">企業 HR 林小姐</div>
-            <div class="testimonial-card__role">企業包班客戶</div>
+            <div class="testimonial-card__name">林 HR 主任</div>
+            <div class="testimonial-card__role">企業包班 ｜ 科技業</div>
           </div>
         </div>
       </div>
@@ -1143,7 +1155,7 @@
         <div class="footer__social">
           <a href="https://www.facebook.com/profile.php?id=61559206236758&locale=zh_TW" target="_blank" rel="noopener" aria-label="Facebook">f</a>
           <a href="https://www.instagram.com/eaea_1282025/" target="_blank" rel="noopener" aria-label="Instagram">ig</a>
-          <a href="#" title="LINE 官方帳號（建置中）" aria-label="LINE">L</a>
+          <a href="#" title="LINE 官方帳號（即將開放）" aria-label="LINE" style="opacity:0.4;cursor:not-allowed;" onclick="return false;">L</a>
         </div>
       </div>
 
@@ -1179,7 +1191,7 @@
     </div>
 
     <div class="footer__bottom">
-      <p>© 2024 Vivi Felt Studio 薇薇V的羊毛氈手作坊. All rights reserved.</p>
+      <p>© 2025 Vivi Felt Studio 薇薇V的羊毛氈手作坊. All rights reserved.</p>
       <div class="footer__legal">
         <a href="privacy.html">隱私政策</a>
         <a href="terms.html">服務條款</a>

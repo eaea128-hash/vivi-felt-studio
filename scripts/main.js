@@ -170,17 +170,43 @@
   });
 })();
 
-/* ── Product Cart Button Placeholder ── */
-(function initCartButtons() {
-  document.querySelectorAll('.btn-add-cart').forEach(btn => {
+/* ── Toast Notification System ── */
+function showToast(message, type = 'success') {
+  const existing = document.querySelector('.vivi-toast');
+  if (existing) existing.remove();
+
+  const toast = document.createElement('div');
+  toast.className = 'vivi-toast';
+  toast.innerHTML = `<span class="toast-icon">${type === 'success' ? '✓' : 'ℹ'}</span><span>${message}</span>`;
+  document.body.appendChild(toast);
+
+  requestAnimationFrame(() => {
+    toast.classList.add('show');
+  });
+
+  setTimeout(() => {
+    toast.classList.remove('show');
+    setTimeout(() => toast.remove(), 350);
+  }, 2800);
+}
+
+/* ── FAQ Category Filter ── */
+(function initFaqFilter() {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  if (!filterBtns.length) return;
+
+  filterBtns.forEach(btn => {
     btn.addEventListener('click', function() {
-      const original = this.innerHTML;
-      this.innerHTML = '✓ 已加入';
-      this.style.background = 'var(--warm-brown)';
-      setTimeout(() => {
-        this.innerHTML = original;
-        this.style.background = '';
-      }, 2000);
+      filterBtns.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      const target = this.dataset.filter;
+      document.querySelectorAll('.faq-section').forEach(section => {
+        if (target === 'all') {
+          section.style.display = '';
+        } else {
+          section.style.display = section.dataset.section === target ? '' : 'none';
+        }
+      });
     });
   });
 })();

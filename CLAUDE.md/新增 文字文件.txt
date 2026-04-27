@@ -1,0 +1,19 @@
+# 專案：Vivi Felt Studio 官網
+
+## 技術架構
+- 純 HTML + CSS + JavaScript（無框架）
+- 樣式放在 styles/ 資料夾
+- JS 放在 scripts/ 資料夾
+- 圖片放在 assets/ 資料夾
+
+## 頁面清單
+- index.html：首頁
+- courses.html：課程頁
+- membership.html：會員方案
+- admin-dashboard.html：後台主頁
+...
+
+## 開發規範
+- 不要引入任何 npm 套件
+- CSS class 命名用 kebab-case
+- 新增頁面要維持現有的 header/footer 結構一致
