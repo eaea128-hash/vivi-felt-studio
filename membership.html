@@ -11,6 +11,8 @@
   <meta name="description" content="加入 Vivi Felt Studio 會員，享有新品優先通知、會員專屬折扣、生日優惠、課程優先報名等多項福利。立即成為品牌好友。" />
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles/style.css" />
+  <!-- Google Identity Services -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
   <style>
     /* ── Auth Modal ── */
     .auth-modal-overlay {
@@ -276,8 +278,13 @@
       <button class="btn btn-primary" style="width:100%;justify-content:center;margin-bottom:16px;">登入</button>
       <div class="auth-divider">或</div>
       <div class="social-auth">
-        <button class="social-btn">🌐 使用 Google 登入（建置中）</button>
-        <button class="social-btn">💚 使用 LINE 登入（建置中）</button>
+        <button class="social-btn" id="google-signin-btn" onclick="signInWithGoogle()">
+          <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/><path fill="none" d="M0 0h48v48H0z"/></svg>
+          使用 Google 帳號登入
+        </button>
+        <button class="social-btn" style="opacity:0.4;cursor:not-allowed;" disabled>
+          💚 使用 LINE 登入（即將開放）
+        </button>
       </div>
     </div>
 
@@ -621,10 +628,11 @@
 
 <script src="scripts/main.js"></script>
 <script>
-  // Auth modal logic
+  const GOOGLE_CLIENT_ID = '311704546821-is7a6e84c29gfa10k0odd9v2n3uqs0bg.apps.googleusercontent.com';
   const modal = document.getElementById('auth-modal');
   const closeBtn = document.getElementById('close-auth');
 
+  // ── Modal 開關 ──
   function openModal(tab) {
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -635,7 +643,6 @@
       document.getElementById('panel-register').classList.add('active');
     }
   }
-
   function closeModal() {
     modal.classList.remove('open');
     document.body.style.overflow = '';
@@ -645,8 +652,7 @@
     const el = document.getElementById(id);
     if (el) el.addEventListener('click', e => { e.preventDefault(); openModal('login'); });
   });
-
-  ['open-register','hero-register','cta-register','join-general','join-vip','join-now','mobile-open-register'].forEach(id => {
+  ['open-register','hero-register','cta-register','join-general','join-vip','join-vip2','join-now','mobile-open-register'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.addEventListener('click', e => { e.preventDefault(); openModal('register'); });
   });
@@ -663,6 +669,55 @@
       btn.classList.add('active');
       document.getElementById('panel-' + btn.dataset.panel).classList.add('active');
     });
+  });
+
+  // ── Google 登入 ──
+  function signInWithGoogle() {
+    google.accounts.id.initialize({
+      client_id: GOOGLE_CLIENT_ID,
+      callback: handleGoogleCredential,
+      ux_mode: 'popup'
+    });
+    google.accounts.id.prompt();
+  }
+
+  function handleGoogleCredential(response) {
+    // 解碼 JWT 取得使用者資訊
+    const payload = JSON.parse(atob(response.credential.split('.')[1].replace(/-/g,'+').replace(/_/g,'/')));
+    const user = { name: payload.name, email: payload.email, picture: payload.picture };
+    localStorage.setItem('vivi_user', JSON.stringify(user));
+    closeModal();
+    updateNavUser(user);
+    if (typeof showToast === 'function') showToast('歡迎，' + user.name + '！');
+  }
+
+  // ── 登出 ──
+  function signOut() {
+    google.accounts.id.disableAutoSelect();
+    localStorage.removeItem('vivi_user');
+    updateNavUser(null);
+    if (typeof showToast === 'function') showToast('已登出');
+  }
+
+  // ── 更新導覽列顯示 ──
+  function updateNavUser(user) {
+    const memberBtn = document.getElementById('open-login');
+    if (!memberBtn) return;
+    if (user) {
+      memberBtn.innerHTML = `<img src="${user.picture}" style="width:26px;height:26px;border-radius:50%;vertical-align:middle;margin-right:6px;" referrerpolicy="no-referrer">${user.name.split(' ')[0]}`;
+      memberBtn.onclick = e => { e.preventDefault(); if(confirm('確定要登出嗎？')) signOut(); };
+    } else {
+      memberBtn.innerHTML = '<span>👤</span> 登入 / 加入';
+      memberBtn.onclick = e => { e.preventDefault(); openModal('login'); };
+    }
+  }
+
+  // ── 頁面載入時還原登入狀態 ──
+  window.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem('vivi_user');
+    if (saved) {
+      try { updateNavUser(JSON.parse(saved)); } catch(e) { localStorage.removeItem('vivi_user'); }
+    }
   });
 </script>
 </body>
