@@ -11,8 +11,8 @@
 | 專案名稱 | Vivi Felt Studio 薇薇V的羊毛氈手作坊 |
 | 本地路徑 | `D:/AI專案/vivi-felt-studio/` |
 | GitHub | https://github.com/eaea128-hash/vivi-felt-studio |
-| 線上網址 | https://vivifirt.netlify.app/ |
-| 部署方式 | GitHub push → Netlify 自動部署 |
+| 線上網址 | https://vivi-felt-studio.pages.dev |
+| 部署方式 | GitHub push → Cloudflare Pages 自動部署 |
 | 聯絡 Email | eaea128@gmail.com |
 | Instagram | https://www.instagram.com/eaea_1282025/ |
 | Facebook | https://www.facebook.com/profile.php?id=61559206236758 |
@@ -96,10 +96,10 @@ vivi-felt-studio/
 
 | 表單 | 頁面 | Formspree ID |
 |------|------|-------------|
-| 客製訂單 | custom-order.html | `xzzpkgeo` |
-| 課程報名 | courses.html | `xpwzrjln` |
-| 企業包班 | corporate.html | `mqaoknlq` |
-| 聯絡我們 | contact.html | `xldrkgbn` |
+| 客製訂單 | custom-order.html | `xrervybz` |
+| 課程報名 | courses.html | `xrervybz` |
+| 企業包班 | corporate.html | `xrervybz` |
+| 聯絡我們 | contact.html | `xrervybz` |
 
 > ⚠️ 如需更換 Email，登入 https://formspree.io → 各表單 Settings → Submission Email
 
@@ -186,9 +186,55 @@ git push
 
 ---
 
+---
+
+## 🔐 AI Agent 治理（三階段）
+
+### 1｜設計期間（Design-time）— 入口把關
+> 所有改變 Agent 行為的 artefact 必須走版控 + 審核，未審查的能力不進 production
+
+| 項目 | Vivi 實作方式 |
+|------|-------------|
+| Prompt 版控 | `CLAUDE.md` 透過 git 管理，每次修改需 commit |
+| 工具白名單 | Claude 僅操作 `D:/AI專案/vivi-felt-studio/` 以下檔案 |
+| 禁止行為 | 不處理財務資料、密碼、API 金鑰（請勿貼入對話）|
+| 人工核准 | 所有 `git push` 及部署由使用者手動執行，Claude 不自動推送 |
+
+### 2｜執行防護（Runtime）— 輸入遮罩 + 輸出護欄
+> 每次對話都有風險暴露機率，確保有問題的內容不進出
+
+| 項目 | Vivi 實作方式 |
+|------|-------------|
+| 資料外流防護 | 表單僅收 name/email/message，Formspree 儲存 30 天可刪除 |
+| Google OAuth | 僅讀取 name/email/picture，不儲存後端，session 存 localStorage |
+| 輸出可信度 | Claude 只提建議與程式碼，最終判斷與執行由使用者決定 |
+| 建議 vs 決策界線 | Claude **不可**自行：刪除檔案、推送程式碼、送出表單 |
+
+### 3｜運營期監控（Observability）— 可追溯 + 緊急中止
+> 出事能查清楚、能立刻停損、讓下一次不再發生
+
+| 項目 | Vivi 實作方式 |
+|------|-------------|
+| 可追溯性 | Git history + `_VERSION.md` + `CLAUDE.md` Retro 記錄 |
+| 流量監控 | Cloudflare Pages Analytics（內建，免費） |
+| 費用警示 | Google Cloud → Budgets & alerts，上限 NT$300/月 |
+| 緊急停用 | Cloudflare Pages → 停用部署 / Formspree → 停用表單 |
+| 異常回流 | 發現問題 → 新增 Retro 條目 → 更新 CLAUDE.md → commit |
+
+### 供應商資料政策
+| 供應商 | 資料範圍 | 政策連結 |
+|--------|---------|---------|
+| Cloudflare Pages | 靜態檔案托管，不收集訪客個資 | cloudflare.com/privacypolicy |
+| Formspree | 表單資料儲存 30 天，可後台刪除 | formspree.io/legal/privacy-policy |
+| Google OAuth | 僅 name/email/picture，不用於廣告 | policies.google.com/privacy |
+| GitHub | 程式碼版控，public repo | docs.github.com/site-policy |
+
+---
+
 ## 📌 版本歷程摘要
 
 | 版本 | 日期 | 重點 |
 |------|------|------|
 | v1.0.0 | 2025-04-13 | 初版 18 頁完成 |
 | v1.1.0 | 2025-04-27 | 圖片整合、按鈕修正、表單接 Email、Skill/Retro 建立 |
+| v1.2.0 | 2026-04-28 | Google OAuth、商品篩選、會員等級、AI Agent 治理文件 |
