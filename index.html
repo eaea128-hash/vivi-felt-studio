@@ -783,6 +783,7 @@
       <button class="shop-filter__btn" data-filter="pet">寵物紀念</button>
       <button class="shop-filter__btn" data-filter="accessory">吊飾小物</button>
       <button class="shop-filter__btn" data-filter="bag">手提包</button>
+      <button class="shop-filter__btn" data-filter="student">學生作品</button>
     </div>
 
     <div class="scroll-track stagger">
@@ -840,27 +841,302 @@
         </div>
       </div>
 
-      <!-- Product Card 4 -->
-      <div class="product-card" data-category="accessory">
+      <!-- 吊飾 01 -->
+      <div class="product-card" data-category="accessory" style="min-width:260px;">
         <div class="product-card__image">
-          <div style="position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;">
-            <img loading="lazy" src="assets/images/pendant-01.webp" alt="蘑菇吊飾" style="width:100%;height:100%;object-fit:cover;display:block;" />
-            <img loading="lazy" src="assets/images/pendant-02.webp" alt="豬豬吊飾" style="width:100%;height:100%;object-fit:cover;display:block;" />
-            <img loading="lazy" src="assets/images/pendant-03.webp" alt="狗狗吊飾" style="width:100%;height:100%;object-fit:cover;display:block;" />
-            <img loading="lazy" src="assets/images/pendant-04.webp" alt="小雞吊飾" style="width:100%;height:100%;object-fit:cover;display:block;" />
-          </div>
-          <span class="product-card__badge">送禮首選</span>
+          <img loading="lazy" src="assets/images/pendant-01.webp" alt="笑臉小熊吊飾組" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          <span class="product-card__badge" style="background:var(--caramel);">送禮首選</span>
         </div>
         <div class="product-card__body">
-          <div class="product-card__name">療癒吊飾系列</div>
-          <div class="product-card__desc">蘑菇、小豬、狗狗、小雞……各種療癒造型，附精美包裝，最暖心的隨身小禮。</div>
-          <div class="product-card__price">NT$ 380 起</div>
+          <div class="product-card__name">笑臉小熊＋幸運龍 組合</div>
+          <div class="product-card__desc">白瓷笑臉熊與小幸運龍成對，送閨蜜、送自己都療癒。全手工羊毛氈，附精美禮盒。</div>
+          <div class="product-card__price">NT$ 680</div>
           <div class="product-card__actions">
-            <a href="custom-order.html" class="btn btn-primary btn-sm" style="width:100%;justify-content:center;">立即詢問客製 →</a>
+            <button onclick="openPurchase('笑臉小熊＋幸運龍 組合吊飾', 680)" class="btn btn-primary btn-sm" style="width:100%;justify-content:center;">🛒 立即購買</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 吊飾 02 -->
+      <div class="product-card" data-category="accessory" style="min-width:260px;">
+        <div class="product-card__image">
+          <img loading="lazy" src="assets/images/pendant-02.webp" alt="粉紅蓬蓬兔吊飾" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          <span class="product-card__badge" style="background:var(--warm-brown);">現貨</span>
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__name">粉紅蓬蓬兔吊飾</div>
+          <div class="product-card__desc">蓬鬆毛茸質感，粉嫩配色讓人一眼愛上，掛包包超吸睛。全手工羊毛氈製作。</div>
+          <div class="product-card__price">NT$ 380</div>
+          <div class="product-card__actions">
+            <button onclick="openPurchase('粉紅蓬蓬兔吊飾', 380)" class="btn btn-primary btn-sm" style="width:100%;justify-content:center;">🛒 立即購買</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 吊飾 03 -->
+      <div class="product-card" data-category="accessory" style="min-width:260px;">
+        <div class="product-card__image">
+          <img loading="lazy" src="assets/images/pendant-03.webp" alt="雪白小狗吊飾" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          <span class="product-card__badge" style="background:var(--warm-brown);">現貨</span>
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__name">雪白毛毛小狗吊飾</div>
+          <div class="product-card__desc">白絨絨的小狗公仔吊飾，比真實的狗狗還更圓更萌，掛在包包上每天都元氣滿滿。</div>
+          <div class="product-card__price">NT$ 380</div>
+          <div class="product-card__actions">
+            <button onclick="openPurchase('雪白毛毛小狗吊飾', 380)" class="btn btn-primary btn-sm" style="width:100%;justify-content:center;">🛒 立即購買</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 吊飾 04 -->
+      <div class="product-card" data-category="accessory" style="min-width:260px;">
+        <div class="product-card__image">
+          <img loading="lazy" src="assets/images/pendant-04.webp" alt="陽光小鴨吊飾" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          <span class="product-card__badge" style="background:var(--warm-brown);">現貨</span>
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__name">陽光萌鴨系列吊飾</div>
+          <div class="product-card__desc">黃澄澄的小鴨系列，帶著愉快的日常氛圍，全手工羊毛氈，附精美小包裝。</div>
+          <div class="product-card__price">NT$ 380</div>
+          <div class="product-card__actions">
+            <button onclick="openPurchase('陽光萌鴨系列吊飾', 380)" class="btn btn-primary btn-sm" style="width:100%;justify-content:center;">🛒 立即購買</button>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- ── 學生作品精選 ── -->
+    <div class="fade-up" style="margin-top:60px;">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:32px;">
+        <div style="height:1px;flex:1;background:var(--border);"></div>
+        <span style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--warm-brown);white-space:nowrap;">學生作品精選 · Student Works</span>
+        <div style="height:1px;flex:1;background:var(--border);"></div>
+      </div>
+      <p style="text-align:center;color:var(--text-mid);font-size:0.88rem;margin-bottom:32px;margin-top:-16px;">以下為 Vivi 課程學生的羊毛氈作品，每件獨立創作、限量珍藏。</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;">
+
+        <!-- 春日小旅人：陽光使者（現貨） -->
+        <div class="product-card" data-category="student">
+          <div class="product-card__image">
+            <img loading="lazy" src="assets/images/shop-s01-sunny.jpg" alt="陽光使者羊毛氈人偶" style="width:100%;height:100%;object-fit:cover;display:block;" />
+            <span class="product-card__badge" style="background:var(--warm-brown);">現貨</span>
+          </div>
+          <div class="product-card__body">
+            <div style="font-size:0.68rem;color:var(--text-light);margin-bottom:4px;">春日小旅人系列</div>
+            <div class="product-card__name">🟡 陽光使者</div>
+            <div class="product-card__desc">穿著黃色外套的旅行小人偶，全手工羊毛氈，約 10cm，附精美禮盒。</div>
+            <div class="product-card__price">NT$ 1,680</div>
+            <div class="product-card__actions">
+              <button onclick="openPurchase('🟡 陽光使者（春日小旅人系列）', 1680)" class="btn btn-primary btn-sm" style="width:100%;justify-content:center;">🛒 立即購買</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 春日小旅人：旅行樂手（售完） -->
+        <div class="product-card" data-category="student">
+          <div class="product-card__image" style="position:relative;">
+            <img loading="lazy" src="assets/images/shop-s02-music.jpg" alt="旅行樂手羊毛氈人偶" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(40%);" />
+            <div style="position:absolute;inset:0;background:rgba(58,46,37,0.45);display:flex;align-items:center;justify-content:center;">
+              <span style="color:#fff;font-size:0.8rem;font-weight:600;letter-spacing:0.1em;background:rgba(0,0,0,0.5);padding:6px 18px;border-radius:20px;">已售出</span>
+            </div>
+          </div>
+          <div class="product-card__body">
+            <div style="font-size:0.68rem;color:var(--text-light);margin-bottom:4px;">春日小旅人系列</div>
+            <div class="product-card__name">🍓 旅行樂手</div>
+            <div class="product-card__desc">帶著樂器的旅行小人偶，全手工羊毛氈，約 10cm，附精美禮盒。</div>
+            <div class="product-card__price" style="text-decoration:line-through;color:var(--text-light);">NT$ 1,780</div>
+            <div class="product-card__actions">
+              <a href="custom-order.html" class="btn btn-secondary btn-sm" style="width:100%;justify-content:center;">客製相似款 →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 春日小旅人：花語收藏家（現貨） -->
+        <div class="product-card" data-category="student">
+          <div class="product-card__image">
+            <img loading="lazy" src="assets/images/shop-s03-flower.jpg" alt="花語收藏家羊毛氈人偶" style="width:100%;height:100%;object-fit:cover;display:block;" />
+            <span class="product-card__badge" style="background:var(--warm-brown);">現貨</span>
+          </div>
+          <div class="product-card__body">
+            <div style="font-size:0.68rem;color:var(--text-light);margin-bottom:4px;">春日小旅人系列</div>
+            <div class="product-card__name">🌼 花語收藏家</div>
+            <div class="product-card__desc">手持花束的旅行小人偶，全手工羊毛氈，約 10cm，附精美禮盒。</div>
+            <div class="product-card__price">NT$ 1,680</div>
+            <div class="product-card__actions">
+              <button onclick="openPurchase('🌼 花語收藏家（春日小旅人系列）', 1680)" class="btn btn-primary btn-sm" style="width:100%;justify-content:center;">🛒 立即購買</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 春日小夥伴：祝福熊貓（售完） -->
+        <div class="product-card" data-category="student">
+          <div class="product-card__image" style="position:relative;">
+            <img loading="lazy" src="assets/images/shop-s04-panda.jpg" alt="祝福熊貓羊毛氈" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(40%);" />
+            <div style="position:absolute;inset:0;background:rgba(58,46,37,0.45);display:flex;align-items:center;justify-content:center;">
+              <span style="color:#fff;font-size:0.8rem;font-weight:600;letter-spacing:0.1em;background:rgba(0,0,0,0.5);padding:6px 18px;border-radius:20px;">已售出</span>
+            </div>
+          </div>
+          <div class="product-card__body">
+            <div style="font-size:0.68rem;color:var(--text-light);margin-bottom:4px;">春日小夥伴系列</div>
+            <div class="product-card__name">💌 祝福熊貓</div>
+            <div class="product-card__desc">捧著愛心的療癒熊貓公仔，全手工羊毛氈，附精美包裝。</div>
+            <div class="product-card__price" style="text-decoration:line-through;color:var(--text-light);">NT$ 1,580</div>
+            <div class="product-card__actions">
+              <a href="custom-order.html" class="btn btn-secondary btn-sm" style="width:100%;justify-content:center;">客製相似款 →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 春日小夥伴：幸福蘿蔔兔（現貨） -->
+        <div class="product-card" data-category="student">
+          <div class="product-card__image">
+            <img loading="lazy" src="assets/images/shop-s05-rabbit.jpg" alt="幸福蘿蔔兔羊毛氈" style="width:100%;height:100%;object-fit:cover;display:block;" />
+            <span class="product-card__badge" style="background:var(--warm-brown);">現貨</span>
+          </div>
+          <div class="product-card__body">
+            <div style="font-size:0.68rem;color:var(--text-light);margin-bottom:4px;">春日小夥伴系列</div>
+            <div class="product-card__name">🥕 幸福蘿蔔兔</div>
+            <div class="product-card__desc">抱著蘿蔔的療癒兔兔公仔，全手工羊毛氈，附精美包裝。</div>
+            <div class="product-card__price">NT$ 1,580</div>
+            <div class="product-card__actions">
+              <button onclick="openPurchase('🥕 幸福蘿蔔兔（春日小夥伴系列）', 1580)" class="btn btn-primary btn-sm" style="width:100%;justify-content:center;">🛒 立即購買</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 春日小夥伴：幸運橡果柴柴（售完） -->
+        <div class="product-card" data-category="student">
+          <div class="product-card__image" style="position:relative;">
+            <img loading="lazy" src="assets/images/shop-s06-shiba.jpg" alt="幸運橡果柴柴羊毛氈" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(40%);" />
+            <div style="position:absolute;inset:0;background:rgba(58,46,37,0.45);display:flex;align-items:center;justify-content:center;">
+              <span style="color:#fff;font-size:0.8rem;font-weight:600;letter-spacing:0.1em;background:rgba(0,0,0,0.5);padding:6px 18px;border-radius:20px;">已售出</span>
+            </div>
+          </div>
+          <div class="product-card__body">
+            <div style="font-size:0.68rem;color:var(--text-light);margin-bottom:4px;">春日小夥伴系列</div>
+            <div class="product-card__name">🍀 幸運橡果柴柴</div>
+            <div class="product-card__desc">手持橡果的幸運柴犬公仔，全手工羊毛氈，附精美包裝。</div>
+            <div class="product-card__price" style="text-decoration:line-through;color:var(--text-light);">NT$ 1,680</div>
+            <div class="product-card__actions">
+              <a href="custom-order.html" class="btn btn-secondary btn-sm" style="width:100%;justify-content:center;">客製相似款 →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 開運小夥伴：節節高升熊貓（售完） -->
+        <div class="product-card" data-category="student">
+          <div class="product-card__image" style="position:relative;">
+            <img loading="lazy" src="assets/images/shop-s07-panda2.jpg" alt="節節高升熊貓羊毛氈" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(40%);" />
+            <div style="position:absolute;inset:0;background:rgba(58,46,37,0.45);display:flex;align-items:center;justify-content:center;">
+              <span style="color:#fff;font-size:0.8rem;font-weight:600;letter-spacing:0.1em;background:rgba(0,0,0,0.5);padding:6px 18px;border-radius:20px;">已售出</span>
+            </div>
+          </div>
+          <div class="product-card__body">
+            <div style="font-size:0.68rem;color:var(--text-light);margin-bottom:4px;">開運小夥伴系列</div>
+            <div class="product-card__name">🎋 節節高升熊貓</div>
+            <div class="product-card__desc">招財開運系列，竹節熊貓公仔，全手工羊毛氈，祈願節節高升。</div>
+            <div class="product-card__price" style="text-decoration:line-through;color:var(--text-light);">NT$ 899</div>
+            <div class="product-card__actions">
+              <a href="custom-order.html" class="btn btn-secondary btn-sm" style="width:100%;justify-content:center;">客製相似款 →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 開運小夥伴：招財進寶柴柴（售完） -->
+        <div class="product-card" data-category="student">
+          <div class="product-card__image" style="position:relative;">
+            <img loading="lazy" src="assets/images/shop-s08-shiba2.jpg" alt="招財進寶柴柴羊毛氈" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(40%);" />
+            <div style="position:absolute;inset:0;background:rgba(58,46,37,0.45);display:flex;align-items:center;justify-content:center;">
+              <span style="color:#fff;font-size:0.8rem;font-weight:600;letter-spacing:0.1em;background:rgba(0,0,0,0.5);padding:6px 18px;border-radius:20px;">已售出</span>
+            </div>
+          </div>
+          <div class="product-card__body">
+            <div style="font-size:0.68rem;color:var(--text-light);margin-bottom:4px;">開運小夥伴系列</div>
+            <div class="product-card__name">🐕 招財進寶柴柴</div>
+            <div class="product-card__desc">開運招財柴犬公仔，全手工羊毛氈，帶來好運與財氣。</div>
+            <div class="product-card__price" style="text-decoration:line-through;color:var(--text-light);">NT$ 899</div>
+            <div class="product-card__actions">
+              <a href="custom-order.html" class="btn btn-secondary btn-sm" style="width:100%;justify-content:center;">客製相似款 →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 開運小夥伴：年年有餘兔兔（售完） -->
+        <div class="product-card" data-category="student">
+          <div class="product-card__image" style="position:relative;">
+            <img loading="lazy" src="assets/images/shop-s09-rabbit2.jpg" alt="年年有餘兔兔羊毛氈" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(40%);" />
+            <div style="position:absolute;inset:0;background:rgba(58,46,37,0.45);display:flex;align-items:center;justify-content:center;">
+              <span style="color:#fff;font-size:0.8rem;font-weight:600;letter-spacing:0.1em;background:rgba(0,0,0,0.5);padding:6px 18px;border-radius:20px;">已售出</span>
+            </div>
+          </div>
+          <div class="product-card__body">
+            <div style="font-size:0.68rem;color:var(--text-light);margin-bottom:4px;">開運小夥伴系列</div>
+            <div class="product-card__name">🐰 年年有餘兔兔</div>
+            <div class="product-card__desc">吉祥兔兔公仔，全手工羊毛氈，祝願年年有餘、平安喜樂。</div>
+            <div class="product-card__price" style="text-decoration:line-through;color:var(--text-light);">NT$ 899</div>
+            <div class="product-card__actions">
+              <a href="custom-order.html" class="btn btn-secondary btn-sm" style="width:100%;justify-content:center;">客製相似款 →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 星願守護馬：溫柔白（售完） -->
+        <div class="product-card" data-category="student">
+          <div class="product-card__image" style="position:relative;">
+            <img loading="lazy" src="assets/images/shop-s10-horse-white.jpg" alt="溫柔白守護馬吊飾" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(40%);" />
+            <div style="position:absolute;inset:0;background:rgba(58,46,37,0.45);display:flex;align-items:center;justify-content:center;">
+              <span style="color:#fff;font-size:0.8rem;font-weight:600;letter-spacing:0.1em;background:rgba(0,0,0,0.5);padding:6px 18px;border-radius:20px;">已售出</span>
+            </div>
+          </div>
+          <div class="product-card__body">
+            <div style="font-size:0.68rem;color:var(--text-light);margin-bottom:4px;">星願守護馬系列</div>
+            <div class="product-card__name">✨ 溫柔白守護馬</div>
+            <div class="product-card__desc">純白系守護馬吊飾，約 5cm，羊毛氈手作，附緞帶包裝，守護平安。</div>
+            <div class="product-card__price" style="text-decoration:line-through;color:var(--text-light);">NT$ 499</div>
+            <div class="product-card__actions">
+              <a href="custom-order.html" class="btn btn-secondary btn-sm" style="width:100%;justify-content:center;">客製相似款 →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 星願守護馬：玫瑰粉（現貨） -->
+        <div class="product-card" data-category="student">
+          <div class="product-card__image">
+            <img loading="lazy" src="assets/images/shop-s11-horse-pink.jpg" alt="玫瑰粉守護馬吊飾" style="width:100%;height:100%;object-fit:cover;display:block;" />
+            <span class="product-card__badge" style="background:var(--warm-brown);">現貨</span>
+          </div>
+          <div class="product-card__body">
+            <div style="font-size:0.68rem;color:var(--text-light);margin-bottom:4px;">星願守護馬系列</div>
+            <div class="product-card__name">✨ 玫瑰粉守護馬</div>
+            <div class="product-card__desc">玫瑰粉系守護馬吊飾，約 5cm，羊毛氈手作，附緞帶包裝，送禮自用兩相宜。</div>
+            <div class="product-card__price">NT$ 499</div>
+            <div class="product-card__actions">
+              <button onclick="openPurchase('✨ 玫瑰粉守護馬吊飾（星願守護馬系列）', 499)" class="btn btn-primary btn-sm" style="width:100%;justify-content:center;">🛒 立即購買</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 星願守護馬：森系綠（現貨） -->
+        <div class="product-card" data-category="student">
+          <div class="product-card__image">
+            <img loading="lazy" src="assets/images/shop-s12-horse-green.jpg" alt="森系綠守護馬吊飾" style="width:100%;height:100%;object-fit:cover;display:block;" />
+            <span class="product-card__badge" style="background:var(--warm-brown);">現貨</span>
+          </div>
+          <div class="product-card__body">
+            <div style="font-size:0.68rem;color:var(--text-light);margin-bottom:4px;">星願守護馬系列</div>
+            <div class="product-card__name">✨ 森系綠守護馬</div>
+            <div class="product-card__desc">自然森系配色守護馬吊飾，約 5cm，羊毛氈手作，附緞帶包裝，小眾獨特品味。</div>
+            <div class="product-card__price">NT$ 499</div>
+            <div class="product-card__actions">
+              <button onclick="openPurchase('✨ 森系綠守護馬吊飾（星願守護馬系列）', 499)" class="btn btn-primary btn-sm" style="width:100%;justify-content:center;">🛒 立即購買</button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end student grid -->
+    </div><!-- end student section -->
 
     <div style="text-align:center; margin-top:48px;" class="fade-up">
       <a href="custom-order.html" class="btn btn-secondary">查看所有作品 →</a>
@@ -1236,6 +1512,74 @@
 </footer>
 
 <script src="scripts/main.js"></script>
+<!-- ══════════ 購買 Modal ══════════ -->
+<div id="purchase-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(58,46,37,0.6);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:16px;" onclick="if(event.target===this)closePurchase()">
+  <div style="background:#fff;border-radius:20px;padding:36px 32px;max-width:460px;width:100%;max-height:90vh;overflow-y:auto;position:relative;box-shadow:0 24px 60px rgba(0,0,0,0.25);">
+    <button onclick="closePurchase()" style="position:absolute;top:14px;right:18px;border:none;background:none;font-size:1.6rem;cursor:pointer;color:var(--espresso);line-height:1;">×</button>
+
+    <div style="font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--warm-brown);margin-bottom:6px;">立即購買</div>
+    <div id="pm-title" style="font-size:1.15rem;font-weight:600;color:var(--espresso);margin-bottom:4px;padding-right:24px;"></div>
+    <div id="pm-price" style="font-size:1.5rem;font-weight:700;color:var(--warm-brown);margin-bottom:24px;"></div>
+
+    <!-- Step 1：轉帳資訊 -->
+    <div style="background:var(--oat);border-radius:14px;padding:20px 22px;margin-bottom:20px;">
+      <div style="font-size:0.75rem;font-weight:700;color:var(--espresso);margin-bottom:14px;display:flex;align-items:center;gap:8px;">
+        <span style="background:var(--espresso);color:var(--cream);border-radius:50%;width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-size:0.65rem;flex-shrink:0;">1</span>
+        請先完成 ATM 轉帳
+      </div>
+      <div style="display:grid;grid-template-columns:auto 1fr;row-gap:8px;column-gap:18px;font-size:0.88rem;align-items:center;">
+        <span style="color:var(--text-mid);">銀行代碼</span>
+        <span style="font-weight:600;">013 國泰世華銀行</span>
+        <span style="color:var(--text-mid);">帳號</span>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span style="font-weight:700;font-size:1rem;letter-spacing:0.05em;color:var(--espresso);">001051002373</span>
+          <button id="copy-btn" onclick="copyAcct()" style="font-size:0.68rem;padding:3px 10px;border:1.5px solid var(--border);border-radius:6px;background:white;cursor:pointer;flex-shrink:0;">複製</button>
+        </div>
+        <span style="color:var(--text-mid);">金額</span>
+        <span id="pm-price-row" style="font-weight:600;color:var(--warm-brown);"></span>
+      </div>
+    </div>
+
+    <!-- Step 2：填寫訂單 -->
+    <div style="font-size:0.75rem;font-weight:700;color:var(--espresso);margin-bottom:14px;display:flex;align-items:center;gap:8px;">
+      <span style="background:var(--espresso);color:var(--cream);border-radius:50%;width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-size:0.65rem;flex-shrink:0;">2</span>
+      填寫訂單，Vivi 確認後與您聯絡
+    </div>
+
+    <form id="purchase-form" action="https://formspree.io/f/xrervybz" method="POST">
+      <input type="hidden" name="_subject" id="pm-subject" value="新訂單通知">
+      <input type="hidden" name="商品名稱" id="pm-item-hidden">
+      <input type="hidden" name="商品金額" id="pm-amt-hidden">
+      <div style="display:grid;gap:10px;">
+        <input type="text" name="姓名" placeholder="您的姓名 *" required
+          style="width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:0.9rem;font-family:var(--font-zh);outline:none;box-sizing:border-box;">
+        <input type="tel" name="聯絡電話" placeholder="聯絡電話 *" required
+          style="width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:0.9rem;font-family:var(--font-zh);outline:none;box-sizing:border-box;">
+        <input type="email" name="Email" placeholder="Email *" required
+          style="width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:0.9rem;font-family:var(--font-zh);outline:none;box-sizing:border-box;">
+        <input type="text" name="轉帳末5碼" placeholder="轉帳後末 5 碼 *" required
+          style="width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:0.9rem;font-family:var(--font-zh);outline:none;box-sizing:border-box;">
+        <input type="text" name="收件地址" placeholder="收件地址（選填）"
+          style="width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:0.9rem;font-family:var(--font-zh);outline:none;box-sizing:border-box;">
+        <textarea name="備註" placeholder="其他備註（選填）" rows="2"
+          style="width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:0.9rem;font-family:var(--font-zh);outline:none;resize:vertical;box-sizing:border-box;"></textarea>
+        <button type="submit" id="pm-submit-btn"
+          style="width:100%;padding:14px;background:var(--espresso);color:var(--cream);border:none;border-radius:12px;font-size:0.95rem;cursor:pointer;font-family:var(--font-zh);font-weight:500;transition:opacity 0.2s;">
+          ✉ 送出訂單通知
+        </button>
+      </div>
+    </form>
+
+    <!-- 成功畫面 -->
+    <div id="pm-success" style="display:none;text-align:center;padding:32px 0 16px;">
+      <div style="font-size:3rem;margin-bottom:12px;">✅</div>
+      <div style="font-size:1.05rem;font-weight:600;color:var(--espresso);margin-bottom:8px;">訂單已送出！</div>
+      <div style="font-size:0.85rem;color:var(--text-mid);line-height:1.8;">Vivi 收到通知後會在 1–2 個工作天內<br>透過電話或 Email 與您確認。<br>謝謝您的支持 🐑</div>
+      <button onclick="closePurchase()" style="margin-top:24px;padding:10px 28px;background:var(--espresso);color:var(--cream);border:none;border-radius:10px;cursor:pointer;font-family:var(--font-zh);">關閉</button>
+    </div>
+  </div>
+</div>
+
 <script>
   // 商品品類篩選
   document.querySelectorAll('.shop-filter__btn').forEach(btn => {
@@ -1252,6 +1596,65 @@
       });
     });
   });
+
+  // ── 購買 Modal ──
+  function openPurchase(name, price) {
+    const fmt = 'NT$ ' + Number(price).toLocaleString();
+    document.getElementById('pm-title').textContent = name;
+    document.getElementById('pm-price').textContent = fmt;
+    document.getElementById('pm-price-row').textContent = fmt;
+    document.getElementById('pm-subject').value = '【新訂單】' + name + ' ' + fmt;
+    document.getElementById('pm-item-hidden').value = name;
+    document.getElementById('pm-amt-hidden').value = fmt;
+    document.getElementById('pm-success').style.display = 'none';
+    document.getElementById('purchase-form').style.display = '';
+    document.getElementById('pm-submit-btn').disabled = false;
+    document.getElementById('pm-submit-btn').textContent = '✉ 送出訂單通知';
+    const modal = document.getElementById('purchase-modal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePurchase() {
+    document.getElementById('purchase-modal').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  function copyAcct() {
+    navigator.clipboard.writeText('001051002373').then(() => {
+      const btn = document.getElementById('copy-btn');
+      btn.textContent = '✔ 已複製';
+      btn.style.color = 'green';
+      setTimeout(() => { btn.textContent = '複製'; btn.style.color = ''; }, 2500);
+    });
+  }
+
+  document.getElementById('purchase-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('pm-submit-btn');
+    btn.disabled = true;
+    btn.textContent = '送出中…';
+    const data = new FormData(this);
+    fetch(this.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } })
+      .then(r => {
+        if (r.ok) {
+          document.getElementById('purchase-form').style.display = 'none';
+          document.getElementById('pm-success').style.display = '';
+        } else {
+          btn.disabled = false;
+          btn.textContent = '✉ 送出訂單通知';
+          alert('送出失敗，請稍後再試或直接傳 IG 訊息給 Vivi。');
+        }
+      })
+      .catch(() => {
+        btn.disabled = false;
+        btn.textContent = '✉ 送出訂單通知';
+        alert('網路異常，請稍後再試。');
+      });
+  });
+
+  // ESC 關閉 modal
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closePurchase(); });
 </script>
 </body>
 </html>
