@@ -260,88 +260,143 @@
       <span class="label">Pet Memorial</span>
       <h2>寵物紀念訂製</h2>
       <div class="divider"></div>
-      <p>用羊毛氈留住那份無法替代的陪伴，讓牠永遠留在你身邊。</p>
+      <p>把毛孩的回憶，變成一個可以陪伴很久的作品。</p>
     </div>
 
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;" class="fade-up">
+    <!-- 三層方案 Good / Better / Best -->
+    <div id="pet-tiers" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:60px;" class="stagger">
+
+      <!-- 基礎款 -->
+      <div style="background:var(--white);border-radius:var(--radius-lg);padding:32px 28px;box-shadow:var(--shadow-card);position:relative;">
+        <div style="font-size:0.72rem;letter-spacing:0.15em;color:var(--text-light);margin-bottom:8px;">基礎款</div>
+        <div style="font-size:1.3rem;font-weight:500;color:var(--espresso);margin-bottom:4px;">NT$ 2,800 起</div>
+        <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:20px;">適合：預算型、小送禮</div>
+        <ul style="list-style:none;padding:0;margin:0 0 24px;display:flex;flex-direction:column;gap:10px;font-size:0.85rem;color:var(--text-mid);">
+          <li>✔ 頭部造型（簡化版）</li>
+          <li>✔ 基本五官呈現</li>
+          <li>✔ 單色 / 簡單配色</li>
+        </ul>
+        <a href="#order-form" class="btn btn-secondary btn-sm" style="width:100%;justify-content:center;">傳照片詢問</a>
+      </div>
+
+      <!-- 進階款（推薦） -->
+      <div style="background:var(--espresso);border-radius:var(--radius-lg);padding:32px 28px;box-shadow:var(--shadow-lg);position:relative;">
+        <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--caramel);color:#fff;font-size:0.7rem;padding:4px 18px;border-radius:20px;white-space:nowrap;">⭐ 最多人選擇</div>
+        <div style="font-size:0.72rem;letter-spacing:0.15em;color:var(--camel);margin-bottom:8px;">進階款</div>
+        <div style="font-size:1.3rem;font-weight:500;color:var(--cream);margin-bottom:4px;">NT$ 3,800 起</div>
+        <div style="font-size:0.78rem;color:rgba(247,243,238,0.6);margin-bottom:20px;">相似度大幅提升</div>
+        <ul style="list-style:none;padding:0;margin:0 0 24px;display:flex;flex-direction:column;gap:10px;font-size:0.85rem;color:rgba(247,243,238,0.85);">
+          <li>✔ 頭部＋表情細節</li>
+          <li>✔ 毛色層次呈現</li>
+          <li>✔ 可客製簡單姿勢</li>
+          <li>✔ 相似度顯著提升</li>
+        </ul>
+        <a href="#order-form" class="btn btn-warm btn-sm" style="width:100%;justify-content:center;">立即客製</a>
+      </div>
+
+      <!-- 精緻款 -->
+      <div style="background:var(--white);border-radius:var(--radius-lg);padding:32px 28px;box-shadow:var(--shadow-card);position:relative;">
+        <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--warm-brown);color:#fff;font-size:0.7rem;padding:4px 18px;border-radius:20px;white-space:nowrap;">🔥 收藏推薦</div>
+        <div style="font-size:0.72rem;letter-spacing:0.15em;color:var(--text-light);margin-bottom:8px;">精緻款 Premium</div>
+        <div style="font-size:1.3rem;font-weight:500;color:var(--espresso);margin-bottom:4px;">NT$ 5,200 起</div>
+        <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:20px;">收藏級 / 紀念用</div>
+        <ul style="list-style:none;padding:0;margin:0 0 24px;display:flex;flex-direction:column;gap:10px;font-size:0.85rem;color:var(--text-mid);">
+          <li>✔ 高相似度還原</li>
+          <li>✔ 毛流 / 漸層細節</li>
+          <li>✔ 可加小配件（圍巾等）</li>
+          <li>✔ 可指定表情 / 個性</li>
+        </ul>
+        <a href="#order-form" class="btn btn-secondary btn-sm" style="width:100%;justify-content:center;">傳照片詢問</a>
+      </div>
+
+    </div>
+
+    <!-- 多寵 / 全身另行報價 -->
+    <div class="fade-up" style="background:var(--sand);border-radius:var(--radius-lg);padding:20px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:48px;">
       <div>
-        <div style="background:var(--white); border-radius:var(--radius-xl); padding:40px; box-shadow:var(--shadow-card);">
-          <h3 style="font-size:1.1rem; font-weight:500; margin-bottom:20px; color:var(--text-dark);">寵物紀念的製作原則</h3>
+        <div style="font-weight:500;color:var(--espresso);margin-bottom:4px;">多寵 / 全身 / 場景客製</div>
+        <div style="font-size:0.85rem;color:var(--text-mid);">超過一隻毛孩、全身立體或加入場景，另行報價</div>
+      </div>
+      <a href="#order-form" class="btn btn-primary btn-sm">詢問報價 →</a>
+    </div>
 
-          <div style="display:flex; flex-direction:column; gap:20px;">
-            <div style="display:flex; gap:16px; align-items:flex-start;">
-              <div style="width:36px; height:36px; border-radius:50%; background:var(--oat); border:1.5px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.9rem; flex-shrink:0;">📸</div>
-              <div>
-                <div style="font-size:0.92rem; font-weight:500; color:var(--text-dark); margin-bottom:4px;">提供多角度清晰照片</div>
-                <div style="font-size:0.82rem; color:var(--text-mid); line-height:1.7;">正面、側面、特寫，照片越多越能還原牠獨特的樣貌與神態。</div>
-              </div>
-            </div>
+    <!-- 對比圖 + 製作流程 -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;" class="fade-up">
 
-            <div style="display:flex; gap:16px; align-items:flex-start;">
-              <div style="width:36px; height:36px; border-radius:50%; background:var(--oat); border:1.5px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.9rem; flex-shrink:0;">💬</div>
-              <div>
-                <div style="font-size:0.92rem; font-weight:500; color:var(--text-dark); margin-bottom:4px;">充分溝通細節</div>
-                <div style="font-size:0.82rem; color:var(--text-mid); line-height:1.7;">製作前與您確認尺寸、細節與特殊要求，確保作品符合期待。</div>
-              </div>
-            </div>
-
-            <div style="display:flex; gap:16px; align-items:flex-start;">
-              <div style="width:36px; height:36px; border-radius:50%; background:var(--oat); border:1.5px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.9rem; flex-shrink:0;">🌡️</div>
-              <div>
-                <div style="font-size:0.92rem; font-weight:500; color:var(--text-dark); margin-bottom:4px;">保有手作溫度</div>
-                <div style="font-size:0.82rem; color:var(--text-mid); line-height:1.7;">手作作品會有些微差異，這是手作獨有的靈魂，不是缺陷。</div>
-              </div>
-            </div>
-
-            <div style="display:flex; gap:16px; align-items:flex-start;">
-              <div style="width:36px; height:36px; border-radius:50%; background:var(--oat); border:1.5px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.9rem; flex-shrink:0;">✅</div>
-              <div>
-                <div style="font-size:0.92rem; font-weight:500; color:var(--text-dark); margin-bottom:4px;">製作中進度確認</div>
-                <div style="font-size:0.82rem; color:var(--text-mid); line-height:1.7;">製作過程會提供進度更新，讓您安心等待，也可適時調整。</div>
-              </div>
-            </div>
+      <!-- 對比圖 -->
+      <div>
+        <div style="font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--warm-brown);margin-bottom:16px;">Before & After</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;border-radius:var(--radius-lg);overflow:hidden;">
+          <div style="position:relative;">
+            <img loading="lazy" src="assets/images/pet-compare-dog.webp" alt="寵物照片原圖" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;" />
+            <div style="position:absolute;bottom:8px;left:8px;background:rgba(0,0,0,0.5);color:#fff;font-size:0.7rem;padding:2px 8px;border-radius:4px;">原始照片</div>
+          </div>
+          <div style="position:relative;">
+            <img loading="lazy" src="assets/images/work-pet-pug.webp" alt="羊毛氈成品" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;" />
+            <div style="position:absolute;bottom:8px;left:8px;background:rgba(58,46,37,0.75);color:#fff;font-size:0.7rem;padding:2px 8px;border-radius:4px;">羊毛氈成品</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;border-radius:var(--radius-lg);overflow:hidden;">
+          <div style="position:relative;">
+            <img loading="lazy" src="assets/images/pet-compare-rabbit.webp" alt="兔子照片原圖" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;" />
+            <div style="position:absolute;bottom:8px;left:8px;background:rgba(0,0,0,0.5);color:#fff;font-size:0.7rem;padding:2px 8px;border-radius:4px;">原始照片</div>
+          </div>
+          <div style="position:relative;">
+            <img loading="lazy" src="assets/images/work-pet-01.webp" alt="兔子羊毛氈成品" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;" />
+            <div style="position:absolute;bottom:8px;left:8px;background:rgba(58,46,37,0.75);color:#fff;font-size:0.7rem;padding:2px 8px;border-radius:4px;">羊毛氈成品</div>
           </div>
         </div>
       </div>
 
+      <!-- 製作流程 -->
       <div>
-        <div style="background:var(--white); border-radius:var(--radius-lg); padding:32px; box-shadow:var(--shadow-card); margin-bottom:20px;">
-          <div style="font-size:0.78rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--warm-brown); margin-bottom:12px;">費用參考</div>
-          <table style="width:100%; border-collapse:collapse;">
-            <thead>
-              <tr style="border-bottom:1.5px solid var(--border);">
-                <th style="text-align:left; padding:10px 0; font-size:0.8rem; color:var(--text-light); font-weight:400;">作品類型</th>
-                <th style="text-align:right; padding:10px 0; font-size:0.8rem; color:var(--text-light); font-weight:400;">參考價格</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style="border-bottom:1px solid var(--border-light);">
-                <td style="padding:12px 0; font-size:0.88rem; color:var(--text-mid);">小型（約 5~8cm）</td>
-                <td style="padding:12px 0; font-size:0.88rem; color:var(--espresso); text-align:right; font-weight:500;">NT$ 1,200 起</td>
-              </tr>
-              <tr style="border-bottom:1px solid var(--border-light);">
-                <td style="padding:12px 0; font-size:0.88rem; color:var(--text-mid);">中型（約 10~15cm）</td>
-                <td style="padding:12px 0; font-size:0.88rem; color:var(--espresso); text-align:right; font-weight:500;">NT$ 1,800 起</td>
-              </tr>
-              <tr style="border-bottom:1px solid var(--border-light);">
-                <td style="padding:12px 0; font-size:0.88rem; color:var(--text-mid);">大型（約 20cm 以上）</td>
-                <td style="padding:12px 0; font-size:0.88rem; color:var(--espresso); text-align:right; font-weight:500;">NT$ 2,800 起</td>
-              </tr>
-              <tr>
-                <td style="padding:12px 0; font-size:0.88rem; color:var(--text-mid);">精緻全身立體</td>
-                <td style="padding:12px 0; font-size:0.88rem; color:var(--espresso); text-align:right; font-weight:500;">NT$ 3,500 起</td>
-              </tr>
-            </tbody>
-          </table>
-          <p style="font-size:0.75rem; color:var(--text-muted); margin-top:12px;">※ 最終報價依尺寸、複雜度、毛色層次及特殊需求而定，填寫表單後將與您詳細確認。</p>
+        <div style="font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--warm-brown);margin-bottom:16px;">製作流程</div>
+        <div style="display:flex;flex-direction:column;gap:0;">
+          <div style="display:flex;gap:16px;align-items:flex-start;padding-bottom:24px;position:relative;">
+            <div style="position:absolute;left:18px;top:40px;bottom:0;width:2px;background:var(--border);z-index:0;"></div>
+            <div style="width:36px;height:36px;border-radius:50%;background:var(--espresso);color:var(--cream);display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:600;flex-shrink:0;z-index:1;">1</div>
+            <div style="padding-top:6px;">
+              <div style="font-weight:500;color:var(--text-dark);margin-bottom:4px;">傳照片 & 說明需求</div>
+              <div style="font-size:0.82rem;color:var(--text-mid);">提供多角度清晰照片，說明想要的款式</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-start;padding-bottom:24px;position:relative;">
+            <div style="position:absolute;left:18px;top:40px;bottom:0;width:2px;background:var(--border);z-index:0;"></div>
+            <div style="width:36px;height:36px;border-radius:50%;background:var(--espresso);color:var(--cream);display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:600;flex-shrink:0;z-index:1;">2</div>
+            <div style="padding-top:6px;">
+              <div style="font-weight:500;color:var(--text-dark);margin-bottom:4px;">討論細節 & 確認報價</div>
+              <div style="font-size:0.82rem;color:var(--text-mid);">Vivi 會回覆建議方案與最終報價</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-start;padding-bottom:24px;position:relative;">
+            <div style="position:absolute;left:18px;top:40px;bottom:0;width:2px;background:var(--border);z-index:0;"></div>
+            <div style="width:36px;height:36px;border-radius:50%;background:var(--espresso);color:var(--cream);display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:600;flex-shrink:0;z-index:1;">3</div>
+            <div style="padding-top:6px;">
+              <div style="font-weight:500;color:var(--text-dark);margin-bottom:4px;">付訂金，開始製作</div>
+              <div style="font-size:0.82rem;color:var(--text-mid);">確認後付訂金 50%，Vivi 開始手作</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-start;padding-bottom:24px;position:relative;">
+            <div style="position:absolute;left:18px;top:40px;bottom:0;width:2px;background:var(--border);z-index:0;"></div>
+            <div style="width:36px;height:36px;border-radius:50%;background:var(--espresso);color:var(--cream);display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:600;flex-shrink:0;z-index:1;">4</div>
+            <div style="padding-top:6px;">
+              <div style="font-weight:500;color:var(--text-dark);margin-bottom:4px;">進度更新 & 調整</div>
+              <div style="font-size:0.82rem;color:var(--text-mid);">製作中提供進度照片，可適時微調</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-start;">
+            <div style="width:36px;height:36px;border-radius:50%;background:var(--caramel);color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:600;flex-shrink:0;">5</div>
+            <div style="padding-top:6px;">
+              <div style="font-weight:500;color:var(--text-dark);margin-bottom:4px;">完成 & 出貨</div>
+              <div style="font-size:0.82rem;color:var(--text-mid);">尾款後精心包裝寄出，一般 2~4 週完成</div>
+            </div>
+          </div>
         </div>
-
-        <div style="background:var(--espresso); border-radius:var(--radius-lg); padding:24px 28px; color:var(--cream);">
-          <div style="font-size:0.82rem; margin-bottom:8px; opacity:0.8;">製作時間參考</div>
-          <div style="font-size:1.05rem; font-weight:500; margin-bottom:4px;">一般訂單：2~4 週</div>
-          <div style="font-size:0.82rem; opacity:0.7;">節日旺季或複雜作品需加時，建議提前預訂</div>
+        <div style="background:var(--espresso);border-radius:var(--radius-md);padding:16px 20px;margin-top:24px;color:var(--cream);font-size:0.82rem;">
+          🎁 建議節日前 <strong>4~6 週</strong>提前預訂，旺季名額有限
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -362,42 +417,42 @@
       <div class="item-card">
         <span class="item-card__icon">🐾</span>
         <h4>寵物肖像</h4>
-        <p>貓、狗、兔子等各式毛孩，依照片客製還原。</p>
-        <div class="price-range">NT$ 1,200 起</div>
+        <p>貓、狗、兔子等各式毛孩，依照片客製還原，三種精緻等級可選。</p>
+        <div class="price-range">NT$ 2,800 – 5,200+</div>
       </div>
 
       <div class="item-card">
         <span class="item-card__icon">🧣</span>
         <h4>羊毛氈圍巾</h4>
-        <p>溫暖柔軟的手作圍巾，可選圖樣與配色。</p>
-        <div class="price-range">NT$ 2,200 起</div>
+        <p>溫暖柔軟的手作圍巾，基本款純色或客製圖樣、配色皆可。</p>
+        <div class="price-range">基本款 NT$ 2,200 ／ 客製款 NT$ 2,800–3,500</div>
       </div>
 
       <div class="item-card">
         <span class="item-card__icon">👜</span>
         <h4>羊毛氈包包</h4>
-        <p>獨特手感托特包、小包，每個都是限量品。</p>
-        <div class="price-range">NT$ 3,500 起</div>
+        <p>獨特手感托特包，經典款或造型升級設計款，每個都是限量品。</p>
+        <div class="price-range">經典款 NT$ 3,500 ／ 設計款 NT$ 4,200–5,000</div>
       </div>
 
       <div class="item-card">
         <span class="item-card__icon">🧻</span>
         <h4>面紙套 / 收納小物</h4>
-        <p>實用又療癒的日常小物，送禮自用兩相宜。</p>
-        <div class="price-range">NT$ 580 起</div>
+        <p>實用又療癒的日常小物，依尺寸與造型計價，送禮自用兩相宜。</p>
+        <div class="price-range">NT$ 580 – 800</div>
       </div>
 
       <div class="item-card">
-        <span class="item-card__icon">🎀</span>
+        <span class="item-card__icon">🎁</span>
         <h4>禮物吊飾</h4>
-        <p>各種可愛造型，適合節慶、生日、婚禮禮品。</p>
-        <div class="price-range">NT$ 380 起</div>
+        <p>各種療癒造型，可客製表情與小配件，附精美包裝，最暖心的小禮。</p>
+        <div class="price-range">NT$ 380 – 600</div>
       </div>
 
       <div class="item-card">
         <span class="item-card__icon">✨</span>
         <h4>其他客製需求</h4>
-        <p>有特殊想法歡迎告訴我們，一起討論可行性。</p>
+        <p>有特殊想法歡迎告訴我們，一起討論可行性，Vivi 很樂意嘗試。</p>
         <div class="price-range">洽詢報價</div>
       </div>
     </div>
