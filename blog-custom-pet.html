@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>客製寵物羊毛氈價格與流程｜Vivi Felt Studio</title>
+  <meta name="description" content="想把毛孩的回憶永久珍藏？了解客製寵物羊毛氈完整費用（NT$980起）、流程、照片準備要點與常見問題，讓委託更順利、更安心。" />
+  <meta property="og:title" content="客製寵物羊毛氈價格與流程｜Vivi Felt Studio" />
+  <meta property="og:description" content="NT$980起，依照你的照片細緻還原毛孩的表情與毛色。完整流程透明說明，讓每一次委託都安心。" />
+  <meta property="og:image" content="https://vivi-felt-studio.pages.dev/assets/images/work-pet-03.webp" />
+  <meta property="og:type" content="article" />
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles/style.css" />
+  <style>
+    .article-body {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .article-body h2 {
+      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+      color: var(--espresso);
+      font-weight: 500;
+      margin: 48px 0 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--sand);
+    }
+    .article-body h3 {
+      font-size: 1.05rem;
+      color: var(--warm-brown);
+      font-weight: 600;
+      margin: 28px 0 10px;
+    }
+    .article-body p {
+      color: var(--text-mid);
+      line-height: 1.95;
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+    }
+    .article-body ul, .article-body ol {
+      padding-left: 20px;
+      color: var(--text-mid);
+      line-height: 2;
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+    .article-body li { margin-bottom: 4px; }
+    .article-tip {
+      background: var(--oat);
+      border-left: 4px solid var(--camel);
+      border-radius: 0 12px 12px 0;
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 0.9rem;
+      color: var(--espresso);
+      line-height: 1.8;
+    }
+    .article-tip strong { color: var(--warm-brown); }
+    /* 定價卡 */
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 28px 0;
+    }
+    .price-card {
+      border-radius: 16px;
+      padding: 24px 20px;
+      text-align: center;
+      box-shadow: var(--shadow-card);
+    }
+    .price-card.basic { background: var(--white); }
+    .price-card.advance { background: var(--espresso); }
+    .price-card.premium { background: var(--white); }
+    .price-card__tier { font-size: 0.72rem; letter-spacing: 0.15em; margin-bottom: 6px; }
+    .price-card.basic .price-card__tier { color: var(--text-light); }
+    .price-card.advance .price-card__tier { color: var(--camel); }
+    .price-card.premium .price-card__tier { color: var(--text-light); }
+    .price-card__amount { font-size: 1.3rem; font-weight: 600; margin-bottom: 4px; }
+    .price-card.basic .price-card__amount { color: var(--espresso); }
+    .price-card.advance .price-card__amount { color: var(--cream); }
+    .price-card.premium .price-card__amount { color: var(--espresso); }
+    .price-card__sub { font-size: 0.78rem; margin-bottom: 16px; }
+    .price-card.basic .price-card__sub { color: var(--text-muted); }
+    .price-card.advance .price-card__sub { color: rgba(247,243,238,0.6); }
+    .price-card.premium .price-card__sub { color: var(--text-muted); }
+    .price-card ul { list-style: none; padding: 0; margin: 0; font-size: 0.83rem; line-height: 1.9; }
+    .price-card.basic ul, .price-card.premium ul { color: var(--text-mid); }
+    .price-card.advance ul { color: rgba(247,243,238,0.85); }
+    /* 流程 */
+    .process-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin: 28px 0;
+      position: relative;
+    }
+    .process-step {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .process-step:last-child { border-bottom: none; }
+    .step-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--espresso);
+      color: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+    .step-content h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--espresso);
+      margin-bottom: 4px;
+    }
+    .step-content p {
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      margin: 0;
+      line-height: 1.8;
+    }
+    /* FAQ */
+    .faq-simple { margin: 24px 0; }
+    .faq-simple-item {
+      border-bottom: 1px solid var(--border);
+      padding: 18px 0;
+    }
+    .faq-simple-item:last-child { border-bottom: none; }
+    .faq-simple-q { font-weight: 600; color: var(--espresso); margin-bottom: 8px; font-size: 0.95rem; }
+    .faq-simple-a { color: var(--text-mid); font-size: 0.88rem; line-height: 1.9; }
+    .cta-box {
+      background: var(--espresso);
+      border-radius: 18px;
+      padding: 40px;
+      text-align: center;
+      margin: 60px 0 0;
+      color: var(--cream);
+    }
+    .cta-box h3 { color: var(--cream); font-size: 1.3rem; margin-bottom: 12px; }
+    .cta-box p { color: rgba(247,243,238,0.8); margin-bottom: 24px; font-size: 0.9rem; }
+    @media (max-width: 640px) {
+      .price-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="navbar__logo">
+    <span class="logo-en">Vivi Felt Studio</span>
+    <span class="logo-zh">薇薇V的羊毛氈手作坊</span>
+  </a>
+  <ul class="navbar__nav">
+    <li><a href="index.html#shop">商品選購</a></li>
+    <li><a href="custom-order.html">客製訂製</a></li>
+    <li><a href="courses.html">羊毛氈課程</a></li>
+    <li><a href="corporate.html">企業包班</a></li>
+    <li><a href="membership.html">會員制度</a></li>
+    <li><a href="contact.html">聯絡我們</a></li>
+  </ul>
+  <div class="navbar__actions">
+    <a href="membership.html" class="navbar__member-btn"><span>👤</span> 登入 / 加入</a>
+    <a href="custom-order.html" class="btn btn-primary btn-sm">立即詢問</a>
+  </div>
+  <button class="navbar__hamburger" aria-label="開啟選單"><span></span><span></span><span></span></button>
+</nav>
+<nav class="mobile-nav">
+  <a href="index.html">首頁</a>
+  <a href="index.html#shop">商品選購</a>
+  <a href="custom-order.html">客製訂製</a>
+  <a href="courses.html">羊毛氈課程</a>
+  <a href="corporate.html">企業包班</a>
+  <a href="membership.html">會員制度</a>
+  <a href="faq.html">常見問題</a>
+  <a href="contact.html">聯絡我們</a>
+  <div class="mobile-nav__actions">
+    <a href="membership.html" class="btn btn-secondary">登入 / 加入會員</a>
+    <a href="custom-order.html" class="btn btn-primary">立即詢問</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">首頁</a><span>/</span>
+      <a href="blog-felt-intro.html">手作知識</a><span>/</span>
+      <span style="color:var(--text-dark);">客製寵物流程與費用</span>
+    </div>
+    <span class="label">Custom Pet Guide</span>
+    <h1 class="fade-up">客製寵物羊毛氈費用與流程完整說明</h1>
+    <p class="fade-up">透明報價、清楚流程，讓每一次委託都安心放心。</p>
+  </div>
+</section>
+
+<section class="section" style="background:var(--white);">
+  <div class="container">
+    <article class="article-body">
+
+      <h2>什麼是客製寵物羊毛氈？</h2>
+      <p>
+        客製寵物羊毛氈，是依照你提供的毛孩照片，由手作師一針一針製作出高相似度的羊毛氈公仔。
+        每一件作品都是獨一無二的，帶著你與毛孩之間的故事。
+      </p>
+      <p>
+        無論是貓咪、狗狗、兔子、倉鼠，還是已經過彩虹橋的心愛寵物——
+        客製羊毛氈能讓你把那份思念與陪伴，化為可以永久珍藏的溫暖作品。
+      </p>
+
+      <h2>費用說明（三種等級）</h2>
+      <p>Vivi Felt Studio 提供三種精緻等級，依照相似度、細節程度與製作工時計算：</p>
+
+      <div class="price-grid">
+        <div class="price-card basic">
+          <div class="price-card__tier">基礎款</div>
+          <div class="price-card__amount">NT$ 980 起</div>
+          <div class="price-card__sub">入門體驗、小送禮</div>
+          <ul>
+            <li>✔ 頭部造型（簡化版）</li>
+            <li>✔ 基本五官呈現</li>
+            <li>✔ 單色 / 簡單配色</li>
+          </ul>
+        </div>
+        <div class="price-card advance">
+          <div style="position:relative;margin-bottom:6px;">
+            <span style="background:var(--caramel);color:#fff;font-size:0.65rem;padding:2px 10px;border-radius:20px;">⭐ 最多人選擇</span>
+          </div>
+          <div class="price-card__tier">進階款</div>
+          <div class="price-card__amount">NT$ 3,800 起</div>
+          <div class="price-card__sub">相似度大幅提升</div>
+          <ul>
+            <li>✔ 頭部＋表情細節</li>
+            <li>✔ 毛色層次呈現</li>
+            <li>✔ 可客製簡單姿勢</li>
+            <li>✔ 相似度顯著提升</li>
+          </ul>
+        </div>
+        <div class="price-card premium">
+          <div class="price-card__tier">精緻款 Premium</div>
+          <div class="price-card__amount">NT$ 5,200 起</div>
+          <div class="price-card__sub">收藏級 / 紀念用</div>
+          <ul>
+            <li>✔ 高相似度還原</li>
+            <li>✔ 毛流 / 漸層細節</li>
+            <li>✔ 可加小配件</li>
+            <li>✔ 可指定表情 / 個性</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="article-tip">
+        <strong>💡 如何選擇等級？</strong><br>
+        第一次委託、想嘗試看看 → 基礎款<br>
+        想要高相似度、留作紀念 → 進階款（最受歡迎）<br>
+        特別的場合、收藏級別的作品 → 精緻款
+      </div>
+
+      <h2>客製完整流程（5 步驟）</h2>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>提供照片</h4>
+            <p>傳送毛孩的多角度照片（正面、側面、45度），越清晰越能還原細節。有特殊花紋請另附特寫。</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>討論需求</h4>
+            <p>與 Vivi 確認尺寸、款式等級、特別的表情或姿勢。也可以提供參考圖說明你心目中的樣子。</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>報價與確認</h4>
+            <p>根據需求提供報價，通常 1–2 個工作日內回覆。確認報價後繳付訂金，訂單即正式成立。</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h4>製作（約 7–14 天）</h4>
+            <p>Vivi 依序進行製作，過程中如有需要微調確認，會主動與您聯繫。旺季訂單製作時間可能延長。</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <h4>完成出貨</h4>
+            <p>作品完成後拍照確認，收到您的 OK 後精美包裝出貨。尾款於出貨前結清。</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>需要準備什麼樣的照片？</h2>
+      <p>照片是還原相似度的最重要關鍵！以下是拍照建議：</p>
+      <ul>
+        <li><strong>角度：</strong>正面、側面各至少一張，45度角更佳</li>
+        <li><strong>光線：</strong>自然光或日光燈，避免逆光、閃光燈</li>
+        <li><strong>毛色：</strong>若有漸層或花紋，請提供特寫照</li>
+        <li><strong>表情：</strong>提供多張，選你最想呈現的神韻</li>
+        <li><strong>數量：</strong>越多越好，至少 3 張以上</li>
+      </ul>
+
+      <div class="article-tip">
+        <strong>🌈 彩虹橋寵物客製也可以：</strong>只需要有生前的清晰照片，即使毛孩已不在，
+        Vivi 依然能為你製作一份溫柔的思念紀念。很多飼主說，拿到作品的那一刻，是哭著笑著的感動。
+      </div>
+
+      <h2>常見問題</h2>
+      <div class="faq-simple">
+        <div class="faq-simple-item">
+          <div class="faq-simple-q">Q：可以做成全身立體的嗎？</div>
+          <div class="faq-simple-a">可以！全身立體作品費用較高，建議填寫詢問表單告知需求，Vivi 會依複雜度另行報價。</div>
+        </div>
+        <div class="faq-simple-item">
+          <div class="faq-simple-q">Q：多隻寵物一起訂製有優惠嗎？</div>
+          <div class="faq-simple-a">多隻同時訂製可詢問優惠，請在表單備註說明，Vivi 會統一評估報價。</div>
+        </div>
+        <div class="faq-simple-item">
+          <div class="faq-simple-q">Q：作品和照片會有差異嗎？</div>
+          <div class="faq-simple-a">手作作品因為是手工製作，會帶有些微的風格差異，這是手作獨有的溫度。若對相似度有高度要求，建議選擇進階款或精緻款。</div>
+        </div>
+        <div class="faq-simple-item">
+          <div class="faq-simple-q">Q：可以急件嗎？</div>
+          <div class="faq-simple-a">旺季期間可能無法配合急件，建議提前 4–6 週預訂，節日前（聖誕節、情人節等）尤其如此。</div>
+        </div>
+        <div class="faq-simple-item">
+          <div class="faq-simple-q">Q：有包裝嗎？可以寄送嗎？</div>
+          <div class="faq-simple-a">有！所有作品均提供精美包裝，並以宅配方式寄送，台灣全島均可寄達。</div>
+        </div>
+      </div>
+
+      <h2>信任感：為什麼選擇 Vivi？</h2>
+      <ul>
+        <li>✔ <strong>全手工製作</strong>，每件作品皆為獨一無二</li>
+        <li>✔ <strong>製作過程透明</strong>，可溝通確認細節</li>
+        <li>✔ <strong>超過 500+ 件完成作品</strong>，有豐富的客製經驗</li>
+        <li>✔ <strong>真實顧客回饋</strong>，可在首頁查看評價</li>
+        <li>✔ <strong>接受各種寵物種類</strong>——貓、狗、兔、鼠、鳥均可</li>
+      </ul>
+
+      <div class="cta-box">
+        <h3>準備好把毛孩的回憶留下來了嗎？</h3>
+        <p>填寫詢問表單，上傳照片，Vivi 會在 1–2 個工作日內與你確認需求與報價。</p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+          <a href="custom-order.html#order-form" class="btn btn-warm btn-lg">立即填寫詢問表單</a>
+          <a href="custom-order.html#pet-tiers" class="btn btn-ghost btn-lg">查看三種款式</a>
+        </div>
+      </div>
+
+      <!-- 延伸閱讀 -->
+      <div style="margin-top:56px;padding-top:40px;border-top:1px solid var(--border);">
+        <div style="font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--warm-brown);margin-bottom:20px;">延伸閱讀</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <a href="blog-felt-intro.html" style="background:var(--oat);border-radius:12px;padding:20px;text-decoration:none;display:block;">
+            <div style="font-size:1.3rem;margin-bottom:8px;">🪡</div>
+            <div style="font-weight:600;color:var(--espresso);font-size:0.9rem;margin-bottom:4px;">羊毛氈是什麼？新手完整教學</div>
+            <div style="font-size:0.8rem;color:var(--text-mid);">從零開始了解羊毛氈</div>
+          </a>
+          <a href="blog-felt-care.html" style="background:var(--oat);border-radius:12px;padding:20px;text-decoration:none;display:block;">
+            <div style="font-size:1.3rem;margin-bottom:8px;">✨</div>
+            <div style="font-weight:600;color:var(--espresso);font-size:0.9rem;margin-bottom:4px;">羊毛氈清潔與保存方法</div>
+            <div style="font-size:0.8rem;color:var(--text-mid);">讓作品長久保持美麗</div>
+          </a>
+        </div>
+      </div>
+
+    </article>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <div class="logo-en">Vivi Felt Studio</div>
+        <div class="logo-zh">薇薇V的羊毛氈手作坊</div>
+        <p>手作的溫度，留給重要的人。</p>
+        <div class="footer__social">
+          <a href="https://www.facebook.com/profile.php?id=61559206236758&locale=zh_TW" target="_blank" rel="noopener">f</a>
+          <a href="https://www.instagram.com/eaea_1282025/" target="_blank" rel="noopener">ig</a>
+          <a href="#" title="LINE 官方帳號（即將開放）" style="opacity:0.4;cursor:not-allowed;" onclick="return false;">L</a>
+        </div>
+      </div>
+      <div class="footer__col"><h4>服務項目</h4><ul>
+        <li><a href="custom-order.html">客製訂單</a></li>
+        <li><a href="custom-order.html#pet">寵物紀念</a></li>
+        <li><a href="courses.html">羊毛氈課程</a></li>
+        <li><a href="corporate.html">企業包班</a></li>
+      </ul></div>
+      <div class="footer__col"><h4>手作知識</h4><ul>
+        <li><a href="blog-felt-intro.html">羊毛氈新手教學</a></li>
+        <li><a href="blog-custom-pet.html">客製寵物流程</a></li>
+        <li><a href="blog-felt-care.html">羊毛氈保養方法</a></li>
+        <li><a href="faq.html">常見問題</a></li>
+      </ul></div>
+      <div class="footer__col"><h4>法律聲明</h4><ul>
+        <li><a href="privacy.html">隱私權政策</a></li>
+        <li><a href="terms.html">服務條款</a></li>
+        <li><a href="refund-policy.html">退款政策</a></li>
+      </ul></div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2025 Vivi Felt Studio. All rights reserved.</p>
+      <div class="footer__legal">
+        <a href="privacy.html">隱私政策</a>
+        <a href="terms.html">服務條款</a>
+        <a href="refund-policy.html">退款政策</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="scripts/main.js"></script>
+</body>
+</html>
