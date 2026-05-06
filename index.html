@@ -534,13 +534,8 @@
 
     <div style="display:flex; gap:32px; margin-top:48px;" class="fade-in">
       <div>
-        <div style="font-family:var(--font-serif); font-size:1.8rem; font-style:italic; color:var(--espresso);">500+</div>
+        <div style="font-family:var(--font-serif); font-size:1.8rem; font-style:italic; color:var(--espresso);">100+</div>
         <div style="font-size:0.78rem; color:var(--text-light); letter-spacing:0.1em;">完成作品</div>
-      </div>
-      <div style="width:1px; background:var(--border);"></div>
-      <div>
-        <div style="font-family:var(--font-serif); font-size:1.8rem; font-style:italic; color:var(--espresso);">300+</div>
-        <div style="font-size:0.78rem; color:var(--text-light); letter-spacing:0.1em;">課程學員</div>
       </div>
       <div style="width:1px; background:var(--border);"></div>
       <div>
@@ -580,16 +575,8 @@
   <div class="container">
     <div class="stats-grid">
       <div class="stat-item">
-        <div class="num" data-count="500">0</div>
+        <div class="num" data-count="100">0</div>
         <div class="label">完成作品數</div>
-      </div>
-      <div class="stat-item">
-        <div class="num" data-count="300">0</div>
-        <div class="label">課程學員數</div>
-      </div>
-      <div class="stat-item">
-        <div class="num" data-count="50">0</div>
-        <div class="label">企業合作場次</div>
       </div>
       <div class="stat-item">
         <div class="num" data-count="98">0</div>
@@ -813,7 +800,6 @@
       <button class="shop-filter__btn" data-filter="pet">寵物紀念</button>
       <button class="shop-filter__btn" data-filter="accessory">吊飾小物</button>
       <button class="shop-filter__btn" data-filter="bag">手提包</button>
-      <button class="shop-filter__btn" data-filter="student">學生作品</button>
     </div>
 
     <div class="scroll-track stagger">
@@ -939,19 +925,19 @@
       </div>
     </div>
 
-    <!-- ── 學生作品精選 ── -->
+    <!-- ── 限定手作系列 ── -->
     <div class="fade-up" style="margin-top:60px;">
       <div style="display:flex;align-items:center;gap:16px;margin-bottom:32px;">
         <div style="height:1px;flex:1;background:var(--border);"></div>
-        <span style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--warm-brown);white-space:nowrap;">學生作品精選 · Student Works</span>
+        <span style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--warm-brown);white-space:nowrap;">限定手作系列 · Limited Edition</span>
         <div style="height:1px;flex:1;background:var(--border);"></div>
       </div>
-      <p style="text-align:center;color:var(--text-mid);font-size:0.88rem;margin-bottom:32px;margin-top:-16px;">以下為 Vivi 課程學生的羊毛氈作品，每件獨立創作、限量珍藏。</p>
+      <p style="text-align:center;color:var(--text-mid);font-size:0.88rem;margin-bottom:32px;margin-top:-16px;">Vivi 手工製作，每件獨立創作、限量珍藏，售完不補。</p>
 
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;">
 
         <!-- 春日小旅人：陽光使者（現貨） -->
-        <div class="product-card" data-category="student">
+        <div class="product-card" data-category="accessory">
           <div class="product-card__image">
             <img loading="lazy" src="assets/images/shop-s01-sunny.jpg" alt="陽光使者羊毛氈人偶" style="width:100%;height:100%;object-fit:cover;display:block;" />
             <span class="product-card__badge" style="background:var(--warm-brown);">現貨</span>
@@ -968,7 +954,7 @@
         </div>
 
         <!-- 春日小旅人：旅行樂手（售完） -->
-        <div class="product-card" data-category="student">
+        <div class="product-card" data-category="accessory">
           <div class="product-card__image" style="position:relative;">
             <img loading="lazy" src="assets/images/shop-s02-music.jpg" alt="旅行樂手羊毛氈人偶" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(40%);" />
             <div style="position:absolute;inset:0;background:rgba(58,46,37,0.45);display:flex;align-items:center;justify-content:center;">
@@ -986,25 +972,27 @@
           </div>
         </div>
 
-        <!-- 春日小旅人：花語收藏家（現貨） -->
-        <div class="product-card" data-category="student">
-          <div class="product-card__image">
-            <img loading="lazy" src="assets/images/shop-s03-flower.jpg" alt="花語收藏家羊毛氈人偶" style="width:100%;height:100%;object-fit:cover;display:block;" />
-            <span class="product-card__badge" style="background:var(--warm-brown);">現貨</span>
+        <!-- 春日小旅人：花語收藏家（已售出） -->
+        <div class="product-card" data-category="accessory">
+          <div class="product-card__image" style="position:relative;">
+            <img loading="lazy" src="assets/images/shop-s03-flower.jpg" alt="花語收藏家羊毛氈人偶" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(40%);" />
+            <div style="position:absolute;inset:0;background:rgba(58,46,37,0.45);display:flex;align-items:center;justify-content:center;">
+              <span style="color:#fff;font-size:0.8rem;font-weight:600;letter-spacing:0.1em;background:rgba(0,0,0,0.5);padding:6px 18px;border-radius:20px;">已售出</span>
+            </div>
           </div>
           <div class="product-card__body">
             <div style="font-size:0.68rem;color:var(--text-light);margin-bottom:4px;">春日小旅人系列</div>
             <div class="product-card__name">🌼 花語收藏家</div>
             <div class="product-card__desc">手持花束的旅行小人偶，全手工羊毛氈，約 10cm，附精美禮盒。</div>
-            <div class="product-card__price">NT$ 1,680</div>
+            <div class="product-card__price" style="text-decoration:line-through;color:var(--text-light);">NT$ 1,680</div>
             <div class="product-card__actions">
-              <button onclick="openPurchase('🌼 花語收藏家（春日小旅人系列）', 1680)" class="btn btn-primary btn-sm" style="width:100%;justify-content:center;">🛒 立即購買</button>
+              <a href="custom-order.html" class="btn btn-secondary btn-sm" style="width:100%;justify-content:center;">客製相似款 →</a>
             </div>
           </div>
         </div>
 
         <!-- 春日小夥伴：祝福熊貓（售完） -->
-        <div class="product-card" data-category="student">
+        <div class="product-card" data-category="accessory">
           <div class="product-card__image" style="position:relative;">
             <img loading="lazy" src="assets/images/651302973_122227964900306874_1941962604147120094_n.webp" alt="祝福熊貓羊毛氈" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(40%);" />
             <div style="position:absolute;inset:0;background:rgba(58,46,37,0.45);display:flex;align-items:center;justify-content:center;">
@@ -1023,7 +1011,7 @@
         </div>
 
         <!-- 春日小夥伴：幸福蘿蔔兔（現貨） -->
-        <div class="product-card" data-category="student">
+        <div class="product-card" data-category="accessory">
           <div class="product-card__image">
             <img loading="lazy" src="assets/images/653119885_122227964714306874_1885533158958859961_n.webp" alt="幸福蘿蔔兔羊毛氈" style="width:100%;height:100%;object-fit:cover;display:block;" />
             <span class="product-card__badge" style="background:var(--warm-brown);">現貨</span>
@@ -1040,7 +1028,7 @@
         </div>
 
         <!-- 春日小夥伴：幸運橡果柴柴（售完） -->
-        <div class="product-card" data-category="student">
+        <div class="product-card" data-category="accessory">
           <div class="product-card__image" style="position:relative;">
             <img loading="lazy" src="assets/images/651371907_122227964588306874_7137385209154284711_n.jpg" alt="幸運橡果柴柴羊毛氈" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(40%);" />
             <div style="position:absolute;inset:0;background:rgba(58,46,37,0.45);display:flex;align-items:center;justify-content:center;">
@@ -1059,7 +1047,7 @@
         </div>
 
         <!-- 開運小夥伴：節節高升熊貓（售完） -->
-        <div class="product-card" data-category="student">
+        <div class="product-card" data-category="accessory">
           <div class="product-card__image" style="position:relative;">
             <img loading="lazy" src="assets/images/shop-s07-panda2.jpg" alt="節節高升熊貓羊毛氈" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(40%);" />
             <div style="position:absolute;inset:0;background:rgba(58,46,37,0.45);display:flex;align-items:center;justify-content:center;">
@@ -1078,7 +1066,7 @@
         </div>
 
         <!-- 開運小夥伴：招財進寶柴柴（售完） -->
-        <div class="product-card" data-category="student">
+        <div class="product-card" data-category="accessory">
           <div class="product-card__image" style="position:relative;">
             <img loading="lazy" src="assets/images/shop-s08-shiba2.jpg" alt="招財進寶柴柴羊毛氈" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(40%);" />
             <div style="position:absolute;inset:0;background:rgba(58,46,37,0.45);display:flex;align-items:center;justify-content:center;">
@@ -1097,7 +1085,7 @@
         </div>
 
         <!-- 開運小夥伴：年年有餘兔兔（售完） -->
-        <div class="product-card" data-category="student">
+        <div class="product-card" data-category="accessory">
           <div class="product-card__image" style="position:relative;">
             <img loading="lazy" src="assets/images/shop-s09-rabbit2.jpg" alt="年年有餘兔兔羊毛氈" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(40%);" />
             <div style="position:absolute;inset:0;background:rgba(58,46,37,0.45);display:flex;align-items:center;justify-content:center;">
@@ -1116,7 +1104,7 @@
         </div>
 
         <!-- 星願守護馬：溫柔白（售完） -->
-        <div class="product-card" data-category="student">
+        <div class="product-card" data-category="accessory">
           <div class="product-card__image" style="position:relative;">
             <img loading="lazy" src="assets/images/shop-s10-horse-white.jpg" alt="溫柔白守護馬吊飾" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(40%);" />
             <div style="position:absolute;inset:0;background:rgba(58,46,37,0.45);display:flex;align-items:center;justify-content:center;">
@@ -1135,7 +1123,7 @@
         </div>
 
         <!-- 星願守護馬：玫瑰粉（現貨） -->
-        <div class="product-card" data-category="student">
+        <div class="product-card" data-category="accessory">
           <div class="product-card__image">
             <img loading="lazy" src="assets/images/shop-s11-horse-pink.jpg" alt="玫瑰粉守護馬吊飾" style="width:100%;height:100%;object-fit:cover;display:block;" />
             <span class="product-card__badge" style="background:var(--warm-brown);">現貨</span>
@@ -1152,7 +1140,7 @@
         </div>
 
         <!-- 星願守護馬：森系綠（現貨） -->
-        <div class="product-card" data-category="student">
+        <div class="product-card" data-category="accessory">
           <div class="product-card__image">
             <img loading="lazy" src="assets/images/shop-s12-horse-green.jpg" alt="森系綠守護馬吊飾" style="width:100%;height:100%;object-fit:cover;display:block;" />
             <span class="product-card__badge" style="background:var(--warm-brown);">現貨</span>
