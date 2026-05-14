@@ -502,7 +502,7 @@
   <a href="faq.html">常見問題</a>
   <a href="contact.html">聯絡我們</a>
   <div class="mobile-nav__actions">
-    <a href="membership.html" class="btn btn-secondary">登入 / 加入會員</a>
+    
     <a href="custom-order.html" class="btn btn-primary">立即詢問</a>
   </div>
 </nav>
@@ -575,11 +575,11 @@
   <div class="container">
     <div class="stats-grid">
       <div class="stat-item">
-        <div class="num" data-count="100">0</div>
+        <div class="num" data-count="100">100</div>
         <div class="label">完成作品數</div>
       </div>
       <div class="stat-item">
-        <div class="num" data-count="98">0</div>
+        <div class="num" data-count="98">98</div>
         <div class="label">顧客好評率 %</div>
       </div>
     </div>
@@ -1474,7 +1474,7 @@
         <div class="footer__social">
           <a href="https://www.facebook.com/profile.php?id=61559206236758&locale=zh_TW" target="_blank" rel="noopener" aria-label="Facebook">f</a>
           <a href="https://www.instagram.com/eaea_1282025/" target="_blank" rel="noopener" aria-label="Instagram">ig</a>
-          <a href="#" title="LINE 官方帳號（即將開放）" aria-label="LINE" style="opacity:0.4;cursor:not-allowed;" onclick="return false;">L</a>
+          
         </div>
       </div>
 
@@ -1538,7 +1538,8 @@
 
     <div style="font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--warm-brown);margin-bottom:6px;">立即購買</div>
     <div id="pm-title" style="font-size:1.15rem;font-weight:600;color:var(--espresso);margin-bottom:4px;padding-right:24px;"></div>
-    <div id="pm-price" style="font-size:1.5rem;font-weight:700;color:var(--warm-brown);margin-bottom:24px;"></div>
+    <div id="pm-price" style="font-size:1.5rem;font-weight:700;color:var(--warm-brown);margin-bottom:6px;"></div>
+    <div id="pm-order-num" style="font-size:0.72rem;color:var(--text-light);margin-bottom:20px;letter-spacing:0.05em;"></div>
 
     <!-- Step 1：轉帳資訊 -->
     <div style="background:var(--oat);border-radius:14px;padding:20px 22px;margin-bottom:20px;">
@@ -1619,10 +1620,13 @@
   // ── 購買 Modal ──
   function openPurchase(name, price) {
     const fmt = 'NT$ ' + Number(price).toLocaleString();
+    const ts = Date.now().toString().slice(-6);
+    const orderNum = 'VF-' + new Date().toISOString().slice(0,10).replace(/-/g,'') + '-' + ts;
     document.getElementById('pm-title').textContent = name;
     document.getElementById('pm-price').textContent = fmt;
+    document.getElementById('pm-order-num').textContent = '訂單編號：' + orderNum;
     document.getElementById('pm-price-row').textContent = fmt;
-    document.getElementById('pm-subject').value = '【新訂單】' + name + ' ' + fmt;
+    document.getElementById('pm-subject').value = '[' + orderNum + '] ' + name + ' ' + fmt;
     document.getElementById('pm-item-hidden').value = name;
     document.getElementById('pm-amt-hidden').value = fmt;
     document.getElementById('pm-success').style.display = 'none';
