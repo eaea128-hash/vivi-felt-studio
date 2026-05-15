@@ -20,8 +20,40 @@
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
   <!-- Styles -->
   <link rel="stylesheet" href="styles/style.css" />
-  <!-- GA4 placeholder -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
+  <!-- GA4 → 取得 GA4 ID 後替換 G-XXXXXXXXXX 並取消注解 -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script> -->
+
+  <!-- JSON-LD 結構化資料 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Vivi Felt Studio 薇薇V的羊毛氈手作坊",
+    "description": "提供羊毛氈課程與客製寵物羊毛氈服務，從新手教學到療癒手作，打造專屬你的溫暖作品。",
+    "url": "https://vivi-felt-studio.pages.dev",
+    "image": "https://vivi-felt-studio.pages.dev/assets/images/hero-bg.webp",
+    "email": "eaea128@gmail.com",
+    "sameAs": [
+      "https://www.instagram.com/eaea_1282025/",
+      "https://www.facebook.com/profile.php?id=61559206236758"
+    ],
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "客製寵物羊毛氈（基礎款）",
+        "price": "980",
+        "priceCurrency": "TWD"
+      },
+      {
+        "@type": "Offer",
+        "name": "客製寵物羊毛氈（進階款）",
+        "price": "3800",
+        "priceCurrency": "TWD"
+      }
+    ]
+  }
+  </script>
   <style>
     /* ── Index-specific styles ── */
     .hero-index {
@@ -783,6 +815,11 @@
         </div>
         <div class="product-card__body">
           <div class="product-card__name">🐱 鼻嘎小貓擺飾</div>
+          <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;">
+            <span style="font-size:0.65rem;background:var(--oat);color:var(--warm-brown);padding:2px 8px;border-radius:20px;">寵物紀念</span>
+            <span style="font-size:0.65rem;background:var(--oat);color:var(--warm-brown);padding:2px 8px;border-radius:20px;">療癒桌面擺飾</span>
+            <span style="font-size:0.65rem;background:var(--oat);color:var(--warm-brown);padding:2px 8px;border-radius:20px;">純手工唯一</span>
+          </div>
           <div class="product-card__desc">全手工羊毛氈立體擺飾，毛色、神情皆可依照你家毛孩照片客製，細節還原度極高。</div>
           <div style="font-size:0.78rem;color:var(--text-light);margin-bottom:14px;">✔ 客製款　✔ 可指定毛色與姿態</div>
           <div class="product-card__actions">
@@ -837,6 +874,11 @@
         </div>
         <div class="product-card__body">
           <div class="product-card__name">漸層羊毛氈手提包</div>
+          <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;">
+            <span style="font-size:0.65rem;background:var(--oat);color:var(--warm-brown);padding:2px 8px;border-radius:20px;">純手工唯一</span>
+            <span style="font-size:0.65rem;background:var(--oat);color:var(--warm-brown);padding:2px 8px;border-radius:20px;">送禮高質感</span>
+            <span style="font-size:0.65rem;background:var(--oat);color:var(--warm-brown);padding:2px 8px;border-radius:20px;">限量一件</span>
+          </div>
           <div class="product-card__desc">Vivi 手作。夢幻粉藍漸層配色，柔軟輕盈質感，獨一無二，現貨限量一件。</div>
           <div class="product-card__price">NT$ 2,580</div>
           <div class="product-card__actions">
@@ -853,6 +895,11 @@
         </div>
         <div class="product-card__body">
           <div class="product-card__name">守宮情侶鑰匙圈</div>
+          <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;">
+            <span style="font-size:0.65rem;background:var(--oat);color:var(--warm-brown);padding:2px 8px;border-radius:20px;">情侶對禮</span>
+            <span style="font-size:0.65rem;background:var(--oat);color:var(--warm-brown);padding:2px 8px;border-radius:20px;">閨蜜禮物</span>
+            <span style="font-size:0.65rem;background:var(--oat);color:var(--warm-brown);padding:2px 8px;border-radius:20px;">療癒小物</span>
+          </div>
           <div class="product-card__desc">黃＋粉一對守宮，圓滾滾大眼超療癒，送禮自用、閨蜜對禮都適合。全手工羊毛氈製作。</div>
           <div class="product-card__price" style="display:flex;align-items:baseline;gap:8px;">
             NT$ 699
@@ -872,6 +919,11 @@
         </div>
         <div class="product-card__body">
           <div class="product-card__name">粉紅小豬吊飾</div>
+          <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;">
+            <span style="font-size:0.65rem;background:var(--oat);color:var(--warm-brown);padding:2px 8px;border-radius:20px;">包包掛飾</span>
+            <span style="font-size:0.65rem;background:var(--oat);color:var(--warm-brown);padding:2px 8px;border-radius:20px;">療癒桌面</span>
+            <span style="font-size:0.65rem;background:var(--oat);color:var(--warm-brown);padding:2px 8px;border-radius:20px;">療癒小物</span>
+          </div>
           <div class="product-card__desc">圓滾滾粉嫩小豬，蓬鬆毛茸質感，掛包包萌感爆棚。全手工羊毛氈製作。</div>
           <div class="product-card__price">NT$ 380</div>
           <div class="product-card__actions">
@@ -1529,6 +1581,20 @@
     </div>
   </div>
 </footer>
+
+<!-- ══ 浮動 CTA ══ -->
+<div id="float-cta" style="position:fixed;bottom:24px;right:24px;z-index:8000;display:none;flex-direction:column;gap:10px;align-items:flex-end;">
+  <a href="custom-order.html" style="display:flex;align-items:center;gap:8px;background:var(--espresso);color:var(--cream);padding:12px 20px;border-radius:30px;font-size:0.85rem;font-family:var(--font-zh);text-decoration:none;box-shadow:0 4px 20px rgba(58,46,37,0.35);transition:opacity 0.2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">🐾 詢問客製</a>
+  <a href="contact.html" style="display:flex;align-items:center;gap:8px;background:var(--caramel);color:#fff;padding:12px 20px;border-radius:30px;font-size:0.85rem;font-family:var(--font-zh);text-decoration:none;box-shadow:0 4px 16px rgba(201,169,110,0.4);transition:opacity 0.2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">✉ 聯絡 Vivi</a>
+</div>
+<script>
+(function(){
+  var el = document.getElementById('float-cta');
+  window.addEventListener('scroll', function(){
+    el.style.display = window.scrollY > 400 ? 'flex' : 'none';
+  }, {passive:true});
+})();
+</script>
 
 <script src="scripts/main.js"></script>
 <!-- ══════════ 購買 Modal ══════════ -->

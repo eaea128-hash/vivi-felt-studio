@@ -410,7 +410,19 @@
     });
   });
 </script>
-</body>
+<!-- ══ 浮動 CTA ══ -->
+<div id="float-cta" style="position:fixed;bottom:24px;right:24px;z-index:8000;display:none;flex-direction:column;gap:10px;align-items:flex-end;">
+  <a href="custom-order.html" style="display:flex;align-items:center;gap:8px;background:var(--espresso);color:var(--cream);padding:12px 20px;border-radius:30px;font-size:0.85rem;font-family:var(--font-zh);text-decoration:none;box-shadow:0 4px 20px rgba(58,46,37,0.35);transition:opacity 0.2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">🐾 詢問客製</a>
+  <a href="contact.html" style="display:flex;align-items:center;gap:8px;background:var(--caramel);color:#fff;padding:12px 20px;border-radius:30px;font-size:0.85rem;font-family:var(--font-zh);text-decoration:none;box-shadow:0 4px 16px rgba(201,169,110,0.4);transition:opacity 0.2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">✉ 聯絡 Vivi</a>
+</div>
+<script>
+(function(){
+  var el = document.getElementById('float-cta');
+  window.addEventListener('scroll', function(){
+    el.style.display = window.scrollY > 400 ? 'flex' : 'none';
+  }, {passive:true});
+})();
+</script></body>
 </html>
 
 

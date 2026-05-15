@@ -11,6 +11,8 @@
   <meta name="description" content="想把毛孩的回憶永久珍藏？Vivi Felt Studio 提供客製寵物羊毛氈服務，依照片細緻還原表情、毛色與神韻。基礎款 NT$980 起，歡迎詢問。" />
   <meta property="og:title" content="客製訂單｜Vivi Felt Studio" />
   <meta property="og:description" content="根據您的需求與照片，打造獨一無二的羊毛氈作品。" />
+  <meta property="og:image" content="https://vivi-felt-studio.pages.dev/assets/images/hero-bg.webp" />
+  <meta property="og:type" content="website" />
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles/style.css" />
   <!-- GA4 placeholder -->
@@ -559,6 +561,7 @@
 
       <!-- Form -->
       <form action="https://formspree.io/f/xrervybz" method="POST">
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
         <div style="background:var(--oat); border-radius:var(--radius-md); padding:20px 24px; margin-bottom:32px; font-size:0.85rem; color:var(--text-mid); line-height:1.8;">
           📌 填寫前請先閱讀：客製作品保有手作風格與些微差異，製作時間依複雜度而定，報價以溝通確認為準。
@@ -708,6 +711,18 @@
 </footer>
 
 <script src="scripts/main.js"></script>
-</body>
+<!-- ══ 浮動 CTA ══ -->
+<div id="float-cta" style="position:fixed;bottom:24px;right:24px;z-index:8000;display:none;flex-direction:column;gap:10px;align-items:flex-end;">
+  <a href="custom-order.html" style="display:flex;align-items:center;gap:8px;background:var(--espresso);color:var(--cream);padding:12px 20px;border-radius:30px;font-size:0.85rem;font-family:var(--font-zh);text-decoration:none;box-shadow:0 4px 20px rgba(58,46,37,0.35);transition:opacity 0.2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">🐾 詢問客製</a>
+  <a href="contact.html" style="display:flex;align-items:center;gap:8px;background:var(--caramel);color:#fff;padding:12px 20px;border-radius:30px;font-size:0.85rem;font-family:var(--font-zh);text-decoration:none;box-shadow:0 4px 16px rgba(201,169,110,0.4);transition:opacity 0.2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">✉ 聯絡 Vivi</a>
+</div>
+<script>
+(function(){
+  var el = document.getElementById('float-cta');
+  window.addEventListener('scroll', function(){
+    el.style.display = window.scrollY > 400 ? 'flex' : 'none';
+  }, {passive:true});
+})();
+</script></body>
 </html>
 

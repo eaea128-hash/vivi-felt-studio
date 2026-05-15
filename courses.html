@@ -11,6 +11,8 @@
   <meta name="description" content="Vivi Felt Studio 羊毛氈課程，從零開始的療癒手作體驗。新手友善、小班制指導，完成一件完整作品。適合想放鬆紓壓、喜愛療癒手作的你。" />
   <meta property="og:title" content="羊毛氈課程｜Vivi Felt Studio" />
   <meta property="og:description" content="不只是技巧教學，而是一場讓心靈舒緩的手作之旅。小班制、療癒系、有成就感。" />
+  <meta property="og:image" content="https://vivi-felt-studio.pages.dev/assets/images/hero-bg.webp" />
+  <meta property="og:type" content="website" />
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles/style.css" />
   <style>
@@ -636,6 +638,7 @@
       </div>
 
       <form action="https://formspree.io/f/xrervybz" method="POST">
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
         <input type="hidden" name="bot-field" />
 
         <div class="form-row">
@@ -769,6 +772,18 @@
   </div>
 </footer>
 <script src="scripts/main.js"></script>
-</body>
+<!-- ══ 浮動 CTA ══ -->
+<div id="float-cta" style="position:fixed;bottom:24px;right:24px;z-index:8000;display:none;flex-direction:column;gap:10px;align-items:flex-end;">
+  <a href="custom-order.html" style="display:flex;align-items:center;gap:8px;background:var(--espresso);color:var(--cream);padding:12px 20px;border-radius:30px;font-size:0.85rem;font-family:var(--font-zh);text-decoration:none;box-shadow:0 4px 20px rgba(58,46,37,0.35);transition:opacity 0.2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">🐾 詢問客製</a>
+  <a href="contact.html" style="display:flex;align-items:center;gap:8px;background:var(--caramel);color:#fff;padding:12px 20px;border-radius:30px;font-size:0.85rem;font-family:var(--font-zh);text-decoration:none;box-shadow:0 4px 16px rgba(201,169,110,0.4);transition:opacity 0.2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">✉ 聯絡 Vivi</a>
+</div>
+<script>
+(function(){
+  var el = document.getElementById('float-cta');
+  window.addEventListener('scroll', function(){
+    el.style.display = window.scrollY > 400 ? 'flex' : 'none';
+  }, {passive:true});
+})();
+</script></body>
 </html>
 
