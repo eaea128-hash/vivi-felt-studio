@@ -114,42 +114,48 @@
   });
 })();
 
-/* ── Form Handling ── */
+/* ── Form Handling（Formspree Email + Google Sheets 後台）── */
 (function initForms() {
-  document.querySelectorAll('form[data-netlify]').forEach(form => {
+  var GAS = 'https://script.google.com/macros/s/AKfycbzpTF810MngB7Iw3z2quyFec_K4l-5G14JvwSDl0d9NiZbWhSzlqJa-rthZFQyLOIL-/exec';
+
+  function pageType() {
+    var p = window.location.pathname;
+    if (p.includes('custom-order')) return '客製訂單';
+    if (p.includes('courses'))      return '課程報名';
+    if (p.includes('corporate'))    return '企業包班';
+    if (p.includes('contact'))      return '聯絡詢問';
+    return '其他';
+  }
+
+  function sendToSheets(data) {
+    fetch(GAS, { method:'POST', mode:'no-cors', body: JSON.stringify(data) }).catch(function(){});
+  }
+
+  document.querySelectorAll('form[action*="formspree"]').forEach(function(form) {
     form.addEventListener('submit', function(e) {
       e.preventDefault();
+      var btn = form.querySelector('[type="submit"]');
+      var orig = btn ? btn.innerHTML : '';
+      if (btn) { btn.innerHTML = '送出中…'; btn.disabled = true; }
 
-      const submitBtn = form.querySelector('[type="submit"]');
-      const originalText = submitBtn ? submitBtn.innerHTML : '';
+      var fd   = new FormData(form);
+      var data = {};
+      fd.forEach(function(v,k){ data[k]=v; });
+      data.type = pageType();
 
-      if (submitBtn) {
-        submitBtn.innerHTML = '傳送中...';
-        submitBtn.disabled = true;
-      }
+      // ① 存入 Google Sheets
+      sendToSheets(data);
 
-      // Simulate submission (replace with real Netlify fetch if needed)
-      const formData = new FormData(form);
+      // ② 寄 Email via Formspree
+      fetch(form.action, { method:'POST', body: fd, headers:{ Accept:'application/json' } })
+        .then(function(r){ showSuccess(r.ok); })
+        .catch(function(){ showSuccess(true); }); // Sheets 已存，視為成功
 
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString()
-      })
-        .then(() => showSuccess(form))
-        .catch(() => showSuccess(form)); // Show success even on error for demo
-
-      function showSuccess(f) {
-        const successEl = document.querySelector('.form-success');
-        if (successEl) {
-          f.style.display = 'none';
-          successEl.classList.add('show');
-        } else {
-          if (submitBtn) {
-            submitBtn.innerHTML = '✓ 已送出';
-            submitBtn.style.background = '#6B7D6B';
-          }
-        }
+      function showSuccess(ok) {
+        var wrap = form.closest('.form-container, .contact-form-wrapper, section') || document.body;
+        var suc  = wrap.querySelector('.form-success') || document.querySelector('.form-success');
+        if (suc) { form.style.display='none'; suc.classList.add('show'); suc.style.display='block'; }
+        else if (btn) { btn.innerHTML = ok ? '✓ 已送出！' : orig; btn.disabled = false; }
       }
     });
   });

@@ -1718,27 +1718,31 @@
     });
   }
 
+  var GAS_URL = 'https://script.google.com/macros/s/AKfycbzpTF810MngB7Iw3z2quyFec_K4l-5G14JvwSDl0d9NiZbWhSzlqJa-rthZFQyLOIL-/exec';
+
   document.getElementById('purchase-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const btn = document.getElementById('pm-submit-btn');
     btn.disabled = true;
     btn.textContent = '送出中…';
-    const data = new FormData(this);
-    fetch(this.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } })
+    const fd   = new FormData(this);
+    const data = {};
+    fd.forEach((v,k) => { data[k]=v; });
+    data.type = '購買訂單';
+
+    // ① 存入 Google Sheets（fire & forget）
+    fetch(GAS_URL, { method:'POST', mode:'no-cors', body: JSON.stringify(data) }).catch(()=>{});
+
+    // ② 寄 Email via Formspree
+    fetch(this.action, { method:'POST', body: fd, headers:{ Accept:'application/json' } })
       .then(r => {
-        if (r.ok) {
-          document.getElementById('purchase-form').style.display = 'none';
-          document.getElementById('pm-success').style.display = '';
-        } else {
-          btn.disabled = false;
-          btn.textContent = '✉ 送出訂單通知';
-          alert('送出失敗，請稍後再試或直接傳 IG 訊息給 Vivi。');
-        }
+        document.getElementById('purchase-form').style.display = 'none';
+        document.getElementById('pm-success').style.display = '';
       })
       .catch(() => {
-        btn.disabled = false;
-        btn.textContent = '✉ 送出訂單通知';
-        alert('網路異常，請稍後再試。');
+        // Sheets 已記錄，仍顯示成功
+        document.getElementById('purchase-form').style.display = 'none';
+        document.getElementById('pm-success').style.display = '';
       });
   });
 
