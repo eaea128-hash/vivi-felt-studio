@@ -148,14 +148,50 @@
 
       // ② 寄 Email via Formspree
       fetch(form.action, { method:'POST', body: fd, headers:{ Accept:'application/json' } })
-        .then(function(r){ showSuccess(r.ok); })
-        .catch(function(){ showSuccess(true); }); // Sheets 已存，視為成功
+        .then(function(r){
+        if (r.ok) { showSuccess(true); }
+        else { showError(); if(btn){ btn.innerHTML=orig; btn.disabled=false; } }
+      })
+        .catch(function(){ showSuccess(true); }); // GAS 已存，視為成功
 
       function showSuccess(ok) {
         var wrap = form.closest('.form-container, .contact-form-wrapper, section') || document.body;
         var suc  = wrap.querySelector('.form-success') || document.querySelector('.form-success');
         if (suc) { form.style.display='none'; suc.classList.add('show'); suc.style.display='block'; }
         else if (btn) { btn.innerHTML = ok ? '✓ 已送出！' : orig; btn.disabled = false; }
+      }
+      function showError() {
+        var wrap = form.closest('.form-container, .contact-form-wrapper, section') || document.body;
+        var errEl = wrap.querySelector('.form-error');
+        if (!errEl) {
+          errEl = document.createElement('div');
+          errEl.className = 'form-error';
+          errEl.style.cssText = 'color:#c0392b;background:#fff5f5;border:1px solid #f5c6cb;border-radius:8px;padding:12px 16px;margin-top:12px;font-size:0.88rem;';
+          form.parentNode.insertBefore(errEl, form.nextSibling);
+        }
+        errEl.textContent = '⚠️ 送出失敗，請稍後再試，或直接寄信至 eaea128@gmail.com';
+        errEl.style.display = 'block';
+      }
+    });
+  });
+
+  // Email 格式即時驗證
+  document.querySelectorAll('input[type="email"]').forEach(function(input) {
+    input.addEventListener('blur', function() {
+      if (this.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.value)) {
+        this.style.borderColor = '#e74c3c';
+        var msg = this.parentNode.querySelector('.email-err');
+        if (!msg) {
+          msg = document.createElement('span');
+          msg.className = 'email-err';
+          msg.style.cssText = 'color:#e74c3c;font-size:0.78rem;display:block;margin-top:4px;';
+          msg.textContent = '請輸入正確的 Email 格式';
+          this.parentNode.appendChild(msg);
+        }
+      } else {
+        this.style.borderColor = '';
+        var msg = this.parentNode.querySelector('.email-err');
+        if (msg) msg.remove();
       }
     });
   });
