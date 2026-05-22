@@ -313,35 +313,125 @@ h1, h2, h3, h4 {
   display: none;
   text-align: center;
   padding: 56px 32px;
+  background: var(--oat);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+}
+.form-success.show {
+  display: block;
   animation: fadeInUp 0.5s var(--ease);
 }
-.form-success.show { display: block; }
+/* icon — support both old (.success-icon) and new (.__icon) class */
+.form-success .success-icon,
 .form-success__icon {
   font-size: 3.5rem;
   margin-bottom: 16px;
+  display: block;
   animation: successPop 0.5s 0.1s both;
 }
+/* title — support both h3 and .__title */
+.form-success h3,
 .form-success__title {
   font-family: var(--font-serif);
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   color: var(--espresso);
   margin-bottom: 12px;
+  font-weight: 400;
 }
+/* desc — support both p and .__desc */
+.form-success p,
 .form-success__desc {
   font-size: 0.9rem;
   color: var(--text-mid);
   line-height: 1.8;
-  max-width: 400px;
+  max-width: 420px;
   margin: 0 auto 24px;
+}
+.form-success .next-step {
+  margin-top: 24px;
+  font-size: 0.82rem;
+  color: var(--text-light);
 }
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: none; }
 }
 @keyframes successPop {
-  0%   { transform: scale(0.5); opacity: 0; }
+  0%   { transform: scale(0.4); opacity: 0; }
   70%  { transform: scale(1.15); }
   100% { transform: scale(1); opacity: 1; }
+}
+
+/* ── Link hover underline animation ── */
+.navbar__nav a,
+.footer a {
+  text-underline-offset: 3px;
+}
+.footer__col a {
+  transition: color var(--transition), padding-left var(--transition);
+}
+.footer__col a:hover {
+  padding-left: 6px;
+  color: var(--warm-brown) !important;
+}
+
+/* ── Card hover — all card types ── */
+.service-card {
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--warm-brown) !important;
+}
+.course-card {
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.course-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+.membership-card {
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.membership-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+.product-card {
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ── Trust badge strip ── */
+.trust-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  padding: 28px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin: 48px 0;
+}
+.trust-strip__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--text-mid);
+  letter-spacing: 0.03em;
+}
+.trust-strip__item strong {
+  color: var(--espresso);
+  font-size: 1.05rem;
+}
+.trust-strip__icon {
+  font-size: 1.5rem;
 }
 
 /* ── Cards ── */
@@ -607,38 +697,6 @@ select.form-control {
   .form-row {
     grid-template-columns: 1fr;
   }
-}
-
-.form-success {
-  display: none;
-  text-align: center;
-  padding: 48px 32px;
-  background: var(--oat);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
-}
-
-.form-success.show {
-  display: block;
-}
-
-.form-success .success-icon {
-  font-size: 2.5rem;
-  margin-bottom: 16px;
-}
-
-.form-success h3 {
-  font-size: 1.2rem;
-  color: var(--espresso);
-  margin-bottom: 12px;
-}
-
-.form-success p {
-  font-size: 0.9rem;
-  color: var(--text-mid);
-  line-height: 1.8;
-  max-width: 400px;
-  margin: 0 auto;
 }
 
 /* ── Navigation ── */
