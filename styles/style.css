@@ -283,6 +283,67 @@ h1, h2, h3, h4 {
   font-size: 1rem;
 }
 
+/* ── Button Active & Loading States ── */
+.btn:active {
+  transform: translateY(1px) scale(0.97) !important;
+  box-shadow: none !important;
+}
+
+.btn[disabled], .btn.loading {
+  pointer-events: none;
+  opacity: 0.65;
+}
+
+.btn.loading .btn-text { display: none; }
+.btn.loading::before {
+  content: '';
+  display: inline-block;
+  width: 14px; height: 14px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: btn-spin 0.65s linear infinite;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+@keyframes btn-spin { to { transform: rotate(360deg); } }
+
+/* ── Form Success / Error ── */
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 56px 32px;
+  animation: fadeInUp 0.5s var(--ease);
+}
+.form-success.show { display: block; }
+.form-success__icon {
+  font-size: 3.5rem;
+  margin-bottom: 16px;
+  animation: successPop 0.5s 0.1s both;
+}
+.form-success__title {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  color: var(--espresso);
+  margin-bottom: 12px;
+}
+.form-success__desc {
+  font-size: 0.9rem;
+  color: var(--text-mid);
+  line-height: 1.8;
+  max-width: 400px;
+  margin: 0 auto 24px;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes successPop {
+  0%   { transform: scale(0.5); opacity: 0; }
+  70%  { transform: scale(1.15); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
 /* ── Cards ── */
 .card {
   background: var(--white);

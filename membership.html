@@ -258,8 +258,8 @@
 <div class="auth-modal-overlay" id="auth-modal" style="display:none!important;"></div>
 
 <!-- Coming Soon Banner -->
-<div style="background:#fff8f0;border-bottom:2px solid var(--caramel);padding:14px 24px;text-align:center;">
-  <span style="font-size:0.88rem;color:var(--espresso);">🔧 <strong>會員系統正在建置中</strong>，目前無法登入或加入。如有訂購問題請透過 <a href="contact.html" style="color:var(--warm-brown);text-decoration:underline;">聯絡我們</a> 詢問。</span>
+<div style="background:#fff8f0;border-bottom:2px solid var(--caramel);padding:14px 24px;text-align:center;position:relative;z-index:1100;">
+  <span style="font-size:0.88rem;color:var(--espresso);">🔧 <strong>會員系統正在建置中</strong>，目前無法登入或加入。可先 <a href="#prereg" style="color:var(--warm-brown);text-decoration:underline;font-weight:500;">預先登記 Email</a>，正式上線時第一時間通知你！</span>
 </div>
 
 <!-- Hero -->
@@ -273,14 +273,14 @@
     <h1 class="fade-up">加入我們的手作大家庭</h1>
     <p class="fade-up">成為品牌好友，與我們一起在每一針每一戳中，感受溫暖與陪伴。<br>會員享有多項專屬福利，讓你的手作旅途更加豐富。</p>
     <div style="display:flex;gap:12px;justify-content:center;margin-top:32px;flex-wrap:wrap;" class="fade-up">
-      <a href="#" class="btn btn-primary btn-lg" id="hero-register">立即加入會員</a>
-      <a href="#" class="btn btn-secondary btn-lg" id="hero-login">已有帳號？登入</a>
+      <a href="#prereg" class="btn btn-primary btn-lg">✉️ 預先登記，上線即通知</a>
+      <a href="#tiers" class="btn btn-secondary btn-lg">查看會員專屬福利</a>
     </div>
   </div>
 </section>
 
 <!-- ════ TIERS ════ -->
-<section class="section" style="background:var(--white);">
+<section class="section" style="background:var(--white);" id="tiers">
   <div class="container">
     <div class="section-header fade-up">
       <span class="label">Membership Tiers</span>
@@ -320,7 +320,7 @@
           <li>訂單紀錄查詢</li>
           <li>會員專屬手作小知識</li>
         </ul>
-        <a href="#" class="btn btn-secondary" style="width:100%;justify-content:center;" id="join-general">免費加入 →</a>
+        <a href="#prereg" class="btn btn-secondary" style="width:100%;justify-content:center;">預先登記，免費加入 →</a>
       </div>
 
       <!-- Tier 2 -->
@@ -337,7 +337,7 @@
           <li>學員限定手作資源</li>
           <li>作品分享社群邀請</li>
         </ul>
-        <a href="courses.html" class="btn btn-primary" style="width:100%;justify-content:center;" id="join-vip">了解如何升級 →</a>
+        <a href="courses.html" class="btn btn-primary" style="width:100%;justify-content:center;">查看課程，累積消費升級 →</a>
       </div>
 
       <!-- Tier 3 -->
@@ -353,7 +353,7 @@
           <li>每年一次免費客製諮詢</li>
           <li>專屬感謝卡 × 手作小禮</li>
         </ul>
-        <a href="#" class="btn btn-secondary" style="width:100%;justify-content:center;" id="join-vip2">了解升級方式</a>
+        <a href="#prereg" class="btn btn-secondary" style="width:100%;justify-content:center;">預先登記，等候升級通知</a>
       </div>
     </div>
   </div>
@@ -451,7 +451,7 @@
     </div>
 
     <div style="text-align:center;margin-top:36px;" class="fade-up">
-      <a href="#" class="btn btn-primary btn-lg" id="join-now">立即加入會員，搶先體驗</a>
+      <a href="#prereg" class="btn btn-primary btn-lg">✉️ 預先登記，正式上線第一個知道</a>
     </div>
   </div>
 </section>
@@ -497,8 +497,77 @@
     <h2>加入我們，成為品牌好友</h2>
     <p>無論你是喜愛手作、有送禮需求，還是想學習羊毛氈——我們都歡迎你成為這個溫暖大家庭的一員。</p>
     <div class="btn-actions">
-      <a href="#" class="btn btn-ghost btn-lg" id="cta-login">登入帳號</a>
-      <a href="#" class="btn btn-warm btn-lg" id="cta-register">免費加入會員</a>
+      <a href="#prereg" class="btn btn-warm btn-lg">✉️ 立即預先登記會員</a>
+      <a href="contact.html" class="btn btn-ghost btn-lg">有問題？聯絡 Vivi</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════ PRE-REGISTRATION ════ -->
+<section class="section" style="background:var(--oat);" id="prereg">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="label">Pre-Registration</span>
+      <h2>預先登記，搶先加入</h2>
+      <div class="divider"></div>
+      <p>會員系統即將上線！留下你的 Email，正式開放當天第一時間通知你，<br>限定名額優先保留給預登記的朋友。</p>
+    </div>
+
+    <div style="max-width:520px;margin:0 auto;" class="fade-up">
+      <div class="form-container" style="background:var(--white);border-radius:var(--radius-xl);padding:48px 40px;box-shadow:var(--shadow-card);">
+
+        <!-- 成功畫面 -->
+        <div class="form-success">
+          <div class="form-success__icon">✨</div>
+          <div class="form-success__title">已收到你的預登記！</div>
+          <div class="form-success__desc">
+            歡迎加入 Vivi Felt 小宇宙 🌿<br>
+            會員系統正式上線時，我們會第一時間寄信通知你。<br>
+            感謝你的耐心等候！
+          </div>
+          <a href="index.html" class="btn btn-secondary">回到首頁瀏覽作品</a>
+        </div>
+
+        <form action="https://formspree.io/f/xrervybz" method="POST">
+          <input type="hidden" name="type" value="會員預登記" />
+
+          <div class="form-group">
+            <label class="form-label">姓名 <span style="color:#c0392b;">*</span></label>
+            <input type="text" name="name" class="form-input" placeholder="請輸入你的名字" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Email <span style="color:#c0392b;">*</span></label>
+            <input type="email" name="email" class="form-input" placeholder="your@email.com" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">你最感興趣的會員福利？</label>
+            <select name="interest" class="form-input">
+              <option value="">請選擇（選填）</option>
+              <option value="新品通知">🔔 新品優先通知</option>
+              <option value="生日優惠">💝 生日月份驚喜</option>
+              <option value="課程優先">🎓 課程優先報名</option>
+              <option value="折扣回饋">🏷 購物折扣回饋</option>
+              <option value="全部都想要">✨ 全部都想要！</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;margin-top:8px;">
+            <span class="btn-text">✉️ 立即預先登記</span>
+          </button>
+          <p style="font-size:0.75rem;color:var(--text-light);text-align:center;margin-top:12px;">僅用於會員上線通知，不作其他用途。</p>
+        </form>
+      </div>
+
+      <!-- 手作溫度小文字 -->
+      <div style="text-align:center;margin-top:32px;" class="fade-up">
+        <p style="font-family:var(--font-serif);font-style:italic;font-size:1.05rem;color:var(--warm-brown);line-height:1.8;">
+          「每一件作品，都是用時間與溫度換來的。<br>
+          成為會員，讓這份溫度離你更近。」
+        </p>
+        <p style="font-size:0.8rem;color:var(--text-light);margin-top:8px;">— Vivi</p>
+      </div>
     </div>
   </div>
 </section>

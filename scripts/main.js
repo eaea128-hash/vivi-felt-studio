@@ -134,9 +134,13 @@
   document.querySelectorAll('form[action*="formspree"]').forEach(function(form) {
     form.addEventListener('submit', function(e) {
       e.preventDefault();
+      // 防止重複送出
+      if (form.dataset.submitting === '1') return;
+      form.dataset.submitting = '1';
+
       var btn = form.querySelector('[type="submit"]');
       var orig = btn ? btn.innerHTML : '';
-      if (btn) { btn.innerHTML = '送出中…'; btn.disabled = true; }
+      if (btn) { btn.classList.add('loading'); btn.innerHTML = '送出中…'; btn.disabled = true; }
 
       var fd   = new FormData(form);
       var data = {};
@@ -149,17 +153,30 @@
       // ② 寄 Email via Formspree
       fetch(form.action, { method:'POST', body: fd, headers:{ Accept:'application/json' } })
         .then(function(r){
-        if (r.ok) { showSuccess(true); }
-        else { showError(); if(btn){ btn.innerHTML=orig; btn.disabled=false; } }
+        if (r.ok) { showSuccess(); }
+        else { showError(); resetBtn(); }
       })
-        .catch(function(){ showSuccess(true); }); // GAS 已存，視為成功
+        .catch(function(){ showSuccess(); }); // GAS 已存，視為成功
 
-      function showSuccess(ok) {
+      function resetBtn() {
+        form.dataset.submitting = '';
+        if (btn) { btn.classList.remove('loading'); btn.innerHTML = orig; btn.disabled = false; }
+      }
+
+      function showSuccess() {
         var wrap = form.closest('.form-container, .contact-form-wrapper, section') || document.body;
         var suc  = wrap.querySelector('.form-success') || document.querySelector('.form-success');
-        if (suc) { form.style.display='none'; suc.classList.add('show'); suc.style.display='block'; }
-        else if (btn) { btn.innerHTML = ok ? '✓ 已送出！' : orig; btn.disabled = false; }
+        if (suc) {
+          form.style.display = 'none';
+          suc.style.display = 'block';
+          suc.classList.add('show');
+          // scroll into view smoothly
+          suc.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          if (btn) { btn.classList.remove('loading'); btn.innerHTML = '✓ 已送出！'; }
+        }
       }
+
       function showError() {
         var wrap = form.closest('.form-container, .contact-form-wrapper, section') || document.body;
         var errEl = wrap.querySelector('.form-error');
