@@ -78,6 +78,15 @@ body {
   line-height: 1.75;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  padding-top: 72px; /* 固定 navbar 高度 */
+}
+
+/* 首頁有公告列，需多預留 44px */
+body.has-announcement {
+  padding-top: 116px; /* 44(公告列) + 72(navbar) */
+}
+body.has-announcement .navbar {
+  top: 44px;
 }
 
 img {
@@ -1133,7 +1142,7 @@ select.form-control {
 @media (max-width: 768px) {
   .hero {
     min-height: auto;
-    padding: 120px 0 60px;
+    padding: 40px 0 60px; /* body.has-announcement 已補 116px */
     flex-direction: column;
   }
 
@@ -1159,11 +1168,19 @@ select.form-control {
   background: var(--espresso);
   color: var(--cream);
   text-align: center;
-  padding: 12px 20px;
+  padding: 0 20px;
+  height: 44px;
+  line-height: 44px;
   font-size: 0.82rem;
   letter-spacing: 0.05em;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 1100;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .announcement-bar a {
@@ -1833,7 +1850,7 @@ table.data-table tbody tr:hover {
 
 /* ── Page Hero (inner pages) ── */
 .page-hero {
-  padding: 160px 0 80px;
+  padding: 88px 0 80px; /* 160px - 72px(body已補) */
   background: linear-gradient(160deg, var(--oat) 0%, var(--cream) 100%);
   text-align: center;
   position: relative;
