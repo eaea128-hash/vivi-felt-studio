@@ -1043,6 +1043,8 @@ select.form-control {
   padding: 12px 20px;
   font-size: 0.82rem;
   letter-spacing: 0.05em;
+  position: relative;
+  z-index: 1100;
 }
 
 .announcement-bar a {
