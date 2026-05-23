@@ -265,3 +265,101 @@ git push
 | v1.1.0 | 2025-04-27 | 圖片整合、按鈕修正、表單接 Email、Skill/Retro 建立 |
 | v1.2.0 | 2026-04-28 | Google OAuth、商品篩選、會員等級、AI Agent 治理文件 |
 | v1.3.0 | 2026-05-23 | 首頁結構重整、GA4、GAS 後台、全站 UX 強化（按鈕/表單/hover/trust）、navbar 排版修正 |
+
+---
+
+## 🔄 HANDOVER（2026-05-23 對話結束狀態）
+
+### 本次對話完成的項目
+
+| 項目 | 狀態 |
+|------|------|
+| P1 首頁結構重整（移除 About/Membership Teaser，調整區塊順序） | ✅ |
+| 首頁區塊順序：Hero→服務入口→人氣商品→客製流程→課程→企業→評價→FAQ→CTA | ✅ |
+| 公告列「了解更多」無法點擊（z-index 問題） | ✅ |
+| 全站 navbar / 公告列 / 建置中 banner 排版修正（R-08） | ✅ |
+| body padding-top 補足（所有頁面頂部不再被 navbar 蓋住） | ✅ |
+| 會員頁 CTA 全面改寫（href="#" → 有效連結） | ✅ |
+| 會員頁新增預登記表單（Formspree，含成功動畫） | ✅ |
+| 會員頁 Trust Strip（100+作品、98%滿意等信任指標） | ✅ |
+| 重複 `.form-success` CSS 定義修正（R-09） | ✅ |
+| 四大表單頁成功畫面升級（下一步指引、IG 連結、等待時間說明） | ✅ |
+| 全站按鈕 active/loading 狀態、防重複提交 | ✅ |
+| 全站 card hover 動畫（service/course/product/membership） | ✅ |
+| GA4 G-N5KTMTEY1C 全站啟用 | ✅ |
+| Google Apps Script 表單後台（→ Google Sheets） | ✅ |
+| Retro R-08～R-11 記錄 | ✅ |
+
+---
+
+### ⏳ 尚未完成（下次繼續）
+
+#### 1. LINE 推播通知（最後一步）
+- **目的**：有人填表單時，LINE 推播通知 Vivi
+- **已完成**：Apps Script 部署、Channel Access Token（150+ 字元）已填入
+- **卡住點**：`LINE_USER_ID` 取不到（Webhook 未觸發 → Google Sheet「LINE_userId」分頁從未出現）
+- **解決步驟**（使用者需自行操作）：
+  1. 開啟 [manager.line.biz](https://manager.line.biz) → Messaging API → 確認 **Webhook 已啟用**（不是只填網址，要打開開關）
+  2. 用 LINE 搜尋並加 **@572fllso** 好友
+  3. 傳任何一則訊息給它
+  4. 開啟 [Google Sheet](https://docs.google.com/spreadsheets/d/1TLIWZSYkkRHaeSs0irxatKp0ZOMnmyJEIqFz9HwNLcM) → 查看「LINE_userId」分頁
+  5. 把出現的 userId 填入 Apps Script → `const LINE_USER_ID = 'U...'` → 重新部署
+- **相關參數**：
+  - LINE Channel ID：`2010091707`
+  - LINE @帳號：`@572fllso`
+  - Webhook URL：Apps Script 部署網址（同 GAS URL）
+  - GAS URL：`https://script.google.com/macros/s/AKfycbzpTF810MngB7Iw3z2quyFec_K4l-5G14JvwSDl0d9NiZbWhSzlqJa-rthZFQyLOIL-/exec`
+  - Google Sheet ID：`1TLIWZSYkkRHaeSs0irxatKp0ZOMnmyJEIqFz9HwNLcM`
+  - Channel Access Token：`v8Fvz0sK+CLd7h4fcMUqsPqnCaAjB7AF9...FU=`（150+ 字元，已在 Apps Script 中）
+
+#### 2. 未追蹤的圖片檔案
+- `assets/images/514329178_122191225004306874_419231397219564021_n.jpg`
+- 這是 IG 下載的截圖，**尚未 commit**，請問是否要加入網站？若不用，可刪除。
+
+#### 3. 首頁頂部排版（最新 push 後待確認）
+- 已修正 navbar 與公告列重疊問題（R-08）
+- **使用者尚未回報修正後的截圖**，下次對話需確認視覺是否正確
+
+---
+
+### 🏗️ 目前網站架構關鍵設定
+
+#### 頂部 Layout（重要！勿亂改）
+```
+固定層（position:fixed）：
+  ├─ .announcement-bar  → top:0,  z-index:1100, height:44px  [僅 index.html 有]
+  └─ .navbar            → top:0,  z-index:1000, height:72px
+                          （首頁 body.has-announcement 時 → top:44px）
+
+body padding-top：
+  └─ 一般頁面：72px
+  └─ index.html（has-announcement）：116px = 44+72
+
+.page-hero padding-top：88px（= 原本 160px - body 已補的 72px）
+```
+
+#### 表單架構
+```
+送出流程：
+  ① 防重複提交檢查（form.dataset.submitting）
+  ② 送 Google Apps Script（no-cors fire&forget → Google Sheets）
+  ③ 送 Formspree（xrervybz → Email 通知）
+  ④ 顯示 .form-success 成功畫面（含動畫 + 下一步指引）
+
+Formspree ID：xrervybz（共用，4個表單 + 1個會員預登記）
+```
+
+#### 會員系統現況
+```
+membership.html 狀態：「建置中」
+- 所有 CTA 按鈕 → #prereg（頁內預登記表單）
+- 預登記表單 → Formspree（type="會員預登記"）
+- 沒有真實登入功能（auth-modal 已設為 display:none!important）
+- 會員中心顯示為靜態示範畫面
+```
+
+#### GA4 追蹤
+```
+GA4 ID：G-N5KTMTEY1C
+已安裝於：全部 19 頁 HTML
+```
