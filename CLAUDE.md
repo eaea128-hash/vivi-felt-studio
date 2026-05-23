@@ -184,6 +184,32 @@ git push
 - **已修正**：加上 `id="about"`
 - **通則**：footer/nav 中的 anchor 連結，必須確認目標元素有對應 id
 
+### R-08｜公告列/Banner 與 navbar 重疊（z-index 誤解）
+- **問題**：navbar 是 `position:fixed; top:0; z-index:1000`，公告列/建置中 banner 原本在 normal flow，看得到但點不到（被 navbar 攔截）。加了 `z-index:1100` 後反而蓋住 navbar 連結。
+- **根因**：`body` 沒有 `padding-top`，所有內容從 y=0 開始，跟 fixed navbar 撞在一起
+- **已修正**：
+  1. `body { padding-top: 72px }` 全站補足 navbar 高度
+  2. 公告列改為 `position:fixed; top:0; z-index:1100`（移出 normal flow）
+  3. 首頁 body 加 `class="has-announcement"`
+  4. `body.has-announcement { padding-top: 116px }` + `.navbar { top: 44px }`
+  5. `.page-hero { padding-top: 88px }` 從原本 160px 扣掉 body 已補的 72px
+- **通則**：新增任何 fixed/sticky 頂部元素，必須同步調整 body `padding-top` 與 navbar `top`
+
+### R-09｜重複 CSS 定義導致後者覆蓋前者
+- **問題**：`style.css` 中 `.form-success` 定義了兩次，第二個在後面，把第一個（含動畫）完全覆蓋掉
+- **已修正**：刪除舊定義，合併成一個，支援 `.success-icon`/`h3`（舊 HTML）與 `.__icon`/`.__title`（新 HTML）兩種寫法
+- **避免**：新增 CSS 元件前，先 `grep -n "class名稱" styles/style.css` 確認是否已存在
+
+### R-10｜按鈕 `href="#"` 點了沒反應（假按鈕）
+- **問題**：會員頁所有 CTA 按鈕都是 `href="#"`，點了頁面只是跳回最上面，給使用者「網站壞了」的感受
+- **已修正**：全部改為有意義的連結（`#prereg`、`contact.html`、`courses.html`）
+- **通則**：任何 `href="#"` 在上線前必須替換，允許暫時 `href="contact.html"` 作為過渡
+
+### R-11｜表單成功畫面缺少下一步指引
+- **問題**：四個表單頁送出後只顯示「謝謝你的訊息」，使用者不知道接下來會發生什麼，也沒有行動引導
+- **已修正**：每頁各自添加：處理時間說明、IG 連結、下一步提示文字（.next-step 區塊）
+- **通則**：表單成功畫面應包含：① 確認已收到 ② 預期等待時間 ③ 下一步行動
+
 ---
 
 ---
@@ -238,3 +264,4 @@ git push
 | v1.0.0 | 2025-04-13 | 初版 18 頁完成 |
 | v1.1.0 | 2025-04-27 | 圖片整合、按鈕修正、表單接 Email、Skill/Retro 建立 |
 | v1.2.0 | 2026-04-28 | Google OAuth、商品篩選、會員等級、AI Agent 治理文件 |
+| v1.3.0 | 2026-05-23 | 首頁結構重整、GA4、GAS 後台、全站 UX 強化（按鈕/表單/hover/trust）、navbar 排版修正 |
