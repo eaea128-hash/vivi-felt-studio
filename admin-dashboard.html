@@ -9,8 +9,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>後台總覽｜Vivi Felt Studio Admin</title>
   <meta name="robots" content="noindex, nofollow" />
-  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="styles/style.css" />
+  <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/styles/style.css" />
   <!-- GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-N5KTMTEY1C"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N5KTMTEY1C');</script>
@@ -57,17 +57,17 @@
     </div>
     <nav class="admin-sidebar__nav">
       <div class="admin-sidebar__section">主要功能</div>
-      <a href="admin-dashboard.html" class="admin-sidebar__link active"><span class="icon">📊</span> 總覽儀表板</a>
-      <a href="admin-orders.html" class="admin-sidebar__link"><span class="icon">📦</span> 訂單管理</a>
-      <a href="admin-courses.html" class="admin-sidebar__link"><span class="icon">🎓</span> 課程報名</a>
-      <a href="admin-members.html" class="admin-sidebar__link"><span class="icon">👥</span> 會員管理</a>
+      <a href="/admin-dashboard" class="admin-sidebar__link active"><span class="icon">📊</span> 總覽儀表板</a>
+      <a href="/admin-orders" class="admin-sidebar__link"><span class="icon">📦</span> 訂單管理</a>
+      <a href="/admin-courses" class="admin-sidebar__link"><span class="icon">🎓</span> 課程報名</a>
+      <a href="/admin-members" class="admin-sidebar__link"><span class="icon">👥</span> 會員管理</a>
 
       <div class="admin-sidebar__section">內容管理</div>
-      <a href="admin-content.html" class="admin-sidebar__link"><span class="icon">✏️</span> 內容管理</a>
-      <a href="admin-analytics.html" class="admin-sidebar__link"><span class="icon">📈</span> 數據分析</a>
+      <a href="/admin-content" class="admin-sidebar__link"><span class="icon">✏️</span> 內容管理</a>
+      <a href="/admin-analytics" class="admin-sidebar__link"><span class="icon">📈</span> 數據分析</a>
 
       <div class="admin-sidebar__section">設定</div>
-      <a href="index.html" class="admin-sidebar__link" target="_blank"><span class="icon">🌐</span> 前台預覽</a>
+      <a href="/" class="admin-sidebar__link" target="_blank"><span class="icon">🌐</span> 前台預覽</a>
       <a href="#" class="admin-sidebar__link"><span class="icon">⚙️</span> 系統設定</a>
     </nav>
   </aside>
@@ -81,7 +81,7 @@
       </div>
       <div class="admin-topbar__right">
         <span style="font-size:0.78rem;color:var(--text-light);">今天 · <span id="today-date"></span></span>
-        <a href="index.html" target="_blank" class="btn btn-secondary btn-sm">查看前台</a>
+        <a href="/" target="_blank" class="btn btn-secondary btn-sm">查看前台</a>
         <div class="admin-avatar">V</div>
       </div>
     </div>
@@ -176,7 +176,7 @@
 
         <!-- Recent Inquiries -->
         <div class="dash-card">
-          <h3>最新詢問 <a href="admin-orders.html">查看全部 →</a></h3>
+          <h3>最新詢問 <a href="/admin-orders">查看全部 →</a></h3>
           <div class="inquiry-item">
             <div class="inquiry-avatar">王</div>
             <div class="inquiry-body">
@@ -224,7 +224,7 @@
       <div class="stats-grid-2">
         <!-- Popular works -->
         <div class="dash-card">
-          <h3>熱門詢問作品 <a href="admin-content.html">管理作品 →</a></h3>
+          <h3>熱門詢問作品 <a href="/admin-content">管理作品 →</a></h3>
           <div style="display:flex;flex-direction:column;gap:16px;">
             <div>
               <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
@@ -259,7 +259,7 @@
 
         <!-- Popular courses -->
         <div class="dash-card">
-          <h3>課程報名概況 <a href="admin-courses.html">查看詳細 →</a></h3>
+          <h3>課程報名概況 <a href="/admin-courses">查看詳細 →</a></h3>
           <div style="display:flex;flex-direction:column;gap:14px;">
             <div style="background:var(--oat);border-radius:var(--radius-md);padding:16px 20px;display:flex;justify-content:space-between;align-items:center;">
               <div>
@@ -299,7 +299,7 @@
       <div class="dash-card">
         <h3>
           📈 本月詢問趨勢
-          <a href="admin-analytics.html">詳細分析 →</a>
+          <a href="/admin-analytics">詳細分析 →</a>
         </h3>
         <div class="chart-placeholder">
           <div class="chart-bars">
@@ -323,7 +323,7 @@
   </main>
 </div>
 
-<script src="scripts/main.js"></script>
+<script src="/scripts/main.js"></script>
 <script>
   document.getElementById('today-date').textContent = new Date().toLocaleDateString('zh-TW', { year:'numeric', month:'long', day:'numeric', weekday:'long' });
 </script>

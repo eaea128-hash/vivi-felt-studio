@@ -331,10 +331,11 @@ function showToast(message, type = 'success') {
 
 /* ── Active Nav Link ── */
 (function initActiveNav() {
-  const path = window.location.pathname.split('/').pop() || 'index.html';
+  const norm = p => (p || '/').replace(/[#?].*$/, '').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+  const path = norm(window.location.pathname);
   document.querySelectorAll('.navbar__nav a, .footer a').forEach(link => {
     const href = link.getAttribute('href');
-    if (href === path) {
+    if (href && !href.includes('#') && norm(href) === path) {
       link.style.color = 'var(--espresso)';
     }
   });

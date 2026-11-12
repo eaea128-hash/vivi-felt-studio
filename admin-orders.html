@@ -9,8 +9,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>訂單管理｜Vivi Felt Studio Admin</title>
   <meta name="robots" content="noindex, nofollow" />
-  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="styles/style.css" />
+  <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/styles/style.css" />
   <!-- GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-N5KTMTEY1C"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-N5KTMTEY1C');</script>
@@ -67,15 +67,15 @@
     </div>
     <nav class="admin-sidebar__nav">
       <div class="admin-sidebar__section">主要功能</div>
-      <a href="admin-dashboard.html" class="admin-sidebar__link"><span class="icon">📊</span> 總覽儀表板</a>
-      <a href="admin-orders.html" class="admin-sidebar__link active"><span class="icon">📦</span> 訂單管理</a>
-      <a href="admin-courses.html" class="admin-sidebar__link"><span class="icon">🎓</span> 課程報名</a>
-      <a href="admin-members.html" class="admin-sidebar__link"><span class="icon">👥</span> 會員管理</a>
+      <a href="/admin-dashboard" class="admin-sidebar__link"><span class="icon">📊</span> 總覽儀表板</a>
+      <a href="/admin-orders" class="admin-sidebar__link active"><span class="icon">📦</span> 訂單管理</a>
+      <a href="/admin-courses" class="admin-sidebar__link"><span class="icon">🎓</span> 課程報名</a>
+      <a href="/admin-members" class="admin-sidebar__link"><span class="icon">👥</span> 會員管理</a>
       <div class="admin-sidebar__section">內容管理</div>
-      <a href="admin-content.html" class="admin-sidebar__link"><span class="icon">✏️</span> 內容管理</a>
-      <a href="admin-analytics.html" class="admin-sidebar__link"><span class="icon">📈</span> 數據分析</a>
+      <a href="/admin-content" class="admin-sidebar__link"><span class="icon">✏️</span> 內容管理</a>
+      <a href="/admin-analytics" class="admin-sidebar__link"><span class="icon">📈</span> 數據分析</a>
       <div class="admin-sidebar__section">設定</div>
-      <a href="index.html" class="admin-sidebar__link" target="_blank"><span class="icon">🌐</span> 前台預覽</a>
+      <a href="/" class="admin-sidebar__link" target="_blank"><span class="icon">🌐</span> 前台預覽</a>
       <a href="#" class="admin-sidebar__link"><span class="icon">⚙️</span> 系統設定</a>
     </nav>
   </aside>
@@ -87,7 +87,7 @@
         <div class="admin-topbar__title">訂單管理</div>
       </div>
       <div class="admin-topbar__right">
-        <a href="index.html" target="_blank" class="btn btn-secondary btn-sm">查看前台</a>
+        <a href="/" target="_blank" class="btn btn-secondary btn-sm">查看前台</a>
         <div class="admin-avatar">V</div>
       </div>
     </div>
@@ -348,7 +348,7 @@
   </div>
 </div>
 
-<script src="scripts/main.js"></script>
+<script src="/scripts/main.js"></script>
 <script>
   function openOrder(id, name, type, desc, price, date, deadline, status) {
     document.getElementById('panel-title').textContent = '#' + id;
