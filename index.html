@@ -486,6 +486,15 @@
       color: var(--cream);
     }
     .product-card.hidden { display: none; }
+    /* 商品多張照片切換 */
+    .pc-slide { display: none !important; }
+    .pc-slide.active { display: block !important; }
+    .pc-nav { position:absolute; top:50%; transform:translateY(-50%); z-index:3; width:32px; height:32px; border:none; border-radius:50%; background:rgba(58,46,37,0.55); color:#fff; font-size:1.1rem; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0; }
+    .pc-nav:hover { background:rgba(58,46,37,0.8); }
+    .pc-prev { left:8px; } .pc-next { right:8px; }
+    .pc-dots { position:absolute; bottom:8px; left:0; right:0; z-index:3; display:flex; justify-content:center; gap:6px; }
+    .pc-dot { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,0.6); }
+    .pc-dot.active { background:#fff; }
   </style>
 </head>
 <body class="has-announcement">
@@ -692,7 +701,8 @@
             <span style="font-size:0.65rem;background:var(--oat);color:var(--warm-brown);padding:2px 8px;border-radius:20px;">純手工唯一</span>
             <span style="font-size:0.65rem;background:var(--oat);color:var(--warm-brown);padding:2px 8px;border-radius:20px;">送禮高質感</span>
           </div>
-          <div class="product-card__desc">以濕氈工法一片氈化成型的半圓翻蓋斜背包，深紫混棕色搭配紅色點綴纖維，麻花長背帶柔軟有型。花色為手作獨一無二。</div>
+          <div class="product-card__desc">以濕氈工法一片氈化成型的半圓翻蓋斜背包，深紫混棕色搭配紅色點綴纖維，麻花長背帶柔軟有型。無內襯，簡約輕盈。花色為手作獨一無二。</div>
+          <div style="font-size:0.78rem;color:var(--text-light);margin-bottom:14px;">✔ 現貨一件　✔ 可接單製作（花色會略有不同）</div>
           <div class="product-card__price">NT$ 2,980</div>
           <div class="product-card__actions">
             <button onclick="openPurchase('紫色濕氈斜背包', 2980)" class="btn btn-primary btn-sm" style="width:100%;justify-content:center;">🛒 立即購買</button>
@@ -703,7 +713,8 @@
       <!-- 蜜蜂柴柴擺飾（接單製作） -->
       <div class="product-card" data-category="display" style="min-width:300px;">
         <div class="product-card__image">
-          <img loading="lazy" src="/assets/images/work-bee-shiba.webp" alt="Vivi Felt Studio 蜜蜂柴柴羊毛氈擺飾，穿蜜蜂裝揮手的柴犬" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          <img loading="lazy" class="pc-slide active" src="/assets/images/work-bee-shiba.webp" alt="Vivi Felt Studio 蜜蜂柴柴羊毛氈擺飾，穿蜜蜂裝揮手的柴犬" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;" />
+          <img loading="lazy" class="pc-slide" src="/assets/images/work-bee-shiba-back.webp" alt="蜜蜂柴柴背面，閃亮蜜蜂翅膀細節" style="width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;" />
           <span class="product-card__badge" style="background:var(--caramel);">✨ 新作</span>
         </div>
         <div class="product-card__body">
@@ -715,7 +726,7 @@
           </div>
           <div class="product-card__desc">穿著蜜蜂裝、瞇眼揮手的柴犬，帶著小向日葵胸針與閃亮蜜蜂翅膀，Vivi 全手工羊毛氈製作。</div>
           <div class="product-card__price">NT$ 2,580</div>
-          <div style="font-size:0.78rem;color:var(--text-light);margin-bottom:14px;">✔ 接單製作，每件手作略有差異　※ 售價不含下方木製擺設</div>
+          <div style="font-size:0.78rem;color:var(--text-light);margin-bottom:14px;">✔ 接單製作，製作工期約 7 天　✔ 每件手作略有差異　※ 售價不含下方木製擺設</div>
           <div class="product-card__actions">
             <button onclick="openPurchase('蜜蜂柴柴羊毛氈擺飾（不含木製擺設）', 2580)" class="btn btn-primary btn-sm" style="width:100%;justify-content:center;">🛒 立即購買</button>
           </div>
@@ -1591,6 +1602,24 @@
 
 <script>
   // 商品品類篩選
+  // 商品多張照片切換：卡片內有 2 張以上 .pc-slide 時自動加上左右箭頭與圓點
+  document.querySelectorAll('.product-card__image').forEach(box => {
+    const slides = box.querySelectorAll('.pc-slide');
+    if (slides.length < 2) return;
+    let i = 0;
+    const dots = document.createElement('div'); dots.className = 'pc-dots';
+    slides.forEach((_, k) => { const d = document.createElement('span'); d.className = 'pc-dot' + (k === 0 ? ' active' : ''); dots.appendChild(d); });
+    const show = n => {
+      i = (n + slides.length) % slides.length;
+      slides.forEach((el, k) => el.classList.toggle('active', k === i));
+      dots.querySelectorAll('.pc-dot').forEach((el, k) => el.classList.toggle('active', k === i));
+    };
+    const mk = (cls, txt, label, d) => { const b = document.createElement('button'); b.type = 'button'; b.className = 'pc-nav ' + cls; b.textContent = txt; b.setAttribute('aria-label', label); b.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); show(i + d); }); return b; };
+    box.appendChild(mk('pc-prev', '‹', '上一張照片', -1));
+    box.appendChild(mk('pc-next', '›', '下一張照片', 1));
+    box.appendChild(dots);
+  });
+
   document.querySelectorAll('.shop-filter__btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.shop-filter__btn').forEach(b => b.classList.remove('active'));
