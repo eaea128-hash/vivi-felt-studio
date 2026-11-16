@@ -310,6 +310,76 @@
 </section>
 
 <!-- ════════════════════════════════════════════
+     UPCOMING 近期開課
+════════════════════════════════════════════ -->
+<section class="section" style="background:var(--cream);padding-bottom:40px;" id="upcoming">
+  <div class="container" style="max-width:860px;">
+    <div class="section-header fade-up">
+      <span class="label">Upcoming</span>
+      <h2>近期開課</h2>
+      <div class="divider"></div>
+      <p>目前開放報名的場次，名額有限，成班與否以老師通知為準。</p>
+    </div>
+
+    <div id="upcoming-list" class="fade-up" style="display:flex;flex-direction:column;gap:14px;">
+      <div class="upcoming-item" data-date="2026-12-02" style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;background:var(--white);border-radius:16px;padding:18px 22px;box-shadow:0 2px 12px rgba(58,46,37,0.06);">
+        <div style="min-width:84px;text-align:center;">
+          <div style="font-family:var(--font-serif);font-size:1.7rem;color:var(--espresso);line-height:1;">12/2</div>
+          <div style="font-size:0.78rem;color:var(--text-light);margin-top:4px;">週三 平日班</div>
+        </div>
+        <div style="flex:1;min-width:220px;">
+          <div style="font-weight:600;color:var(--espresso);">🎄 聖誕貴賓狗羊毛氈課（初階）</div>
+          <div style="font-size:0.85rem;color:var(--text-mid);margin-top:4px;">13:00–17:00｜新北市板橋區，步行至江子翠捷運站約 4 分鐘</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-family:var(--font-serif);font-style:italic;color:var(--espresso);margin-bottom:6px;">NT$ 1,380 / 人</div>
+          <a href="https://www.surveycake.com/s/3eKNk" target="_blank" rel="noopener" class="btn btn-primary btn-sm">填寫報名表單</a>
+        </div>
+      </div>
+
+      <div class="upcoming-item" data-date="2026-12-05" style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;background:var(--white);border-radius:16px;padding:18px 22px;box-shadow:0 2px 12px rgba(58,46,37,0.06);">
+        <div style="min-width:84px;text-align:center;">
+          <div style="font-family:var(--font-serif);font-size:1.7rem;color:var(--espresso);line-height:1;">12/5</div>
+          <div style="font-size:0.78rem;color:var(--text-light);margin-top:4px;">週六 假日班</div>
+        </div>
+        <div style="flex:1;min-width:220px;">
+          <div style="font-weight:600;color:var(--espresso);">🎄 聖誕貴賓狗羊毛氈課（初階）</div>
+          <div style="font-size:0.85rem;color:var(--text-mid);margin-top:4px;">13:00–17:00｜新北市永和區，步行至頂溪捷運站約 2 分鐘</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-family:var(--font-serif);font-style:italic;color:var(--espresso);margin-bottom:6px;">NT$ 1,380 / 人</div>
+          <a href="https://www.surveycake.com/s/3eKNk" target="_blank" rel="noopener" class="btn btn-primary btn-sm">填寫報名表單</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="upcoming-empty" style="display:none;text-align:center;color:var(--text-mid);padding:24px;background:var(--white);border-radius:16px;">
+      目前沒有公開的固定場次，歡迎先<a href="/contact" style="color:var(--warm-brown);text-decoration:underline;">詢問下一次開課</a>，或預約私人／企業包班。
+    </div>
+
+    <p style="text-align:center;font-size:0.85rem;color:var(--text-light);margin-top:18px;">
+      想上其他課程或自訂日期？請往下看課程介紹，或<a href="/contact" style="color:var(--warm-brown);text-decoration:underline;">直接詢問場次</a>。
+    </p>
+  </div>
+</section>
+<script>
+  // 已過期的場次自動隱藏；全部過期時顯示「目前沒有固定場次」
+  (function () {
+    var today = new Date(); today.setHours(0, 0, 0, 0);
+    var items = document.querySelectorAll('#upcoming-list .upcoming-item');
+    var left = 0;
+    items.forEach(function (el) {
+      var d = new Date(el.getAttribute('data-date') + 'T00:00:00');
+      if (d < today) { el.style.display = 'none'; } else { left++; }
+    });
+    if (!left) {
+      document.getElementById('upcoming-list').style.display = 'none';
+      document.getElementById('upcoming-empty').style.display = 'block';
+    }
+  })();
+</script>
+
+<!-- ════════════════════════════════════════════
      WHY OUR COURSES
 ════════════════════════════════════════════ -->
 <section class="section" style="background:var(--white);">
